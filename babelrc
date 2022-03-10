@@ -1,0 +1,45 @@
+{
+  "presets": [
+    ["env", {
+      "target": {
+        "browsers": "> 5%"
+      }
+    }],
+  ],
+
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "lib",
+        "style": "js"
+      }
+    ],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "lib",
+        "style": "css"
+      }
+    ],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "libraryDirectory": "lib",
+        "style": "ts"
+      }
+    ],
+    [
+      'transform-runtime', 
+      {
+        'helpers': false,
+        'polyfill': false,
+        'regenerator': true,
+        'moduleName': 'babel-runtime'
+      }
+    ]
+  ]
+}
