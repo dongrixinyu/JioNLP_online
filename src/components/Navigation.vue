@@ -46,6 +46,12 @@
           >地址解析</router-link
         >
       </a-menu-item>
+      <a-menu-item key="5">
+        <template #icon>
+          <InboxOutlined />
+        </template>
+        <router-link id="cws_pos" to="/cws_pos">分词-词性标注</router-link>
+      </a-menu-item>
       <a-sub-menu key="sub1">
         <template #icon>
           <MailOutlined />

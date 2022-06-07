@@ -21,12 +21,19 @@
         <p>● 给定一条地址文本，从中抽取出<b>省、市、县、乡、街道、村</b>等。</p>
         <a-popover title="" trigger="hover">
           <template #content>
-            <p>● 在线版工具暂时未返回乡、村等信息。须查阅源码详情和说明文档。</p>
-            <p>● 该工具支持地址补全，即给出市、县，补全其省、市等信息；且支持旧地名自动解析为新地名，例如“烟台长岛县”（已撤销）可自动识别为“蓬莱区”。</p>
-            <p>● 参考文档：
-                <a href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-地址解析"
-                    >地址解析说明文档</a
-                >
+            <p>
+              ● 在线版工具暂时未返回乡、村等信息。须查阅源码详情和说明文档。
+            </p>
+            <p>
+              ●
+              该工具支持地址补全，即给出市、县，补全其省、市等信息；且支持旧地名自动解析为新地名，例如“烟台长岛县”（已撤销）可自动识别为“蓬莱区”。
+            </p>
+            <p>
+              ● 参考文档：
+              <a
+                href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-地址解析"
+                >地址解析说明文档</a
+              >
             </p>
           </template>
           <a-button type="dashed">● 说明</a-button>
@@ -89,7 +96,7 @@
 import { Options, Vue } from "vue-class-component";
 import { CaretRightOutlined } from "@ant-design/icons-vue";
 import router from "../router/index";
-import jio_instance from "@/utils/request";
+import { jio_instance } from "@/utils/request";
 
 @Options({
   components: {

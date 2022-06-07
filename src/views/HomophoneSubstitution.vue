@@ -84,7 +84,7 @@
 import { Options, Vue } from "vue-class-component";
 import { CaretRightOutlined } from "@ant-design/icons-vue";
 import router from "../router/index";
-import jio_instance from "@/utils/request";
+import { jio_instance } from "@/utils/request";
 
 @Options({
   components: {

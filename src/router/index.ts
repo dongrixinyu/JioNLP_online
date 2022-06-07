@@ -14,6 +14,11 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/ExtractKeyphrase.vue')
     },
     {
+        path: '/cws_pos',
+        name: 'CwsPos',
+        component: () => import('../views/CwsPos.vue')
+    },
+    {
         path: '/parse_time',
         name: 'ParseTime',
         component: () => import('../views/ParseTime.vue')
@@ -61,4 +66,3 @@ const router = createRouter({
 })
 
 export default router
-

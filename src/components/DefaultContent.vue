@@ -41,11 +41,11 @@
             >金额解析</b
           >、<b class="content-color">身份证号解析</b>、<b class="content-color"
             >数据增强</b
-          >等功能
+          >、<b class="content-color">中文-阿拉伯数字转换</b>等功能
         </p>
         <p>
           &emsp;&emsp;<InfoCircleFilled />
-          更多功能<b>抽取摘要、解析手机号、成语词典、繁简体转换、模型训练辅助工具</b>等须安装
+          更多功能<b>抽取摘要、解析手机号、成语词典、繁简体转换、模型训练辅助工具、分类、序列标注指标统计函数</b>等须安装
           jionlp 工具包
         </p>
 
@@ -56,9 +56,12 @@
         </p>
 
         <h2><RightSquareFilled /> 未来规划</h2>
-        <p>&emsp;&emsp;<InfoCircleFilled /> 增加在线解析、预处理功能</p>
-        <p>&emsp;&emsp;<InfoCircleFilled /> 增加 JioNLP 安装、使用文档</p>
-        <p>&emsp;&emsp;<InfoCircleFilled /> 提供模型调用接口</p>
+        <p>&emsp;&emsp;<InfoCircleFilled /> 增加在线解析、模型辅助函数</p>
+        <p>
+          &emsp;&emsp;<InfoCircleFilled />
+          优化已有时间解析，繁简体转换等效果和性能
+        </p>
+        <p>&emsp;&emsp;<InfoCircleFilled /> 增加通用地址解析</p>
       </div>
     </a-layout-content>
   </a-layout>

@@ -39,7 +39,7 @@ configureWebpack: config: {
         config.plugins = [...config.plugins, ...plugins];
     }
 }*/
-        
+
 module.exports = {
   chainWebpack: config => {
     config
@@ -49,17 +49,17 @@ module.exports = {
     config.entry.app = ["babel-polyfill", "./src/main.ts"];
     // element-ui自动就挂载在Vue上了，这里不需要写它，在入口文件main.js中也不用再vue.use了
     config.externals = {
-        'vue': 'Vue',
-        'vuex': 'vuex',
-        'vue-router': 'VueRouter'
+      'vue': 'Vue',
+      'vuex': 'vuex',
+      'vue-router': 'VueRouter'
     };
   },
   productionSourceMap: false,
-  configureWebpack:{
+  configureWebpack: {
     plugins: [
       // Ignore all locale files of moment.js
       new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-      
+
       // 配置compression-webpack-plugin压缩
       new CompressionWebpackPlugin({
         algorithm: 'gzip',
@@ -69,7 +69,7 @@ module.exports = {
         // deleteOriginalAssets: true // 删除源文件
       }),
       new webpack.optimize.LimitChunkCountPlugin({
-        maxChunks: 5, 
+        maxChunks: 5,
         minChunkSize: 100
       }),
       new UglifyJsPlugin({
@@ -88,11 +88,6 @@ module.exports = {
         parallel: true
       })
     ],
-    
+
   },
 }
-
-
-
-
-

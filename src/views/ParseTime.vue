@@ -23,12 +23,21 @@
         <p>给定时间短语，解析其表达的时间语义。</p>
         <a-popover title="" trigger="hover">
           <template #content>
-            <p>● 该工具需要配合 <b>时间实体抽取</b>，从文本中抽取到时间实体，进而对每一个时间实体短语做语义解析。</p>
-            <p>● 根据多个语料集的测试，该功能的准确率大致在91%~96%之间，并会进一步优化和维护。</p>
-            <p>● 参考文档：
-                <a href="https://github.com/dongrixinyu/JioNLP/wiki/时间语义解析-说明文档"
-                    >时间语义解析说明文档</a
-                >
+            <p>
+              ● 该工具需要配合
+              <b>时间实体抽取</b
+              >，从文本中抽取到时间实体，进而对每一个时间实体短语做语义解析。
+            </p>
+            <p>
+              ●
+              根据多个语料集的测试，该功能的准确率大致在91%~96%之间，并会进一步优化和维护。
+            </p>
+            <p>
+              ● 参考文档：
+              <a
+                href="https://github.com/dongrixinyu/JioNLP/wiki/时间语义解析-说明文档"
+                >时间语义解析说明文档</a
+              >
             </p>
           </template>
           <a-button type="dashed">● 说明</a-button>
@@ -252,8 +261,7 @@
 import { Options, Vue } from "vue-class-component";
 import { CaretRightOutlined } from "@ant-design/icons-vue";
 import router from "../router/index";
-import jio_instance from "@/utils/request";
-
+import { jio_instance } from "@/utils/request";
 
 @Options({
   components: {

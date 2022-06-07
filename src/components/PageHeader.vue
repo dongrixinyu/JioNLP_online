@@ -1,13 +1,23 @@
 <template>
   <a-layout-header class="page_header">
+    <!--div class="guest_count"></div-->
     <div class="logo">
       <!--a class="logo" @click="send"-->
-      <router-link id="default_content" to="/"
-        ><img
-          id="jionlp_logo"
-          alt="jionlp_logo"
-          src="../assets/jionlp_logo.png"
-      /></router-link>
+      <a-popover title="" trigger="hover">
+        <template #content>
+          <p>
+            ● 您是本站的第<b> {{ guest_count }} </b>位访客。
+          </p>
+        </template>
+        <!--a-button type="dashed">●</a-button-->
+        <router-link id="default_content" to="/"
+          ><img
+            id="jionlp_logo"
+            alt="jionlp_logo"
+            src="../assets/jionlp_logo.png"
+        /></router-link>
+      </a-popover>
+
       <!--/a-->
     </div>
     <!--span class="page_header_text"><b>中文解析工具包 </b></span>
@@ -32,19 +42,29 @@
   </a-layout-header>
 </template>
 
-<script>
-import { defineComponent } from "vue";
+<script lang="ts">
+// import { defineComponent } from "vue";
+import { Vue } from "vue-class-component";
 // import { GithubOutlined } from "@ant-design/icons-vue";
+import { jio_instance } from "@/utils/request";
 
-export default defineComponent({
-  components: {},
-  setup() {
-    return {
-      // routes,
-      // iconLinks,
-    };
-  },
-});
+export default class PageHeader extends Vue {
+  guest_count = 0;
+  // mounted() {
+  //console.log("ParseLocation mounted!");
+  // }
+  created() {
+    jio_instance({
+      url: "/jio_api/guest_count",
+    })
+      .then((response) => {
+        this.guest_count = response.data.detail.guest_count;
+      })
+      .catch(() => {
+        this.guest_count = 0;
+      });
+  }
+}
 </script>
 
 <style scoped>

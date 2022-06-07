@@ -185,7 +185,7 @@
 import { Options, Vue } from "vue-class-component";
 import { CaretRightOutlined } from "@ant-design/icons-vue";
 import router from "../router/index";
-import jio_instance from "@/utils/request";
+import { jio_instance_with_jiojio } from "@/utils/request";
 import { ref } from "vue";
 
 const table_columns = [
@@ -285,7 +285,7 @@ export default class ExtractKeyphrase extends Vue {
       this.without_location_name = false;
     }
 
-    jio_instance({
+    jio_instance_with_jiojio({
       url: "/jio_api/extract_keyphrase",
       data: {
         text: this.text,
