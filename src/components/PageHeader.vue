@@ -17,8 +17,27 @@
             src="../assets/jionlp_logo.png"
         /></router-link>
       </a-popover>
-
-      <!--/a-->
+    </div>
+    <div class="horizontal_navigator">
+      <a-menu
+        v-model:selectedKeys="selectedKeys1"
+        theme="dark"
+        mode="horizontal"
+        :style="{ lineHeight: '64px' }"
+      >
+        <a-menu-item key="nlp_online"
+          ><router-link id="nlp_online" to="/"
+            >NLP在线</router-link
+          ></a-menu-item
+        >
+        <a-menu-item key="nlp_product"
+          ><router-link id="nlp_product" to="/product/tui_juhe"
+            >NLP产品</router-link
+          ></a-menu-item
+        >
+        <a-menu-item key="nlp_recruit">NLP内推</a-menu-item>
+        <!--<a-menu-item key="3">nav 3</a-menu-item-->
+      </a-menu>
     </div>
     <!--span class="page_header_text"><b>中文解析工具包 </b></span>
       <span class="page_header_text"><b>pip install jionlp</b></span-->
@@ -90,12 +109,19 @@ export default class PageHeader extends Vue {
 #jionlp_logo {
   width: 160px;
   height: 50px;
-  margin-left: 20px;
+  margin-left: 0px;
   margin-top: 0px;
 }
 
 .logo {
+  margin-left: 30px;
+  margin-right: auto;
+  float: left;
+}
+
+.horizontal_navigator {
   display: inline-block;
+  margin-left: 70px;
 }
 
 .content {

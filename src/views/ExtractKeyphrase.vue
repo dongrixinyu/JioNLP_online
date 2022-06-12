@@ -1,5 +1,5 @@
 <template>
-  <a-layout class="variable_content" style="padding: 0 24px 24px">
+  <a-layout style="padding: 0 24px 24px">
     <a-breadcrumb style="margin: 16px 0" :routes="router">
       <a-breadcrumb-item href="/">
         <home-outlined />

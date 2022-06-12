@@ -58,6 +58,11 @@ const routes: Array<RouteRecordRaw> = [
         name: 'HomophoneSubstitution',
         component: () => import('../views/HomophoneSubstitution.vue')
     },
+    {
+        path: '/product/tui_juhe',
+        name: 'TuiJuhe',
+        component: () => import('../advertisements/TuiJuhe.vue')
+    },
 ]
 
 const router = createRouter({

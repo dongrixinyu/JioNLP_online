@@ -11,6 +11,7 @@
         <router-view> </router-view>
       </a-layout>
       <a-layout>
+        <TuiJuheFront />
         <Shampoo />
       </a-layout>
       <a-layout>
@@ -25,6 +26,7 @@ import Navigation from "@/components/Navigation.vue";
 import PageHeader from "@/components/PageHeader.vue";
 // import DefaultContent from "@/components/DefaultContent.vue";
 import Shampoo from "@/advertisements/Shampoo.vue";
+import TuiJuheFront from "@/advertisements/TuiJuheFront.vue";
 import PageFooter from "@/components/PageFooter.vue";
 
 export default {
@@ -34,6 +36,7 @@ export default {
     Navigation,
     // DefaultContent,
     Shampoo,
+    TuiJuheFront,
     PageFooter,
   },
 };
