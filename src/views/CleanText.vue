@@ -110,7 +110,6 @@ export default class CleanText extends Vue {
     jio_asset({
       url: "/clean_text_sample.txt",
     }).then((response) => {
-      // console.log(response);
       this.text = response.data;
     });
     // console.log("CleanText mounted!");

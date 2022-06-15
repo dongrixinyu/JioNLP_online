@@ -81,7 +81,7 @@ module.exports = {
           },
           output: {
             // 去掉注释内容
-            comments: true
+            comments: false
           }
         },
         sourceMap: false,
