@@ -4,6 +4,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# jionlp_online
+raw_images
+
+
 # C extensions
 *.so
 

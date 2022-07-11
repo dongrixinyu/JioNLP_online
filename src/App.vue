@@ -1,18 +1,17 @@
 <template>
   <div>
     <a-layout>
+      <metainfo>
+        <template v-slot:title="{ content }">{{ content ? `${content} | JioNLP源站` : `SITE_NAME` }}</template>
+      </metainfo>
       <PageHeader />
       <a-layout>
-        <Navigation />
-        <!--DefaultContent /-->
-        <!--div id="variable-content">
-          <DefaultContent />
-        </div-->
+        <!--Navigation /-->
         <router-view> </router-view>
       </a-layout>
       <a-layout>
-        <TuiJuheFront />
-        <Shampoo />
+        <!--TuiJuheFront /-->
+        <!--Shampoo /-->
       </a-layout>
       <a-layout>
         <PageFooter />
@@ -22,23 +21,27 @@
 </template>
 
 <script>
-import Navigation from "@/components/Navigation.vue";
-import PageHeader from "@/components/PageHeader.vue";
-// import DefaultContent from "@/components/DefaultContent.vue";
-import Shampoo from "@/advertisements/Shampoo.vue";
-import TuiJuheFront from "@/advertisements/TuiJuheFront.vue";
-import PageFooter from "@/components/PageFooter.vue";
+// import Navigation from "@/components/Navigation.vue";
+import PageHeader from "@/views/PageHeader.vue";
+// import Shampoo from "@/advertisements/Shampoo.vue";
+// import TuiJuheFront from "@/advertisements/TuiJuheFront.vue";
+import PageFooter from "@/views/PageFooter.vue";
+import { useMeta } from "vue-meta";
 
 export default {
   name: "App",
   components: {
     PageHeader,
-    Navigation,
-    // DefaultContent,
-    Shampoo,
-    TuiJuheFront,
+    // Shampoo,
+    // TuiJuheFront,
     PageFooter,
   },
+  setup() {
+    useMeta({
+      title: '',
+      htmlAttrs: {lang: 'cn', amp: true}
+    })
+  }
 };
 </script>
 
