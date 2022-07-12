@@ -4,7 +4,7 @@
       "target": {
         "browsers": "> 5%"
       }
-    }],
+    }]
   ],
 
   "plugins": [
@@ -33,12 +33,12 @@
       }
     ],
     [
-      'transform-runtime', 
+      "transform-runtime",
       {
-        'helpers': false,
-        'polyfill': false,
-        'regenerator': true,
-        'moduleName': 'babel-runtime'
+        "helpers": false,
+        "polyfill": false,
+        "regenerator": true,
+        "moduleName": "babel-runtime"
       }
     ]
   ]
