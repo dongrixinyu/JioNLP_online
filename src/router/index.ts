@@ -10,13 +10,13 @@ const routes: Array<RouteRecordRaw> = [
 
     {
         path: '/',
-        name: 'HomePage',
-        component: HomePageBase,  // () => import('@/views/HomePageBase.vue'),
+        name: 'JionlpOnline',
+        component: JionlpOnlineBase,  // () => import('@/views/HomePageBase.vue'),
         children: [
             {
                 path: '',
-                name: 'HomePageContent',
-                component: () => import('@/views/HomePageContent.vue')
+                name: 'JionlpOnlineHome',
+                component: () => import('@/views/jionlp_online/JionlpOnlineDefaultContent.vue')
             }
         ]
     },

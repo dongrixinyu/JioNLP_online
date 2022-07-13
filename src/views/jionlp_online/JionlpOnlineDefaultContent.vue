@@ -7,7 +7,7 @@
         </router-link>
       </a-breadcrumb-item>
       <!--a-breadcrumb-item> Home </a-breadcrumb-item-->
-      <a-breadcrumb-item>Jionlp 在线解析</a-breadcrumb-item>
+      <a-breadcrumb-item>NLP 在线解析</a-breadcrumb-item>
 
       <!--a-breadcrumb-item>App</a-breadcrumb-item-->
     </a-breadcrumb>
@@ -19,17 +19,15 @@
       }">
       <div id="head_line">
         <h3>
-          JioNLP在线解析
+          中国移动成都产业研究院 NLP 在线解析
         </h3>
       </div>
       <div id="key_point">
         <p>
           &emsp;&emsp;
           <InfoCircleFilled />
-          <a href="https://github.com/dongrixinyu/JioNLP" target="_blank" rel="noopener">
-            <b class="content-color">JioNLP</b>
-          </a>
-          是一个开源中文 NLP 预处理、解析工具包，
+          <b class="content-color">中移成研 NLP</b>
+          是一个自主研发的中文 NLP 预处理、解析工具包，
           <b class="content-color">JioNLP源站</b>
           提供若干功能在线解析
         </p>
@@ -46,17 +44,7 @@
         <p>
           &emsp;&emsp;
           <InfoCircleFilled />
-          更多功能<b>抽取摘要、解析手机号、成语词典、繁简体转换、模型训练辅助工具、分类、序列标注指标统计函数</b>等须安装
-          jionlp 工具包
-        </p>
-
-        <h2>
-          <RightSquareFilled /> 安装方式
-        </h2>
-        <p>
-          &emsp;&emsp;
-          <InfoCircleFilled />
-          <b class="content-color"> pip install jionlp</b>
+          更多功能<b>抽取摘要、解析手机号、成语词典、繁简体转换、模型训练辅助工具、分类、序列标注指标统计函数</b>正在开发中，敬请期待。
         </p>
 
         <h2>

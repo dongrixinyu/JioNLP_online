@@ -23,24 +23,6 @@
       <div>
         <h2><b>关键短语抽取</b></h2>
         <p>给定一篇文本，从中抽取出表达概括性、重要性的短语。</p>
-        <a-popover title="" trigger="hover">
-          <template #content>
-            <p>
-              ● 该方法提供全量可选参数供参考
-              <a
-                href="https://github.com/dongrixinyu/JioNLP/blob/master/jionlp/algorithm/keyphrase/extract_keyphrase.py"><b>关键短语抽取参数说明</b></a>与
-              <a
-                href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-关键短语抽取"><b>关键短语抽取说明文档</b></a>。
-            </p>
-            <p>
-              ● 该方法除单纯抽取文本关键短语外，还可以应用于
-              <a
-                href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-扩展应用一扩展类型短语"><b>扩展类型短语</b></a>与<a
-                href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-扩展应用二扩充ner特定类型实体"><b>扩充NER特定类型实体</b></a>。
-            </p>
-          </template>
-          <a-button type="dashed">● 说明</a-button>
-        </a-popover>
       </div>
       <textarea v-model="text" style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;" />
       <HR SIZE="10" />

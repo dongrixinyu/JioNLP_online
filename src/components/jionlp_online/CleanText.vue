@@ -27,10 +27,6 @@
           ●
           该工具支持清洗<b>HTML标签、异常字符串、冗余字符串、电话号码、Email、括号信息、全角字符转为半角等</b>，在线版暂时未提供此类参数的勾选，须参考相关说明文档进行使用。
         </p>
-        <p>
-          ● 参考文档：
-          <a href="https://github.com/dongrixinyu/JioNLP/wiki/正则抽取与解析-说明文档#user-content-清洗文本">文本清洗说明文档</a>
-        </p>
       </div>
       <textarea v-model="text" style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;" />
       <a-button style="

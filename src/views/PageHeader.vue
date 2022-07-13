@@ -1,5 +1,4 @@
 <template>
-  <Notification />
   <a-layout-header class="page_header">
     <!--div class="guest_count"></div-->
 
@@ -12,49 +11,26 @@
           </p>
         </template>
         <!--a-button type="dashed">●</a-button-->
-        <router-link id="default_content" to="/"><img id="jionlp_logo" alt="jionlp_logo"
-            src="@/assets/others/jionlp_logo.png" /></router-link>
+        <router-link id="default_content" to="/jionlp_online"><img id="jionlp_logo" alt="jionlp_logo"
+            src="@/assets/others/cmii_logo.png" /></router-link>
       </a-popover>
     </div>
-    <div id="horizontal_navigator">
-      <a-menu theme="dark" mode="horizontal" :style="{ lineHeight: '64px' }">
-        <a-menu-item key="nlp_online">
-          <router-link id="nlp_online" to="/jionlp_online">NLP在线</router-link>
-        </a-menu-item>
-        <a-menu-item key="nlp_product">
-          <router-link id="nlp_product" to="/product">NLP产品</router-link>
-        </a-menu-item>
-        <a-menu-item key="nlp_lectrue">
-          <router-link id="nlp_lecture" to="/lecture">NLP教程</router-link>
-        </a-menu-item>
-        <!--<a-menu-item key="3">nav 3</a-menu-item-->
-      </a-menu>
-    </div>
-    <!--span class="page_header_text"><b>中文解析工具包 </b></span>
-      <span class="page_header_text"><b>pip install jionlp</b></span-->
-    <div class="links" style="flex: 1; display: inline-block">
-      <!--GithubOutlined style="{width: 40px, height: 40px}" /-->
-      <a class="link" href="https://github.com/dongrixinyu/JioNLP" target="_blank">
-        <img class="link-icon-1" src="@/assets/others/github_logo.jpg" alt="Github" />
-      </a>
-      <a class="link" href="https://pypi.org/project/jionlp/" target="_blank">
-        <img class="link-icon-2" src="https://pypi.org/static/images/logo-small.95de8436.svg" alt="Pypi" />
-      </a>
+    <div>
+      <h3></h3>
     </div>
   </a-layout-header>
 </template>
 
 <script lang="ts">
-// import { defineComponent } from "vue";
 import { Options, Vue } from "vue-class-component";
 // import { GithubOutlined } from "@ant-design/icons-vue";
 import { stat_instance } from "@/utils/request";
-import Notification from "@/views/Notification.vue";
-// import Notification from "./Notification.vue";
+// import Notification from "@/views/Notification.vue";
+
 
 @Options({
   components: {
-    Notification,
+    // Notification,
   },
 })
 export default class PageHeader extends Vue {
@@ -94,7 +70,7 @@ export default class PageHeader extends Vue {
 }
 
 #jionlp_logo {
-  width: 160px;
+  width: 260px;
   height: 50px;
   margin-left: 0px;
   margin-top: 0px;

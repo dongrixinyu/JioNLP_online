@@ -2,11 +2,11 @@
   <div>
     <a-layout>
       <metainfo>
-        <template v-slot:title="{ content }">{{ content ? `${content} | JioNLP源站` : `SITE_NAME` }}</template>
+        <template v-slot:title="{ content }">{{ content ? `${content} | 中移成研` : `SITE_NAME` }}</template>
       </metainfo>
       <PageHeader />
       <a-layout>
-        <!--Navigation /-->
+
         <router-view> </router-view>
       </a-layout>
       <a-layout>

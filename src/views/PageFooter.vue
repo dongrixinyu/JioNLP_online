@@ -1,9 +1,8 @@
 <template>
   <a-layout-footer style="text-align: center">
     <p>
-      <b>JioNLP 源站</b> ©2021 Created by 冬日新雨
+      <b>中国移动成都产业研究院 NLP 在线</b> ©2022 Created by 崔诚煜
     </p>
-    <p>备案号：蜀ICP备2022016557号-1</p>
   </a-layout-footer>
 </template>
 
@@ -15,20 +14,9 @@ export default defineComponent({
 </script>
 
 <style>
-#components-layout-demo-top-side-2 .logo {
-  float: left;
-  width: 120px;
-  height: 31px;
-  margin: 16px 24px 16px 0;
-  background: rgba(255, 255, 255, 0.3);
-}
-
-.ant-row-rtl #components-layout-demo-top-side-2 .logo {
-  float: right;
-  margin: 16px 0 16px 24px;
-}
 
 .site-layout-background {
   background: #fff;
 }
+
 </style>

@@ -25,9 +25,7 @@
       <div>
         <h2><b>分词与词性标注</b></h2>
         <p>
-          给定一篇中文，采用
-          <a href="https://github.com/dongrixinyu/jiojio"><b>jiojio</b></a>
-          分词工具包，做分词和词性标注任务。
+          给定一篇中文，做分词和词性标注任务。
         </p>
 
         <a-popover title="" trigger="hover">
@@ -38,7 +36,7 @@
             </p>
             <p>
               ●
-              您测试提交的每一条文本，都将为<b>jiojio</b>的优化提供助力。
+              您测试提交的每一条文本，都将为<b>中移成研NLP</b>的优化提供助力。
             </p>
           </template>
           <a-button type="dashed">● 说明</a-button>

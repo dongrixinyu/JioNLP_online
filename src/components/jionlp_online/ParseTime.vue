@@ -33,10 +33,6 @@
               ●
               根据多个语料集的测试，该功能的准确率大致在91%~96%之间，并会进一步优化和维护。
             </p>
-            <p>
-              ● 参考文档：
-              <a href="https://github.com/dongrixinyu/JioNLP/wiki/时间语义解析-说明文档">时间语义解析说明文档</a>
-            </p>
           </template>
           <a-button type="dashed">● 说明</a-button>
         </a-popover>

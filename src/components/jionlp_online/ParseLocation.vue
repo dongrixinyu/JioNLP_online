@@ -32,10 +32,6 @@
               ●
               该工具支持地址补全，即给出市、县，补全其省、市等信息；且支持旧地名自动解析为新地名，例如“烟台长岛县”（已撤销）可自动识别为“蓬莱区”。
             </p>
-            <p>
-              ● 参考文档：
-              <a href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-地址解析">地址解析说明文档</a>
-            </p>
           </template>
           <a-button type="dashed">● 说明</a-button>
         </a-popover>

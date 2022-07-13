@@ -29,11 +29,6 @@
               ●
               该货币金额实体抽取依赖<b>规则</b>，而不依赖模型，故存在一些<b>假阳、假阴</b>的错误。
             </p>
-            <p>
-              ● 若想要货币金额更详细信息，以及代码使用，请参考
-              <a href="https://github.com/dongrixinyu/JioNLP/wiki/正则抽取与解析-说明文档#user-content-货币金额解析"><b>货币金额解析</b></a>与<a
-                href="https://github.com/dongrixinyu/JioNLP/wiki/NER-说明文档#user-content-货币金额实体抽取"><b>货币金额实体抽取</b></a>。
-            </p>
           </template>
           <a-button type="dashed">● 说明</a-button>
         </a-popover>
