@@ -37,6 +37,10 @@
               ● 若想要时间短语更详细信息，请使用<b>时间语义解析</b>
               单独解析时间实体。
             </p>
+            <p>
+              ● 参考文档：
+              <a href="https://github.com/dongrixinyu/JioNLP/wiki/时间语义解析-说明文档">时间语义解析说明文档</a>
+            </p>
           </template>
           <a-button type="dashed">● 说明</a-button>
         </a-popover>
