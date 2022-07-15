@@ -4,7 +4,7 @@
         <h4>
             &emsp;
             <info-circle-outlined />
-            公告&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            公告&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             <button class="notification_close" @click="close_notification">
                 <close-circle-outlined />
             </button>
