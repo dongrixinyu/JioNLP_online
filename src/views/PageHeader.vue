@@ -1,5 +1,5 @@
 <template>
-  <Notification />
+
   <a-layout-header class="page_header">
     <!--div class="guest_count"></div-->
 
@@ -49,12 +49,11 @@
 import { Options, Vue } from "vue-class-component";
 // import { GithubOutlined } from "@ant-design/icons-vue";
 import { stat_instance } from "@/utils/request";
-import Notification from "@/views/Notification.vue";
-// import Notification from "./Notification.vue";
+// import Notification from "@/views/Notification.vue";
 
 @Options({
   components: {
-    Notification,
+    // Notification,
   },
 })
 export default class PageHeader extends Vue {
