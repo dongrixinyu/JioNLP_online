@@ -11,23 +11,22 @@
                     NLP 教程
                 </router-link>
             </a-breadcrumb-item>
-
             <!--a-breadcrumb-item> Home </a-breadcrumb-item-->
-            <a-breadcrumb-item>序列标注任务</a-breadcrumb-item>
+            <a-breadcrumb-item>信息论基础（信息熵、交叉熵、相对熵）</a-breadcrumb-item>
         </a-breadcrumb>
         <a-layout-content :style="{
-            background: '#fff',
-            padding: '24px',
-            margin: 0,
-            width: '100%',
-            minHeight: '280px',
+          background: '#fff',
+          padding: '24px',
+          margin: 0,
+          width: '100%',
+          minHeight: '280px',
         }">
             <div>
                 <h1><b class="b_green">{{ title }}</b></h1>
                 <p class="description_text">
                     创建日期：{{ established_date }}&emsp;阅读量：{{ frontend_page_count }}
                 </p>
-                <!-- <textarea v-model="markdown"></textarea> -->
+
                 <div v-html="markdownToHtml"></div>
             </div>
         </a-layout-content>
@@ -37,31 +36,29 @@
 <script>
 
 import { useMeta } from 'vue-meta';
-/* eslint-disable */
 import router from "../../router/index";
 import { stat_instance } from "@/utils/request";
 import blog_asset from "@/utils/blog_request";
 import {
     HomeOutlined,
-    // RightSquareFilled,
-    // InfoCircleFilled,
 } from "@ant-design/icons-vue";
 
 export default {
-    name: 'SequenceLabeling',
+    name: 'EntropyTheoryBasics',
 
     components: {
         HomeOutlined,
     },
     setup() {
-        useMeta({ title: '序列标注任务' })
+        useMeta({ title: '信息熵、交叉熵、相对熵' })
     },
     data() {
+        console.log('this page.');
         return {
-            title: '序列标注任务',
+            title: '信息熵、交叉熵、相对熵',
             router: router,
             frontend_page_count: 0,
-            established_date: "2022-06-28",
+            established_date: "2022-09-09",
             markdown: "### loading ..."
         }
     },
@@ -69,8 +66,6 @@ export default {
     computed: {
         markdownToHtml() {
             var markdown_content = this.md(this.markdown);
-            // console.log(markdown_content);
-            // var kx_html = this.kx("c = \\pm\\sqrt{a^2 + b^2}")
             return markdown_content;
         }
     },
@@ -79,18 +74,18 @@ export default {
         stat_instance({
             url: "/stat_api/frontend_page_statistics",
             data: {
-                page_name: "sequence_labeling",
+                page_name: "entropy_theory_basics",
             }
         })
             .then((response) => {
-                this.frontend_page_count = response.data.detail.sequence_labeling;
+                this.frontend_page_count = response.data.detail.entropy_theory_basics;
             })
             .catch(() => {
                 this.frontend_page_count = 0;
             });
 
         blog_asset({
-            url: "/lecture/sequence_labeling/README.md",
+            url: "/lecture/entropy_theory_basics/README.md",
         })
             .then((response) => {
                 // console.log(response.data);
@@ -106,7 +101,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
 h1 {
     width: 100%;
     // height: 80px;
@@ -115,25 +109,13 @@ h1 {
     margin: 10px;
 }
 
-img {
-    // width: 100%;
-    max-width: 90%;
-    margin: 0 auto;
-    // text-align: center;
-    display: block;
-}
-
-p {
-    text-indent: 2em;
-}
-
 .b_green {
     color: #00B441;
 }
 
 .description_text {
     text-align: right;
-    font-size: 9px;
+    font-size: 10px;
     color: #777777;
 }
 </style>

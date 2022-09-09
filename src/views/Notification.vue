@@ -42,7 +42,7 @@ import {
         // BugOutlined,
     },
 })
-export default class Notification extends Vue {
+class Notification extends Vue {
     isShow = true;
     mounted() {
         // console.log();
@@ -53,6 +53,7 @@ export default class Notification extends Vue {
 
 }
 
+export default Notification;
 </script>
 
 <style lang="less">

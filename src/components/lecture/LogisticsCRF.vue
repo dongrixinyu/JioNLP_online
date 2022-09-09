@@ -26,23 +26,8 @@
                 <p class="description_text">
                     创建日期：{{ established_date }}&emsp;阅读量：{{ frontend_page_count }}
                 </p>
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_02.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_03.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_04.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_05.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_06.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_07.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_08.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_09.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_10.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_11.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_12.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_13.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_14.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_15.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_16.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_17.jpg" />
-                <img src="@/assets/lecture/logistics_crf/logistics_crf_18.jpg" />
+
+                <div v-html="markdownToHtml"></div>
             </div>
         </a-layout-content>
     </a-layout>
@@ -54,7 +39,10 @@ import { useMeta } from 'vue-meta';
 /* eslint-disable */
 import router from "../../router/index";
 import { stat_instance } from "@/utils/request";
-import { HomeOutlined } from "@ant-design/icons-vue";
+import blog_asset from "@/utils/blog_request";
+import {
+    HomeOutlined,
+} from "@ant-design/icons-vue";
 
 export default {
     name: 'LogisticsCRF',
@@ -62,20 +50,27 @@ export default {
     components: {
         HomeOutlined,
     },
-    setup () {
-        useMeta({title: '条件随机场（CRF）'})
+    setup() {
+        useMeta({ title: '条件随机场（CRF）' })
     },
-    data () {
-        // console.log("vue-mathjax", VueMathjax);
+    data() {
         return {
             title: '条件随机场（CRF）',
-            // formula: '$$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}.$$',
             router: router,
             frontend_page_count: 0,
-            established_date: '2022-03-28'
+            established_date: "2022-03-28",
+            markdown: "### loading ..."
         }
     },
-    created () {
+
+    computed: {
+        markdownToHtml() {
+            var markdown_content = this.md(this.markdown);
+            return markdown_content;
+        }
+    },
+
+    created() {
         stat_instance({
             url: "/stat_api/frontend_page_statistics",
             data: {
@@ -88,6 +83,18 @@ export default {
             .catch(() => {
                 this.frontend_page_count = 0;
             });
+
+        blog_asset({
+            url: "/lecture/crf/README.md",
+        })
+            .then((response) => {
+                // console.log(response.data);
+                this.markdown = response.data;
+            })
+            .catch(() => {
+                this.markdown = "### Failed to request markdown file.";
+            });
+
     }
 
 }
@@ -95,34 +102,21 @@ export default {
 
 <style lang="less" scoped>
 
-
 h1 {
     width: 100%;
     // height: 80px;
-    font-size: 25px;
+    font-size: 28px;
     padding-top: 5px;
     margin: 10px;
-}
-
-img {
-    // width: 100%;
-    max-width: 90%;
-    margin: 0 auto;
-    // text-align: center;
-    display: block;
-}
-
-p {
-    text-indent: 2em;
 }
 
 .b_green {
     color: #00B441;
 }
+
 .description_text {
     text-align: right;
-    font-size: 9px;
+    font-size: 10px;
     color: #777777;
 }
-
 </style>

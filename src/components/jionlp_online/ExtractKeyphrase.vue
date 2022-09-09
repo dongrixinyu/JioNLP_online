@@ -1,6 +1,6 @@
 <template>
   <a-layout style="padding: 0 24px 24px">
-    <a-breadcrumb style="margin: 16px 0" :routes="router">
+    <a-breadcrumb style="margin: 16px 0" :routes="$router">
       <a-breadcrumb-item>
         <router-link to="/">
           <home-outlined />
@@ -183,7 +183,7 @@ type Keyphrase = {
     HomeOutlined,
   },
 })
-export default class ExtractKeyphrase extends Vue {
+class ExtractKeyphrase extends Vue {
   text =
     '        【标题：中秋国庆双节都加班，可拿24天的日工资】\n\
         8月临近尾声，中秋、国庆两个假期已在眼前。2021年中秋节是9月21日，星期二。 \
@@ -290,6 +290,8 @@ export default class ExtractKeyphrase extends Vue {
       });
   }
 }
+
+export default ExtractKeyphrase;
 </script>
 
 <style lang="less" scoped>

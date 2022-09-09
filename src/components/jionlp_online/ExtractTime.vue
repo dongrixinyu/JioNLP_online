@@ -1,6 +1,6 @@
 <template>
   <a-layout class="variable_content" style="padding: 0 24px 24px">
-    <a-breadcrumb style="margin: 16px 0" :routes="router">
+    <a-breadcrumb style="margin: 16px 0" :routes="$router">
       <a-breadcrumb-item>
         <router-link to="/">
           <home-outlined />
@@ -179,7 +179,7 @@ function insertString(
     HomeOutlined,
   },
 })
-export default class ParseTime extends Vue {
+class ExtractTime extends Vue {
   text =
     "据央视新闻消息，10月12日，福建省莆田市政府召开疫情防控情况新闻发布会，介绍最新情况。据通报，从本月10日至12日16时，大约两天时间内，累计报告新冠病毒核酸阳性64例，平均每日新增病例30例，其中确诊病例32例、无症状感染者32例。";
 
@@ -296,6 +296,8 @@ export default class ParseTime extends Vue {
       });
   }
 }
+
+export default ExtractTime;
 </script>
 
 <style lang="less">

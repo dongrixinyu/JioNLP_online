@@ -1,6 +1,6 @@
 <template>
   <a-layout class="variable_content" style="padding: 0 24px 24px">
-    <a-breadcrumb style="margin: 16px 0" :routes="router">
+    <a-breadcrumb style="margin: 16px 0" :routes="$router">
       <a-breadcrumb-item>
         <router-link to="/">
           <home-outlined />
@@ -147,10 +147,11 @@ function insertString(
     HomeOutlined,
   },
 })
-export default class ParseMoney extends Vue {
+class ParseMoney extends Vue {
   text =
     "张三赔偿李小华人民币车费601,293.11元，工厂费约一万二千三百四十五元,利息9佰多日元，打印费十块钱人民币。";
   rendered_text = "";
+  new_string_start = entity_mapping["money"];
   new_string_end = entity_mapping["end_map"];
 
   first_show = true;
@@ -186,10 +187,9 @@ export default class ParseMoney extends Vue {
 
         let i;
         for (i in response.data.detail) {
-          let time_type: string;
           let start_idx: number;
           let end_idx: number;
-          let new_string_start: string;
+
           start_idx = response.data.detail[i]["offset"][0];
           end_idx = response.data.detail[i]["offset"][1];
 
@@ -199,13 +199,12 @@ export default class ParseMoney extends Vue {
             this.new_string_end
           );
 
-          time_type = response.data.detail[i]["type"];
-          new_string_start = (entity_mapping as any)[time_type];
+
           // new_string_start = "23";
           this.rendered_text = insertString(
             this.rendered_text,
             start_idx,
-            new_string_start
+            this.new_string_start
           );
         }
 
@@ -261,6 +260,8 @@ export default class ParseMoney extends Vue {
       });
   }
 }
+
+export default ParseMoney;
 </script>
 
 <style lang="less">

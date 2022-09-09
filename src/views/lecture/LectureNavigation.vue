@@ -21,17 +21,17 @@
                         <router-link id="bilstm_crf" to="/lecture/bilstm_crf">Bi-LSTM-CRF模型</router-link>
                     </a-menu-item-->
                 </a-sub-menu>
-                <!--a-sub-menu key="sub2">
+                <a-sub-menu key="sub2">
                     <template #icon>
                         <AppstoreOutlined />
                     </template>
                     <template #title>信息论基础</template>
                     <a-menu-item key="2-0">
-                        <router-link id="entropy" to="/lectures/entropy">信息熵、交叉熵、相对熵</router-link>
+                        <router-link id="entropy" to="/lecture/entropy_theory_basics">信息熵、交叉熵、相对熵</router-link>
                     </a-menu-item>
-                    <a-menu-item key="11">Option 11</a-menu-item>
+                    <!-- <a-menu-item key="11">Option 11</a-menu-item> -->
 
-                </a-sub-menu-->
+                </a-sub-menu>
             </a-menu>
         </a-layout-sider>
     </div>
@@ -44,33 +44,36 @@
                     </template>
                     <template #title>序列标注任务</template>
                     <a-menu-item key="1-0">
-                        <router-link id="sequence_labeling" to="/lectures/sequence_labeling">序列标注任务简介</router-link>
+                        <router-link id="sequence_labeling" to="/lecture/sequence_labeling">序列标注任务简介</router-link>
                     </a-menu-item>
                     <a-menu-item key="1-1">
-                        <router-link id="crf" to="/lectures/logistics_crf">条件随机场（CRF）</router-link>
+                        <router-link id="crf" to="/lecture/logistics_crf">条件随机场（CRF）</router-link>
                     </a-menu-item>
                     <!--a-menu-item key="1-2">
-                        <router-link id="hmm" to="/lectures/hmm">隐马尔科夫模型</router-link>
+                        <router-link id="hmm" to="/lecture/hmm">隐马尔科夫模型</router-link>
                     </a-menu-item>
                     <a-menu-item key="1-3">
-                        <router-link id="bilstm_crf" to="/lectures/bilstm_crf">Bi-LSTM-CRF模型</router-link>
+                        <router-link id="bilstm_crf" to="/lecture/bilstm_crf">Bi-LSTM-CRF模型</router-link>
                     </a-menu-item-->
                 </a-sub-menu>
-                <!--a-sub-menu key="sub2">
+                <a-sub-menu key="sub2">
                     <template #icon>
                         <AppstoreOutlined />
                     </template>
                     <template #title>信息论基础</template>
-                    <a-menu-item key="2-2">
-                        <router-link id="entropy" to="/lectures/entropy">信息熵、交叉熵、相对熵</router-link>
+                    <a-menu-item key="2-0">
+                        <router-link id="entropy" to="/lecture/entropy_theory_basics">信息熵、交叉熵、相对熵</router-link>
                     </a-menu-item>
-                </a-sub-menu-->
+                    <!-- <a-menu-item key="11">Option 11</a-menu-item> -->
+
+                </a-sub-menu>
             </a-menu>
         </a-layout-sider>
     </div>
 </template>
 
 <script>
+/* eslint-disable */
 import { defineComponent, reactive, toRefs, watch } from "vue";
 import {
     // MenuFoldOutlined,
@@ -107,10 +110,10 @@ export default defineComponent({
     },
 
     components: {
-        PieChartOutlined,
+        // PieChartOutlined,
         MailOutlined,
-        DesktopOutlined,
-        InboxOutlined,
+        // DesktopOutlined,
+        // InboxOutlined,
         AppstoreOutlined,
     },
 });

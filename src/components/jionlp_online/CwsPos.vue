@@ -1,6 +1,6 @@
 <template>
   <a-layout class="variable_content" style="padding: 0 24px 24px">
-    <a-breadcrumb style="margin: 16px 0" :routes="router">
+    <a-breadcrumb style="margin: 16px 0" :routes="$router">
       <a-breadcrumb-item>
         <router-link to="/">
           <home-outlined />
@@ -246,10 +246,10 @@ const entity_mapping = {
     HomeOutlined,
   },
 })
-export default class ParseTime extends Vue {
+class CwsPos extends Vue {
   // text =
   //  "据央视新闻消息，10月12日，福建省莆田市政府召开疫情防控情况新闻发布会，介绍最新情况。据通报，从本月10日至12日16时，大约两天时间内，累计报告新冠病毒核酸阳性64例，平均每日新增病例30例，其中确诊病例32例、无症状感染者32例。";
-  text = "MySQL Reference Manuals: https://dev.mysql.com/doc/";
+  text = "在自然语言处理领域，jiojio是一款基于C语言的中文领域的分词和词性标注工具。 http://www.jionlp.com";
   rendered_text = "";
   new_string_end = entity_mapping["end_map"];
 
@@ -355,6 +355,7 @@ export default class ParseTime extends Vue {
           if (pos_type == "tel") this.response.tel_is_ok = true;
           if (pos_type == "url") this.response.url_is_ok = true;
 
+          /* eslint-disable-next-line */
           this.rendered_text =
             this.rendered_text +
             (entity_mapping as any)[pos_type] +
@@ -389,6 +390,8 @@ export default class ParseTime extends Vue {
       });
   }
 }
+
+export default CwsPos;
 </script>
 
 <style lang="less">

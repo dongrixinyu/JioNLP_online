@@ -28,7 +28,7 @@
         </p>
         <p>
           <RightSquareFilled />
-          &ensp;旨在以最清晰简明的方式介绍 NLP 相关知识。手工操刀撰写，更新速度慢，请轻喷(●'◡'●)
+          &ensp;旨在以最清晰简明的方式介绍 NLP 相关知识。手工操刀撰写，更新速度慢(●'◡'●)
         </p>
         <p>
           <RightSquareFilled />
@@ -80,7 +80,7 @@ export default defineComponent({
     HomeOutlined,
     RightSquareFilled,
     // InfoCircleFilled,
-    Notification,
+    // Notification,
   },
 
   setup () {

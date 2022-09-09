@@ -120,6 +120,12 @@ const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/components/lecture/SequenceLabeling.vue'),
                 meta: { title: '序列标注任务' }
             },
+            {
+                path: 'entropy_theory_basics',
+                name: 'EntropyTheoryBasics',
+                component: () => import('@/components/lecture/EntropyTheoryBasics.vue'),
+                meta: { title: '信息熵、交叉熵、相对熵' }
+            },
         ],
     },
 

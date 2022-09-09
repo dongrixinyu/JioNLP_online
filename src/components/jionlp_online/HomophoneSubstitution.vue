@@ -1,6 +1,6 @@
 <template>
   <a-layout class="variable_content" style="padding: 0 24px 24px">
-    <a-breadcrumb style="margin: 16px 0" :routes="router">
+    <a-breadcrumb style="margin: 16px 0" :routes="$router">
       <a-breadcrumb-item>
         <router-link to="/">
           <home-outlined />
@@ -87,7 +87,7 @@ import authentication_hash_code from "@/utils/authentication";
     HomeOutlined,
   },
 })
-export default class HomophoneSubstitution extends Vue {
+class HomophoneSubstitution extends Vue {
   text =
     "今天，运-20接第八批在韩志愿军烈士遗骸回国，两架歼-11B护航伴飞。#运20与歼11B飞行员空中对话公开#。\
     运-20机组报告任务性质：“奉命接迎志愿军烈士遗骸回国！”\
@@ -131,6 +131,8 @@ export default class HomophoneSubstitution extends Vue {
       });
   }
 }
+
+export default HomophoneSubstitution;
 </script>
 
 <style lang="less" scoped>

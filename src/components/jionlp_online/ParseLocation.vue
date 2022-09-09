@@ -1,6 +1,6 @@
 <template>
   <a-layout class="variable_content" style="padding: 0 24px 24px">
-    <a-breadcrumb style="margin: 16px 0" :routes="router">
+    <a-breadcrumb style="margin: 16px 0" :routes="$router">
       <a-breadcrumb-item>
         <router-link to="/">
           <home-outlined />
@@ -92,7 +92,7 @@ import authentication_hash_code from "@/utils/authentication";
     HomeOutlined,
   },
 })
-export default class ParseLocation extends Vue {
+class ParseLocation extends Vue {
   text = "喀左旗覃家岗街道梨树湾村芭蕉沟村组临.222号";
   first_show = true;
   response = { is_ok: false, detail: {} };
@@ -139,6 +139,8 @@ export default class ParseLocation extends Vue {
       });
   }
 }
+
+export default ParseLocation;
 </script>
 
 <style lang="less" scoped>

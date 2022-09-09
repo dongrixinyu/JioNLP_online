@@ -1,6 +1,6 @@
 <template>
   <a-layout class="variable_content" style="padding: 0 24px 24px">
-    <a-breadcrumb style="margin: 16px 0" :routes="router">
+    <a-breadcrumb style="margin: 16px 0" :routes="$router">
       <a-breadcrumb-item>
         <router-link to="/">
           <home-outlined />
@@ -160,7 +160,7 @@ import authentication_hash_code from "@/utils/authentication";
     HomeOutlined,
   },
 })
-export default class ParseTime extends Vue {
+class ParseTime extends Vue {
   text = "零三年元宵节晚上8点半";
 
   first_show = true;
@@ -201,6 +201,8 @@ export default class ParseTime extends Vue {
       });
   }
 }
+
+export default ParseTime;
 </script>
 
 <style lang="less" scoped>

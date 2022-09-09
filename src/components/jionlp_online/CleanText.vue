@@ -1,6 +1,6 @@
 <template>
   <a-layout class="variable_content" style="padding: 0 24px 24px">
-    <a-breadcrumb style="margin: 16px 0" :routes="router">
+    <a-breadcrumb style="margin: 16px 0" :routes="$router">
       <a-breadcrumb-item>
         <router-link to="/">
           <home-outlined />
@@ -88,7 +88,7 @@ text_blob.name = "../assets/clean_text_sample.html";
     HomeOutlined,
   },
 })
-export default class CleanText extends Vue {
+class CleanText extends Vue {
   // reader.readAsText(text_blob, "utf-8");
   // reader.addEventListener('load', function() {
   //   text = reader.result;
@@ -132,6 +132,8 @@ export default class CleanText extends Vue {
       });
   }
 }
+
+export default CleanText;
 </script>
 
 <style lang="less" scoped>

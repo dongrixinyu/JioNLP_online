@@ -6,4 +6,6 @@ declare module '*.vue' {
 };
 
 declare module 'vue-fab';
-declare module 'vue-mathjax-next';
+// declare module 'vue-mathjax-next';
+declare module 'marked';
+declare module 'katex';

@@ -56,7 +56,7 @@ import { stat_instance } from "@/utils/request";
     // Notification,
   },
 })
-export default class PageHeader extends Vue {
+class PageHeader extends Vue {
   guest_count = 0;
   // mounted() {
   //console.log("ParseLocation mounted!");
@@ -76,6 +76,8 @@ export default class PageHeader extends Vue {
       });
   }
 }
+
+export default PageHeader;
 </script>
 
 <style scoped>

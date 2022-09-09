@@ -1,6 +1,6 @@
 <template>
   <a-layout class="variable_content" style="padding: 0 24px 24px">
-    <a-breadcrumb style="margin: 16px 0" :routes="router">
+    <a-breadcrumb style="margin: 16px 0" :routes="$router">
       <a-breadcrumb-item>
         <router-link to="/">
           <home-outlined />
@@ -136,7 +136,7 @@ type IDCardObj = {
     // VueMathjax,
   },
 })
-export default class ParseIDCard extends Vue {
+class ParseIDCard extends Vue {
   text =
     "户主，张三，男，身份证号210502198203300975；离异，有一女儿，张小朵，\
 身份证号是 21040320171205078x，曾经就读于金台小学";
@@ -196,6 +196,8 @@ export default class ParseIDCard extends Vue {
       });
   }
 }
+
+export default ParseIDCard;
 </script>
 
 <style lang="less" scoped>
