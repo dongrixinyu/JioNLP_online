@@ -5,14 +5,13 @@
         <template v-slot:title="{ content }">{{ content ? `${content} | JioNLP源站` : `SITE_NAME` }}</template>
       </metainfo>
       <PageHeader />
-      <a-layout>
-        <!--Navigation /-->
+      <a-layout id="page-content">
         <router-view> </router-view>
       </a-layout>
-      <a-layout>
-        <!--TuiJuheFront /-->
-        <!--Shampoo /-->
-      </a-layout>
+      <!-- <a-layout>
+        <TuiJuheFront />
+        <Shampoo />
+      </a-layout> -->
       <a-layout>
         <PageFooter />
       </a-layout>
@@ -65,5 +64,9 @@ export default {
   width: 100%;
   margin-left: 0px;
   margin-right: 0px;
+}
+
+#page-content {
+  margin-top: 60px;
 }
 </style>

@@ -53,7 +53,6 @@ export default {
         useMeta({ title: '信息熵、交叉熵、相对熵' })
     },
     data() {
-        console.log('this page.');
         return {
             title: '信息熵、交叉熵、相对熵',
             router: router,

@@ -1,6 +1,5 @@
 <template>
-    <!--a-button type="primary" @click="openNotification">Open the notification box</a-button-->
-    <div class="notification_wrapper" v-show="isShow">
+    <div id="notification_wrapper" v-show="isShow">
         <h4>
             &emsp;
             <info-circle-outlined />
@@ -44,9 +43,6 @@ import {
 })
 class Notification extends Vue {
     isShow = true;
-    mounted() {
-        // console.log();
-    };
     close_notification() {
         this.isShow = false;
     }
@@ -58,7 +54,8 @@ export default Notification;
 
 <style lang="less">
 
-.notification_wrapper {
+
+#notification_wrapper {
     position: fixed;
     bottom: 0px;
     top: 104px;
@@ -72,6 +69,12 @@ export default Notification;
     background-color: #181818;
     color: white;
     text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+    #notification_wrapper {
+        display: none;
+    }
 }
 
 .qr_code_for_gh {

@@ -141,7 +141,8 @@ const inlineKatex = {
     renderer(token: any) {
         return katex.renderToString(token.text, {
             throwOnError: false,
-            displayMode: false
+            displayMode: false,
+            strict: "error",
         });
     }
 };
@@ -169,7 +170,8 @@ const inlineKatexDisplay = {
     renderer(token: any) {
         return katex.renderToString(token.text, {
             throwOnError: false,
-            displayMode: true
+            displayMode: true,
+            strict: "error",
         });
     }
 };
