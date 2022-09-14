@@ -7,8 +7,10 @@
           minHeight: '280px',
         }">
             <div id="head_line">
-                <h2>JioNLP源站</h2>
-                <p>
+                <img id="home_page_logo" alt="JioNLP" src="@/assets/others/jionlp_logo.png" />
+                <!-- <h2 id="home_page_title">自然语言处理NLP教程、资讯</h2> -->
+                <h3 id="home_page_subtitle">自然语言处理教程、在线试用平台、资讯、求职，让NLP变得易懂、易用</h3>
+                <p id="home_page_annotation">
                     <environment-outlined />
                     &ensp;www.jionlp.com&emsp;
                     <bug-outlined />
@@ -16,32 +18,32 @@
                 </p>
 
             </div>
-            <div>
+            <div style="background-color: #ececec; padding: 20px">
                 <a-row :gutter="16">
-                    <a-card hoverable style="width: 100%; margin-bottom: 10px;" type="inner">
-                        <template #cover>
-                            <router-link id="jionlp_online" to="/jionlp_online">
-                                <img class="home_page_image" alt="NLP在线解析"
-                                    src="@/assets/others/home_page/jionlp_online_home_page.jpg" />
-                            </router-link>
-                        </template>
-                        <!--a-card-meta title="🐤 条件随机场（CRF）" style="{font-weight: bold; text-align: left; height: 20px}">
-                        </a-card-meta-->
-                    </a-card>
-                </a-row>
-                <a-row :gutter="16">
-                    <a-card hoverable style="width: 100%; margin-bottom: 10px;" type="inner" bordered="false">
-                        <template #cover>
-                            <router-link id="lecture" to="/lecture">
-                                <img class="home_page_image" alt="NLP教程"
-                                    src="@/assets/others/home_page/lecture_home_page.jpg" />
-                            </router-link>
-                        </template>
-                        <!--a-card-meta title="🐤 条件随机场（CRF）" style="{font-weight: bold; text-align: left; height: 20px}">
-                        </a-card-meta-->
-                    </a-card>
+                    <a-col :span="12">
+                        <router-link id="jionlp_online" to="/jionlp_online">
+                            <a-card :hoverable="true" style="background-color: hsla(142, 100%, 35%, 0.25);"
+                                title="NLP在线试用平台" :bordered="false">
+
+                                <p style="color: black">○ 提供常用 NLP 的<b>在线解析能力</b>，基于JioNLP</p>
+                                <p style="color: black">○
+                                    例如<b>关键短语抽取</b>、<b>时间语义解析</b>、<b>货币金额解析</b>、<b>文本清洗</b>、<b>数据增强</b>等</p>
+                            </a-card>
+                        </router-link>
+                    </a-col>
+                    <a-col :span="12">
+                        <router-link id="lecture" to="/lecture">
+                            <a-card :hoverable="true" style="background-color: hsla(197, 100%, 48%, 0.25);"
+                                title="NLP教程" :bordered="true">
+                                <p style="color: black">○ 提供高质量的 <b>NLP 系列教程</b></p>
+                                <p style="color: black">○
+                                    NLP 教程的每一篇都是我深入理解之后，尽量以白话语言编写，旨在<b>让非专业同学也能掌握 NLP</b></p>
+                            </a-card>
+                        </router-link>
+                    </a-col>
                 </a-row>
             </div>
+            <div id="home_page_content" v-html="markdownToHtml"></div>
         </a-layout-content>
 
     </a-layout>
@@ -51,13 +53,14 @@
 <script>
 import { defineComponent } from "@vue/composition-api";
 import { useMeta } from 'vue-meta';
+import blog_asset from "@/utils/blog_request";
 import {
     BugOutlined,
     // HomeOutlined,
     // RightSquareFilled,
     // InfoCircleFilled,
     EnvironmentOutlined,
-    EyeOutlined,
+    // EyeOutlined,
 } from "@ant-design/icons-vue";
 
 
@@ -69,41 +72,88 @@ export default defineComponent({
         // Notification,
         // TuiJuhe,
         EnvironmentOutlined,
-        EyeOutlined,
+        // EyeOutlined,
     },
-
+    data() {
+        return {
+            markdown: "### loading ..."
+        }
+    },
+    computed: {
+        markdownToHtml() {
+            var markdown_content = this.md(this.markdown);
+            return markdown_content;
+        }
+    },
     setup() {
         useMeta({
             title: '首页',
             htmlAttrs: { lang: 'en', amp: true }
         })
+    },
+    created() {
+        blog_asset({
+            url: "/lecture/home_page/README.md",
+        })
+            .then((response) => {
+                // console.log(response.data);
+                this.markdown = response.data;
+            })
+            .catch(() => {
+                this.markdown = "### Failed to request markdown file.\nPlease refresh the web page.";
+            });
     }
 
 });
 </script>
 
-<style scoped>
+<style lang="less">
+
+
+#home_page_content {
+    // width: 80%;
+    margin:5%;
+    display: block;
+    justify-content: center;
+}
+
+#home_page_logo {
+    // width: 38.2%;
+    width: 360px;
+    height: auto;
+    // margin-top: 0px;
+    margin-bottom: 10px;
+    // display: flex;
+    // justify-content: center;
+}
+
+#home_page_subtitle {
+    text-align: center;
+    font-family: 黑体;
+    font-weight: bold;
+    font-size: 25.6px;
+    color: #678bbd;
+
+    max-width: 34rem;
+    margin: auto;
+}
 
 .home_page_image {
     width: 100%;
 }
 
-#head_line {
-    text-align: left;
-    font-size: 22px;
-    margin-bottom: 8px;
-    font-family: "Times New Roman";
+#home_page_annotation {
+    margin-top: 10px;
     font-weight: bold;
-    font-style: normal;
-    color: #332233
+}
+
+#head_line {
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 #sub_title {
     display: flex;
-}
-
-h3 {
-    margin: 40px 0 0;
 }
 
 li {
@@ -116,7 +166,7 @@ a {
 }
 
 p {
-    color: #777777;
+    color: #666666;
     font-size: 14px;
     font-weight: normal;
 }
