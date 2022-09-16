@@ -39,6 +39,17 @@
                     <!-- <a-menu-item key="11">Option 11</a-menu-item> -->
 
                 </a-sub-menu>
+                <a-sub-menu key="sub3">
+                    <template #icon>
+                        <AppstoreOutlined />
+                    </template>
+                    <template #title>机器学习算法</template>
+                    <a-menu-item key="3-0">
+                        <router-link id="logistic" to="/lecture/logistic_regression">逻辑回归</router-link>
+                    </a-menu-item>
+                    <!-- <a-menu-item key="11">Option 11</a-menu-item> -->
+
+                </a-sub-menu>
             </a-menu>
         </a-layout-sider>
     </div>
@@ -63,7 +74,7 @@ export default defineComponent({
             collapsed_b: true,
             collapsed: false,
             selectedKeys: ["1"],
-            openKeys: ["sub1", "sub2"],
+            openKeys: ["sub1", "sub2", "sub3"],
             preOpenKeys: [],
         });
         watch(

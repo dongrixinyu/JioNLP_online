@@ -126,6 +126,12 @@ const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/components/lecture/EntropyTheoryBasics.vue'),
                 meta: { title: '信息熵、交叉熵、相对熵' }
             },
+            {
+                path: 'logistic_regression',
+                name: 'LogisticRegression',
+                component: () => import('@/components/lecture/LogisticRegression.vue'),
+                meta: { title: '逻辑回归' }
+            },
         ],
     },
 

@@ -116,8 +116,37 @@ renderer.heading = (text: string, level: number) => {
 
 };
 
+
 marked.use({ renderer });
 
+
+const TableRender = {
+    name: 'TableRender',
+    level: 'block',
+    start(src: string) { return src.indexOf('|') },
+
+    tokenizer(src: string, tokens: any) {
+
+        const match = src.match(/^\$([^$\n]+?)\$/);
+        if (match) {
+            // console.log(tokens);
+            const trimText = match[1].trim();
+
+            return {
+                type: 'inlineKatex',
+                raw: match[0],
+                text: trimText
+            };
+        }
+    },
+
+    renderer(token: any) {
+        return katex.renderToString(token.text, {
+            throwOnError: false,
+            displayMode: false,
+        });
+    }
+}
 
 const inlineKatex = {
     name: 'inlineKatex',
