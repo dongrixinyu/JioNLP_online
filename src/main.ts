@@ -116,6 +116,25 @@ renderer.heading = (text: string, level: number) => {
 
 };
 
+renderer.strong = (text: string) => {
+    // console.log(text);
+    if (text.length > 15) {
+        return `<strong>${text}</strong>`;
+    }
+
+    let prob: number = Math.random();
+
+    if (prob > 0.85) {
+        return `<strong style="color: #ff0000">${text}</strong>`;
+    } else if (prob > 0.75) {
+        return `<strong style="color: #eeaa00">${text}</strong>`;
+    } else if (prob > 0.3) {
+        return `<strong style="color: #00b441">${text}</strong>`;
+    } else {
+        return `<strong style="color: #00b2f6">${text}</strong>`;
+    }
+
+}
 
 marked.use({ renderer });
 

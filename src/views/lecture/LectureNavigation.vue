@@ -87,13 +87,14 @@ export default defineComponent({
         onMounted(() => {
             document.addEventListener('click', (event) => {
                 const userClick = document.getElementById('navigation-button');
-                console.log("click menu: ", userClick.contains(event.target));
+                // console.log("click button: ", userClick.contains(event.target));
                 const navigation_expand = document.getElementById('expand');
 
                 const window_width = window.innerWidth;
-                console.log("window_width: ", window_width);
+                // console.log("window_width: ", window_width);
                 if (window_width < 801) {
                     if (userClick && userClick.contains(event.target)) {
+                        // 点击了 navigation-button 按钮，则开启导航页
                         navigation_expand.style.display = "block";
                     } else {
                         navigation_expand.style.display = "none";
@@ -112,8 +113,6 @@ export default defineComponent({
         });
 
         const toggleCollapsed = () => {
-            // state.collapsed_b = !state.collapsed_b;
-            // if (toggleCount)
             let collapsed_div = document.getElementById("expand");
             if (collapsed_div.style.display == "") {
                 // 该匹配必然在初次加载时进行匹配，后续则不需要
