@@ -1,12 +1,12 @@
 <template>
-    <div id="navigation-button">
+    <div id="horizontal-navigation-button">
         <a-button type="primary" style="width: 62px;
                  height: 40px;" @click="toggleCollapsed">
             <MenuUnfoldOutlined v-if="collapsed" />
             <MenuFoldOutlined v-else />
         </a-button>
     </div>
-    <div id="expand">
+    <div id="horizontal-expand">
         <a-layout-sider width="220px" style="background: #fff">
             <a-menu mode="inline" theme="dark" :inline-collapsed="collapsed" v-model:openKeys="openKeys">
 
@@ -60,9 +60,9 @@ export default defineComponent({
 
         onMounted(() => {
             document.addEventListener('click', (event) => {
-                const userClick = document.getElementById('navigation-button');
+                const userClick = document.getElementById('horizontal-navigation-button');
                 // console.log("click button: ", userClick.contains(event.target));
-                const navigation_expand = document.getElementById('expand');
+                const navigation_expand = document.getElementById('horizontal-expand');
 
                 const window_width = window.innerWidth;
                 // console.log("window_width: ", window_width);
@@ -77,14 +77,14 @@ export default defineComponent({
             });
 
             window.addEventListener('resize', function () {
-                const navigation_expand = document.getElementById('expand');
+                const navigation_expand = document.getElementById('horizontal-expand');
                 navigation_expand.style.display = "none";
 
             });
         });
 
         const toggleCollapsed = () => {
-            let collapsed_div = document.getElementById("expand");
+            let collapsed_div = document.getElementById("horizontal-expand");
             if (collapsed_div.style.display == "") {
                 // 该匹配必然在初次加载时进行匹配，后续则不需要
                 collapsed_div.style.display = "block";
@@ -115,7 +115,7 @@ export default defineComponent({
 </script>
 
 <style lang="less">
-#navigation-button {
+#horizontal-navigation-button {
     z-index: 20;
     display: block;
     position: fixed;
@@ -123,7 +123,7 @@ export default defineComponent({
     left: 9px;
 }
 
-#expand {
+#horizontal-expand {
     z-index: 9;
     position: static;
     width: 200;
@@ -131,14 +131,14 @@ export default defineComponent({
 }
 
 @media screen and (max-width: 800px) {
-    #expand {
+    #horizontal-expand {
         position: fixed;
         display: none;
     }
 }
 
 @media screen and (min-width: 801px) {
-    #navigation-button {
+    #horizontal-navigation-button {
         display: none;
     }
 }
