@@ -1,9 +1,8 @@
 <template>
 
   <div id="page_header">
-  <!-- <a-layout-header class="page_header"> -->
     <div class="logo">
-      <a-popover title="" trigger="hover">
+      <a-popover placement="bottomLeft" title="" trigger="hover">
         <template #content>
           <p>
             ● 您是本站的第<b> {{ guest_count }} </b>位访客。
@@ -24,6 +23,9 @@
         <a-menu-item key="nlp_lectrue">
           <router-link id="nlp_lecture" to="/lecture">NLP教程</router-link>
         </a-menu-item>
+        <a-menu-item key="contact_us">
+          <router-link id="contact_us" to="/contact_us">联系我们</router-link>
+        </a-menu-item>
         <!--<a-menu-item key="3">nav 3</a-menu-item-->
       </a-menu>
     </div>
@@ -36,12 +38,11 @@
         <img class="link-icon-2" src="https://pypi.org/static/images/logo-small.95de8436.svg" alt="Pypi" />
       </a>
     </div>
-  <!-- </a-layout-header> -->
   </div>
 </template>
 
 <script lang="ts">
-// import { defineComponent } from "vue";
+
 import { Options, Vue } from "vue-class-component";
 // import { MenuOutlined } from "@ant-design/icons-vue";
 import { stat_instance } from "@/utils/request";
@@ -53,6 +54,7 @@ import { stat_instance } from "@/utils/request";
 })
 class PageHeader extends Vue {
   guest_count = 0;
+  opened_horizontal_keys = ["nlp_online", "nlp_product", "nlp_lecture", "contact_us"];
 
   created() {
     stat_instance({
@@ -62,7 +64,7 @@ class PageHeader extends Vue {
       }
     })
       .then((response) => {
-        this.guest_count = response.data.detail.home_page;
+        this.guest_count = response.data.detail;
       })
       .catch(() => {
         this.guest_count = 0;
@@ -119,7 +121,7 @@ export default PageHeader;
   #horizontal_navigator {
     position: fixed;
     margin-left: 210px;
-    width: 286px;
+    width: 381px;
     height: 44px;
   }
 }

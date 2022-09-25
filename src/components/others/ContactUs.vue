@@ -6,13 +6,7 @@
                     <home-outlined />
                 </router-link>
             </a-breadcrumb-item>
-            <a-breadcrumb-item>
-                <router-link to="/lecture">
-                    NLP 教程
-                </router-link>
-            </a-breadcrumb-item>
-            <!--a-breadcrumb-item> Home </a-breadcrumb-item-->
-            <a-breadcrumb-item>条件随机场（CRF）</a-breadcrumb-item>
+            <a-breadcrumb-item>联系我们</a-breadcrumb-item>
         </a-breadcrumb>
         <a-layout-content :style="{
           background: '#fff',
@@ -21,14 +15,7 @@
           width: '100%',
           minHeight: '280px',
         }">
-            <div>
-                <h1><b class="b_green">{{ title }}</b></h1>
-                <p class="description_text">
-                    创建日期：{{ established_date }}&emsp;阅读量：{{ frontend_page_count }}
-                </p>
-
-                <div v-html="markdownToHtml"></div>
-            </div>
+            <div v-html="markdownToHtml"></div>
         </a-layout-content>
     </a-layout>
 </template>
@@ -38,27 +25,24 @@
 import { useMeta } from 'vue-meta';
 /* eslint-disable */
 import router from "../../router/index";
-import { stat_instance } from "@/utils/request";
 import blog_asset from "@/utils/blog_request";
 import {
     HomeOutlined,
 } from "@ant-design/icons-vue";
 
 export default {
-    name: 'LogisticsCRF',
+    name: 'ContactUs',
 
     components: {
         HomeOutlined,
     },
     setup() {
-        useMeta({ title: '条件随机场（CRF）' })
+        useMeta({ title: '联系我们' })
     },
     data() {
         return {
-            title: '条件随机场（CRF）',
+            // title: '条件随机场（CRF）',
             router: router,
-            frontend_page_count: 0,
-            established_date: "2022-03-28",
             markdown: "### loading ..."
         }
     },
@@ -71,21 +55,9 @@ export default {
     },
 
     created() {
-        stat_instance({
-            url: "/stat_api/frontend_page_statistics",
-            data: {
-                page_name: "crf",
-            }
-        })
-            .then((response) => {
-                this.frontend_page_count = response.data.detail;
-            })
-            .catch(() => {
-                this.frontend_page_count = 0;
-            });
 
         blog_asset({
-            url: "/lecture/crf/README.md",
+            url: "/trivials/contact_us/README.md",
         })
             .then((response) => {
                 // console.log(response.data);
@@ -101,7 +73,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-
 h1 {
     width: 100%;
     // height: 80px;

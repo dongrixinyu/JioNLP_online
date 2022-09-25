@@ -201,7 +201,7 @@ const inlineKatexDisplay = {
     start(src: string) { return src.indexOf('$') },
     tokenizer(src: string, tokens: any) {
 
-        const match = src.match(/^\$\$([^$\n]+?)\$\$/);
+        const match = src.match(/^\$\$([^$]+?)\$\$/); // 去除换行符与否是个问题
         if (match) {
             // console.log(tokens);
             const trimText = match[1].trim();

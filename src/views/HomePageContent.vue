@@ -1,4 +1,5 @@
 <template>
+    <horizontal-navigation />
     <a-layout style="padding: 24px">
         <a-layout-content :style="{
           background: '#fff',
@@ -54,6 +55,7 @@
 import { defineComponent } from "@vue/composition-api";
 import { useMeta } from 'vue-meta';
 import blog_asset from "@/utils/blog_request";
+import HorizontalNavigation from "./HorizontalNavigation.vue";
 import {
     BugOutlined,
     // HomeOutlined,
@@ -72,6 +74,7 @@ export default defineComponent({
         // Notification,
         // TuiJuhe,
         EnvironmentOutlined,
+        HorizontalNavigation,
         // EyeOutlined,
     },
     data() {

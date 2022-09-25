@@ -77,7 +77,7 @@ export default {
             }
         })
             .then((response) => {
-                this.frontend_page_count = response.data.detail.entropy_theory_basics;
+                this.frontend_page_count = response.data.detail;
             })
             .catch(() => {
                 this.frontend_page_count = 0;

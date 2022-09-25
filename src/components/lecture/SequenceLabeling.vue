@@ -83,7 +83,7 @@ export default {
             }
         })
             .then((response) => {
-                this.frontend_page_count = response.data.detail.sequence_labeling;
+                this.frontend_page_count = response.data.detail;
             })
             .catch(() => {
                 this.frontend_page_count = 0;

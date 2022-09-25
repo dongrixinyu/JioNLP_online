@@ -14,28 +14,8 @@
         margin: 0,
         minHeight: '280px',
       }">
-      <div id="head_line">
-        <h3>JioNLP教程</h3>
-      </div>
-      <div id="description">
-        <p>
-          <RightSquareFilled />
-          &ensp;
-          <a href="https://github.com/dongrixinyu/JioNLP" target="_blank" rel="noopener">
-            <b class="content_green">JioNLP</b>
-          </a>
-          源站提供 NLP 的进阶学习教程
-        </p>
-        <p>
-          <RightSquareFilled />
-          &ensp;旨在以最清晰简明的方式介绍 NLP 相关知识。手工操刀撰写，更新速度慢(●'◡'●)
-        </p>
-        <p>
-          <RightSquareFilled />
-          &ensp;这里的&ensp;NLP&ensp;教程<b class="content_green">全部免费</b>，全部的PDF版内容都同步到了
-          公众号<b class="content_green">一个Bug</b>，欢迎扫码关注获取！
-        </p>
-
+      <div>
+        <p id="head_line">NLP教程</p>
       </div>
       <div id="key_point">
         <a-row :gutter="16">
@@ -62,6 +42,9 @@
           </a-card>
         </a-row>
       </div>
+      <div id="description">
+        <div v-html="markdownToHtml"></div>
+      </div>
     </a-layout-content>
   </a-layout>
 </template>
@@ -69,39 +52,67 @@
 <script>
 import { defineComponent } from "@vue/composition-api";
 import { useMeta } from 'vue-meta';
+import blog_asset from "@/utils/blog_request";
+import router from "@/router/index";
 import {
   HomeOutlined,
-  RightSquareFilled,
+  // RightSquareFilled,
   // InfoCircleFilled,
 } from "@ant-design/icons-vue";
 
 export default defineComponent({
+  name: 'LectureDefaultContent',
+
   components: {
     HomeOutlined,
-    RightSquareFilled,
+    // RightSquareFilled,
     // InfoCircleFilled,
     // Notification,
   },
+  data() {
+    return {
+      // title: '条件随机场（CRF）',
+      router: router,
+      markdown: "### loading ..."
+    }
+  },
 
-  setup () {
+  setup() {
     useMeta({
       title: 'NLP 教程',
       htmlAttrs: { lang: 'en', amp: true }
     })
-  }
+  },
 
+  computed: {
+    markdownToHtml() {
+      var markdown_content = this.md(this.markdown);
+      return markdown_content;
+    }
+  },
+
+  created() {
+
+    blog_asset({
+      url: "/lecture/lecture_home_page/README.md",
+    })
+      .then((response) => {
+        // console.log(response.data);
+        this.markdown = response.data;
+      })
+      .catch(() => {
+        this.markdown = "### Failed to request markdown file. \n### Please refresh the webpage.";
+      });
+
+  }
 });
 </script>
 
 <style scoped>
 
 #head_line {
-  text-align: left;
-  font-size: 22px;
-  margin-bottom: 8px;
-  font-family: "Times New Roman";
   font-weight: bold;
-  font-style: normal;
+  font-size: 26px;
 }
 
 .cover_image {
@@ -109,37 +120,4 @@ export default defineComponent({
   height: 170px;
 }
 
-#description {
-  text-align: left;
-  font-size: 15px;
-  margin-bottom: 8px;
-  font-family: "Times New Roman";
-  font-weight: bold;
-  font-style: normal;
-}
-h3 {
-  margin-bottom: 10px;
-  font-size: 25px;
-  font-weight: bold;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-p {
-  margin-bottom: 9px;
-  font-weight: normal;
-}
-
-.content_red {
-  color: #FF0000;
-}
-.content_green {
-  color: #00B441;
-}
 </style>

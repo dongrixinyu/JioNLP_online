@@ -11,7 +11,7 @@
                     NLP 教程
                 </router-link>
             </a-breadcrumb-item>
-            <a-breadcrumb-item>逻辑回归</a-breadcrumb-item>
+            <a-breadcrumb-item>{{ title }}</a-breadcrumb-item>
         </a-breadcrumb>
         <a-layout-content :style="{
           background: '#fff',
@@ -35,7 +35,7 @@
 <script>
 
 import { useMeta } from 'vue-meta';
-import router from "../../router/index";
+import router from "@/router/index";
 import { stat_instance } from "@/utils/request";
 import blog_asset from "@/utils/blog_request";
 import {
@@ -76,7 +76,7 @@ export default {
             }
         })
             .then((response) => {
-                this.frontend_page_count = response.data.detail.logistic_regression;
+                this.frontend_page_count = response.data.detail;
             })
             .catch(() => {
                 this.frontend_page_count = 0;
