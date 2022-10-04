@@ -322,6 +322,7 @@ class CwsPos extends Vue {
           let word: string;
           let pos_type: string;
           word = response.data.detail[i][0];
+          word = word.replace(' ', '　');
           pos_type = response.data.detail[i][1];
           // console.log(this.new_string_end);
           if (pos_type == "ad") this.response.ad_is_ok = true;

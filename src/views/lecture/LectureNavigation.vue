@@ -48,7 +48,28 @@
                         <router-link id="logistic" to="/lecture/logistic_regression">逻辑回归</router-link>
                     </a-menu-item>
                     <!-- <a-menu-item key="11">Option 11</a-menu-item> -->
+                </a-sub-menu>
+                <a-sub-menu key="sub4">
+                    <template #icon>
+                        <DesktopOutlined />
+                    </template>
+                    <template #title>词向量</template>
+                    <a-menu-item key="4-0">
+                        <router-link id="word2vec" to="/lecture/word2vec">word2vec</router-link>
+                    </a-menu-item>
 
+                    <a-menu-item key="4-1">
+                        <router-link id="glove" to="/lecture/glove">GloVe</router-link>
+                    </a-menu-item>
+                </a-sub-menu>
+                <a-sub-menu key="sub5">
+                    <template #icon>
+                        <PieChartOutlined />
+                    </template>
+                    <template #title>预训练模型</template>
+                    <a-menu-item key="5-0">
+                        <router-link id="bert" to="/lecture/bert">Bert</router-link>
+                    </a-menu-item>
                 </a-sub-menu>
             </a-menu>
         </a-layout-sider>
@@ -61,9 +82,9 @@ import { defineComponent, reactive, toRefs, watch, onMounted } from "vue";
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    // PieChartOutlined,
+    PieChartOutlined,
     MailOutlined,
-    // DesktopOutlined,
+    DesktopOutlined,
     // InboxOutlined,
     AppstoreOutlined,
 } from "@ant-design/icons-vue";
@@ -74,7 +95,7 @@ export default defineComponent({
             collapsed_b: true,
             collapsed: false,
             selectedKeys: ["1"],
-            openKeys: ["sub1", "sub2", "sub3"],
+            openKeys: ["sub1", "sub2", "sub3", "sub4", "sub5"],
             preOpenKeys: [],
         });
         watch(
@@ -132,11 +153,11 @@ export default defineComponent({
     },
 
     components: {
-        // PieChartOutlined,
+        PieChartOutlined,
         MailOutlined,
         MenuUnfoldOutlined,
         MenuFoldOutlined,
-        // DesktopOutlined,
+        DesktopOutlined,
         // InboxOutlined,
         AppstoreOutlined,
     },

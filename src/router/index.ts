@@ -137,7 +137,26 @@ const routes: Array<RouteRecordRaw> = [
                 component: () => import('@/components/lecture/LogisticRegression.vue'),
                 meta: { title: '逻辑回归' }
             },
+            {
+                path: 'bert',
+                name: 'Bert',
+                component: () => import('@/components/lecture/Bert.vue'),
+                meta: { title: 'Bert' }
+            },
+            {
+                path: 'word2vec',
+                name: 'Word2Vec',
+                component: () => import('@/components/lecture/Word2Vec.vue'),
+                meta: { title: 'word2vec' }
+            },
+            {
+                path: 'glove',
+                name: 'GloVe',
+                component: () => import('@/components/lecture/GloVe.vue'),
+                meta: { title: 'GloVe' }
+            },
         ],
+
     },
 
 ]
