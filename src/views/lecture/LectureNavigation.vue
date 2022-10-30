@@ -34,7 +34,7 @@
                     </template>
                     <template #title>信息论基础</template>
                     <a-menu-item key="2-0">
-                        <router-link id="entropy" to="/lecture/entropy_theory_basics">信息熵、交叉熵、相对熵</router-link>
+                        <router-link :to="{ path: '/lecture/entropy_theory_basics', name: 'Lecture', params: { lecture_name: 'entropy_theory_basics' } }">信息熵、交叉熵、相对熵</router-link>
                     </a-menu-item>
                     <!-- <a-menu-item key="11">Option 11</a-menu-item> -->
 
@@ -78,6 +78,7 @@
 </template>
 
 <script>
+import router from "@/router/index";
 import { defineComponent, reactive, toRefs, watch, onMounted } from "vue";
 import {
     MenuFoldOutlined,
@@ -90,6 +91,15 @@ import {
 } from "@ant-design/icons-vue";
 
 export default defineComponent({
+
+    data() {
+        return {
+            $router: router,
+            // page_name: this.$route.params.lecture_name,
+        }
+
+    },
+
     setup() {
         const state = reactive({
             collapsed_b: true,

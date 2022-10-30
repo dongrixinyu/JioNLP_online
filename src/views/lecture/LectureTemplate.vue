@@ -7,12 +7,12 @@
                 </router-link>
             </a-breadcrumb-item>
             <a-breadcrumb-item>
-                <router-link to="/lecture">
+                <router-link to="/lecture/lecture_home_page">
                     NLP 教程
                 </router-link>
             </a-breadcrumb-item>
             <!--a-breadcrumb-item> Home </a-breadcrumb-item-->
-            <a-breadcrumb-item>信息论基础（信息熵、交叉熵、相对熵）</a-breadcrumb-item>
+            <a-breadcrumb-item>{{ this.title }}</a-breadcrumb-item>
         </a-breadcrumb>
         <a-layout-content :style="{
           background: '#fff',
@@ -22,9 +22,9 @@
           minHeight: '280px',
         }">
             <div>
-                <h1><b class="b_green">{{ title }}</b></h1>
+                <h1><b class="b_green">{{ this.title }}</b></h1>
                 <p class="description_text">
-                    创建日期：{{ established_date }}&emsp;阅读量：{{ frontend_page_count }}
+                    发布日期：{{ this.established_time }}&emsp;阅读量：{{ this.frontend_page_count }}
                 </p>
 
                 <div v-html="markdownToHtml"></div>
@@ -44,21 +44,26 @@ import {
 } from "@ant-design/icons-vue";
 
 export default {
-    name: 'EntropyTheoryBasics',
+    name: 'LectureTemplate',
 
     components: {
         HomeOutlined,
     },
-    setup() {
-        useMeta({ title: '信息熵、交叉熵、相对熵' })
+    // setup() {
+    //     useMeta({ title: this.title})
+    // },
+
+    props: {
+        page_name: String,  // 英文名，用于请求后端，展示 url
     },
+
     data() {
         return {
-            title: '信息熵、交叉熵、相对熵',
             router: router,
+            title: '',
+            established_time: '',
             frontend_page_count: 0,
-            established_date: "2022-09-09",
-            markdown: "### loading ..."
+            markdown: "### loading ...",
         }
     },
 
@@ -70,24 +75,26 @@ export default {
     },
 
     created() {
+        console.log("## temp url: " + this.page_name);
         stat_instance({
             url: "/stat_api/frontend_page_statistics",
             data: {
-                page_name: "entropy_theory_basics",
+                page_name: this.page_name,
             }
         })
             .then((response) => {
-                this.frontend_page_count = response.data.detail;
+                this.frontend_page_count = response.data.frontend_page_count;
+                this.title = response.data.title;
+                this.established_time = response.data.established_time;
             })
             .catch(() => {
                 this.frontend_page_count = 0;
             });
 
         blog_asset({
-            url: "/lecture/entropy_theory_basics/README.md",
+            url: "/lecture/" + this.page_name + "/README.md",
         })
             .then((response) => {
-                // console.log(response.data);
                 this.markdown = response.data;
             })
             .catch(() => {

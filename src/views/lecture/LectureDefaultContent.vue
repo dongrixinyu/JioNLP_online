@@ -71,7 +71,6 @@ export default defineComponent({
   },
   data() {
     return {
-      // title: '条件随机场（CRF）',
       router: router,
       markdown: "### loading ..."
     }

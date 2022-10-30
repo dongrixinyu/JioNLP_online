@@ -33,7 +33,7 @@
                         </router-link>
                     </a-col>
                     <a-col :span="12">
-                        <router-link id="lecture" to="/lecture">
+                        <router-link id="lecture" to="/lecture/lecture_home_page">
                             <a-card :hoverable="true" style="background-color: hsla(197, 100%, 48%, 0.25);"
                                 title="NLP教程" :bordered="true">
                                 <p style="color: black">○ 提供高质量的 <b>NLP 系列教程</b></p>

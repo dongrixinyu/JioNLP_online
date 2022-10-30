@@ -21,7 +21,7 @@
           <router-link id="nlp_product" to="/product">NLP产品</router-link>
         </a-menu-item>
         <a-menu-item key="nlp_lectrue">
-          <router-link id="nlp_lecture" to="/lecture">NLP教程</router-link>
+          <router-link id="nlp_lecture" to="/lecture/lecture_home_page">NLP教程</router-link>
         </a-menu-item>
         <a-menu-item key="contact_us">
           <router-link id="contact_us" to="/contact_us">联系我们</router-link>

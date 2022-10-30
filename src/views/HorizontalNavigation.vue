@@ -19,7 +19,7 @@
                 </a-menu-item>
 
                 <a-menu-item key="2">
-                    <router-link id="nlp_lecture" to="/lecture">&emsp;NLP 教程</router-link>
+                    <router-link id="nlp_lecture" to="/lecture/lecture_home_page">&emsp;NLP 教程</router-link>
                 </a-menu-item>
 
                 <a-menu-item key="3">
