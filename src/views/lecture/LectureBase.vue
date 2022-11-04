@@ -3,7 +3,7 @@
         <a-layout>
             <LectureNavigation />
             <LectureTemplate
-                :page_name="page_name"
+                :page_name="this.page_name"
             />
             <!-- <router-view>
             </router-view> -->
@@ -53,6 +53,7 @@ export default {
 
             this.page_name = this.$route.params.lecture_name;
             console.log('# to url: ' + this.page_name);
+            this.$forceUpdate();
 
         }
     },

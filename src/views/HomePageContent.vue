@@ -9,13 +9,12 @@
         }">
             <div id="head_line">
                 <img id="home_page_logo" alt="JioNLP" src="@/assets/others/jionlp_logo.png" />
-                <!-- <h2 id="home_page_title">自然语言处理NLP教程、资讯</h2> -->
                 <h3 id="home_page_subtitle">自然语言处理教程、在线试用平台、资讯、求职，让NLP变得易懂、易用</h3>
                 <p id="home_page_annotation">
                     <environment-outlined />
                     &ensp;www.jionlp.com&emsp;
                     <bug-outlined />
-                    &ensp;微信公众号：一个Bug
+                    &ensp;微信公众号：JioNLP
                 </p>
 
             </div>

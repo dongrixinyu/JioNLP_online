@@ -17,7 +17,7 @@
             <h5>🐤 下载算法课件与数据集 🐤</h5>
             <h5>&emsp;</h5>
             <img class="qr_code_for_gh" src="@/assets/others/qrcode_for_gh.jpg" alt="Github" />
-            <h5>公众号：一个Bug</h5>
+            <h5>公众号：JioNLP</h5>
 
         </div>
 
@@ -31,14 +31,12 @@ import { Options, Vue } from "vue-class-component";
 import {
     InfoCircleOutlined,
     CloseCircleOutlined,
-    // BugOutlined,
 } from "@ant-design/icons-vue";
 
 @Options({
     components: {
         InfoCircleOutlined,
         CloseCircleOutlined,
-        // BugOutlined,
     },
 })
 class Notification extends Vue {

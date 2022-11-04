@@ -76,6 +76,7 @@ export default {
 
     created() {
         console.log("## temp url: " + this.page_name);
+
         stat_instance({
             url: "/stat_api/frontend_page_statistics",
             data: {
@@ -85,10 +86,44 @@ export default {
             .then((response) => {
                 this.frontend_page_count = response.data.frontend_page_count;
                 this.title = response.data.title;
+                document.title = this.title + " | JioNLP 源站";
                 this.established_time = response.data.established_time;
             })
             .catch(() => {
                 this.frontend_page_count = 0;
+                document.title = this.page_name + " | JioNLP 源站";
+            });
+
+        blog_asset({
+            url: "/lecture/" + this.page_name + "/README.md",
+        })
+            .then((response) => {
+                this.markdown = response.data;
+            })
+            .catch(() => {
+                this.markdown = "### Failed to request markdown file.";
+            });
+
+    },
+
+    updated() {
+        console.log("## temp url: " + this.page_name);
+
+        stat_instance({
+            url: "/stat_api/frontend_page_statistics",
+            data: {
+                page_name: this.page_name,
+            }
+        })
+            .then((response) => {
+                this.frontend_page_count = response.data.frontend_page_count;
+                this.title = response.data.title;
+                document.title = this.title + " | JioNLP 源站";
+                this.established_time = response.data.established_time;
+            })
+            .catch(() => {
+                this.frontend_page_count = 0;
+                document.title = this.page_name + " | JioNLP 源站";
             });
 
         blog_asset({
