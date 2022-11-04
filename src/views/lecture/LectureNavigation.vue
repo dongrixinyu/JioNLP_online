@@ -36,8 +36,6 @@
                     <a-menu-item key="2-0">
                         <router-link :to="{ path: '/lecture/entropy_theory_basics', name: 'Lecture', params: { lecture_name: 'entropy_theory_basics' } }">信息熵、交叉熵、相对熵</router-link>
                     </a-menu-item>
-                    <!-- <a-menu-item key="11">Option 11</a-menu-item> -->
-
                 </a-sub-menu>
                 <a-sub-menu key="sub3">
                     <template #icon>
@@ -45,7 +43,7 @@
                     </template>
                     <template #title>机器学习算法</template>
                     <a-menu-item key="3-0">
-                        <router-link id="logistic" to="/lecture/logistic_regression">逻辑回归</router-link>
+                        <router-link to="/lecture/logistic_regression">逻辑回归</router-link>
                     </a-menu-item>
                     <!-- <a-menu-item key="11">Option 11</a-menu-item> -->
                 </a-sub-menu>
@@ -71,6 +69,13 @@
                         <router-link id="bert" to="/lecture/bert">Bert</router-link>
                     </a-menu-item>
                 </a-sub-menu>
+
+                <a-menu-item key="6">
+                    <template #icon>
+                        <InboxOutlined />
+                    </template>
+                    <router-link to="/lecture/time_sementic_parser">时间语义解析详解</router-link>
+                </a-menu-item>
             </a-menu>
         </a-layout-sider>
     </div>
@@ -105,7 +110,7 @@ export default defineComponent({
             collapsed_b: true,
             collapsed: false,
             selectedKeys: ["1"],
-            openKeys: ["sub1", "sub2", "sub3", "sub4", "sub5"],
+            openKeys: ["sub1", "sub2", "sub3", "sub4"],
             preOpenKeys: [],
         });
         watch(
