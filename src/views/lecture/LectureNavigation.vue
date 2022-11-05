@@ -9,45 +9,7 @@
     <div id="expand">
         <a-layout-sider width="220px" style="background: #fff">
             <a-menu mode="inline" theme="dark" :inline-collapsed="collapsed" v-model:openKeys="openKeys">
-                <a-sub-menu key="sub1">
-                    <template #icon>
-                        <MailOutlined />
-                    </template>
-                    <template #title>序列标注任务</template>
-                    <a-menu-item key="1-0">
-                        <router-link id="sequence_labeling" to="/lecture/sequence_labeling">序列标注任务简介</router-link>
-                    </a-menu-item>
-
-                    <a-menu-item key="1-1">
-                        <router-link id="crf" to="/lecture/logistics_crf">条件随机场（CRF）</router-link>
-                    </a-menu-item>
-                    <!--a-menu-item key="1-2">
-                        <router-link id="hmm" to="/lecture/hmm">隐马尔科夫模型</router-link>
-                    </a-menu-item>
-                    <a-menu-item key="1-3">
-                        <router-link id="bilstm_crf" to="/lecture/bilstm_crf">Bi-LSTM-CRF模型</router-link>
-                    </a-menu-item-->
-                </a-sub-menu>
-                <a-sub-menu key="sub2">
-                    <template #icon>
-                        <AppstoreOutlined />
-                    </template>
-                    <template #title>信息论基础</template>
-                    <a-menu-item key="2-0">
-                        <router-link :to="{ path: '/lecture/entropy_theory_basics', name: 'Lecture', params: { lecture_name: 'entropy_theory_basics' } }">信息熵、交叉熵、相对熵</router-link>
-                    </a-menu-item>
-                </a-sub-menu>
-                <a-sub-menu key="sub3">
-                    <template #icon>
-                        <AppstoreOutlined />
-                    </template>
-                    <template #title>机器学习算法</template>
-                    <a-menu-item key="3-0">
-                        <router-link to="/lecture/logistic_regression">逻辑回归</router-link>
-                    </a-menu-item>
-                    <!-- <a-menu-item key="11">Option 11</a-menu-item> -->
-                </a-sub-menu>
-                <a-sub-menu key="sub4">
+                <!-- <a-sub-menu key="sub4">
                     <template #icon>
                         <DesktopOutlined />
                     </template>
@@ -59,23 +21,20 @@
                     <a-menu-item key="4-1">
                         <router-link id="glove" to="/lecture/glove">GloVe</router-link>
                     </a-menu-item>
-                </a-sub-menu>
-                <a-sub-menu key="sub5">
-                    <template #icon>
-                        <PieChartOutlined />
-                    </template>
-                    <template #title>预训练模型</template>
-                    <a-menu-item key="5-0">
-                        <router-link id="bert" to="/lecture/bert">Bert</router-link>
-                    </a-menu-item>
-                </a-sub-menu>
-
-                <a-menu-item key="6">
+                </a-sub-menu> -->
+                <!-- <a-menu-item key="6">
                     <template #icon>
                         <InboxOutlined />
                     </template>
                     <router-link to="/lecture/time_sementic_parser">时间语义解析详解</router-link>
+                </a-menu-item> -->
+                <a-menu-item v-for="(item, index) in get_lecture_index()" :key="item[0]">
+                    <template #icon>
+                        <MailOutlined />
+                    </template>
+                    <router-link :to="'/lecture/' + item[1]">{{index}} -{{ item[2] }}</router-link>
                 </a-menu-item>
+
             </a-menu>
         </a-layout-sider>
     </div>
@@ -83,26 +42,30 @@
 </template>
 
 <script>
+import { stat_instance } from "@/utils/request";
 import router from "@/router/index";
 import { defineComponent, reactive, toRefs, watch, onMounted } from "vue";
 import {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    PieChartOutlined,
+    // PieChartOutlined,
     MailOutlined,
-    DesktopOutlined,
+    // DesktopOutlined,
     // InboxOutlined,
-    AppstoreOutlined,
+    // AppstoreOutlined,
 } from "@ant-design/icons-vue";
+
 
 export default defineComponent({
 
     data() {
         return {
             $router: router,
-            // page_name: this.$route.params.lecture_name,
-        }
-
+            lecture_index: [
+                ["0", "lks", "中华小当家"],
+                ["1", "lks", "中华小当家"],
+                ["2", "fefe", "美美睡一觉"]],
+        };
     },
 
     setup() {
@@ -110,7 +73,7 @@ export default defineComponent({
             collapsed_b: true,
             collapsed: false,
             selectedKeys: ["1"],
-            openKeys: ["sub1", "sub2", "sub3", "sub4"],
+            openKeys: ["sub1", "sub2"],
             preOpenKeys: [],
         });
         watch(
@@ -167,20 +130,48 @@ export default defineComponent({
         return { ...toRefs(state), toggleCollapsed };
     },
 
+    methods: {
+        get_lecture_index() {
+            return this.lecture_index;
+        }
+    },
+
+    created() {
+        stat_instance({
+            url: "/stat_api/get_lecture_index",
+        })
+            .then((response) => {
+                this.lecture_index.push.apply(this.lecture_index, response.data.detail);
+                // this.lecture_index = Array();
+                // for (var i = 0; i < response.data.detail.length; i++) {
+                //     var item_js = Array();
+                //     for (var j = 0; j < response.data.detail[i].length; j++) {
+                //         console.log("###: ", response.data.detail[i][j]);
+                //         item_js.push(response.data.detail[i][j]);
+                //     }
+                //     this.lecture_index.push(item_js);
+                // }
+                console.log("lecture_index: ", response);
+                console.log("lecture_index: ", this.lecture_index);
+            })
+            .catch(() => {
+                console.log("### Failed to request navigation file.");
+            });
+    },
+
     components: {
-        PieChartOutlined,
+        // PieChartOutlined,
         MailOutlined,
         MenuUnfoldOutlined,
         MenuFoldOutlined,
-        DesktopOutlined,
+        // DesktopOutlined,
         // InboxOutlined,
-        AppstoreOutlined,
+        // AppstoreOutlined,
     },
 });
 </script>
 
 <style lang="less">
-
 
 #navigation-button {
     z-index: 20;
