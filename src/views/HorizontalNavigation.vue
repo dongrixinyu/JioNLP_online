@@ -1,34 +1,35 @@
 <template>
-    <div id="horizontal-navigation-button">
-        <a-button type="primary" style="width: 62px;
-                 height: 40px;" @click="toggleCollapsed">
-            <MenuUnfoldOutlined v-if="collapsed" />
-            <MenuFoldOutlined v-else />
-        </a-button>
+    <div>
+        <div id="horizontal-navigation-button">
+            <a-button type="primary" style="width: 62px;
+                    height: 40px;" @click="toggleCollapsed">
+                <MenuUnfoldOutlined v-if="collapsed" />
+                <MenuFoldOutlined v-else />
+            </a-button>
+        </div>
+        <div id="horizontal-expand">
+            <a-layout-sider width="220px" style="background: #fff">
+                <a-menu mode="inline" theme="dark" :inline-collapsed="collapsed" v-model:openKeys="openKeys">
+
+                    <a-menu-item key="0">
+                        <router-link id="nlp_online" to="/jionlp_online">&emsp;NLP 在线</router-link>
+                    </a-menu-item>
+
+                    <a-menu-item key="1">
+                        <router-link id="nlp_product" to="/product">&emsp;NLP 产品</router-link>
+                    </a-menu-item>
+
+                    <a-menu-item key="2">
+                        <router-link id="nlp_lecture" to="/lecture/lecture_home_page">&emsp;NLP 教程</router-link>
+                    </a-menu-item>
+
+                    <a-menu-item key="3">
+                        <router-link id="contact_us" to="/contact_us">&emsp;联系我们</router-link>
+                    </a-menu-item>
+                </a-menu>
+            </a-layout-sider>
+        </div>
     </div>
-    <div id="horizontal-expand">
-        <a-layout-sider width="220px" style="background: #fff">
-            <a-menu mode="inline" theme="dark" :inline-collapsed="collapsed" v-model:openKeys="openKeys">
-
-                <a-menu-item key="0">
-                    <router-link id="nlp_online" to="/jionlp_online">&emsp;NLP 在线</router-link>
-                </a-menu-item>
-
-                <a-menu-item key="1">
-                    <router-link id="nlp_product" to="/product">&emsp;NLP 产品</router-link>
-                </a-menu-item>
-
-                <a-menu-item key="2">
-                    <router-link id="nlp_lecture" to="/lecture/lecture_home_page">&emsp;NLP 教程</router-link>
-                </a-menu-item>
-
-                <a-menu-item key="3">
-                    <router-link id="contact_us" to="/contact_us">&emsp;联系我们</router-link>
-                </a-menu-item>
-            </a-menu>
-        </a-layout-sider>
-    </div>
-
 </template>
 
 <script>

@@ -1,44 +1,39 @@
 <template>
-    <div id="navigation-button">
-        <a-button type="primary" style="width: 62px;
-                 height: 40px;" @click="toggleCollapsed">
-            <MenuUnfoldOutlined v-if="collapsed" />
-            <MenuFoldOutlined v-else />
-        </a-button>
-    </div>
-    <div id="expand">
-        <a-layout-sider width="220px" style="background: #fff">
-            <a-menu mode="inline" theme="dark" :inline-collapsed="collapsed" v-model:openKeys="openKeys">
-                <!-- <a-sub-menu key="sub4">
-                    <template #icon>
-                        <DesktopOutlined />
-                    </template>
-                    <template #title>词向量</template>
-                    <a-menu-item key="4-0">
-                        <router-link id="word2vec" to="/lecture/word2vec">word2vec</router-link>
+    <div>
+        <div id="navigation-button">
+            <a-button type="primary" style="width: 62px;
+                    height: 40px;" @click="toggleCollapsed">
+                <MenuUnfoldOutlined v-if="collapsed" />
+                <MenuFoldOutlined v-else />
+            </a-button>
+        </div>
+        <div id="expand">
+            <a-layout-sider width="220px" style="background: #fff">
+                <a-menu mode="inline" theme="dark" :inline-collapsed="collapsed" v-model:openKeys="openKeys">
+                    <!-- <a-sub-menu key="sub4">
+                        <template #icon>
+                            <DesktopOutlined />
+                        </template>
+                        <template #title>词向量</template>
+                        <a-menu-item key="4-0">
+                            <router-link id="word2vec" to="/lecture/word2vec">word2vec</router-link>
+                        </a-menu-item>
+
+                        <a-menu-item key="4-1">
+                            <router-link id="glove" to="/lecture/glove">GloVe</router-link>
+                        </a-menu-item>
+                    </a-sub-menu> -->
+                    <a-menu-item v-for="item in this.lecture_index" :key="item[0]">
+                        <template #icon>
+                            <MailOutlined />
+                        </template>
+                        <router-link :to="'/lecture/' + item[1]">{{ item[2] }}</router-link>
                     </a-menu-item>
 
-                    <a-menu-item key="4-1">
-                        <router-link id="glove" to="/lecture/glove">GloVe</router-link>
-                    </a-menu-item>
-                </a-sub-menu> -->
-                <!-- <a-menu-item key="6">
-                    <template #icon>
-                        <InboxOutlined />
-                    </template>
-                    <router-link to="/lecture/time_sementic_parser">时间语义解析详解</router-link>
-                </a-menu-item> -->
-                <a-menu-item v-for="(item, index) in get_lecture_index()" :key="item[0]">
-                    <template #icon>
-                        <MailOutlined />
-                    </template>
-                    <router-link :to="'/lecture/' + item[1]">{{index}} -{{ item[2] }}</router-link>
-                </a-menu-item>
-
-            </a-menu>
-        </a-layout-sider>
+                </a-menu>
+            </a-layout-sider>
+        </div>
     </div>
-
 </template>
 
 <script>
@@ -61,10 +56,7 @@ export default defineComponent({
     data() {
         return {
             $router: router,
-            lecture_index: [
-                ["0", "lks", "中华小当家"],
-                ["1", "lks", "中华小当家"],
-                ["2", "fefe", "美美睡一觉"]],
+            lecture_index: [],
         };
     },
 
@@ -130,11 +122,11 @@ export default defineComponent({
         return { ...toRefs(state), toggleCollapsed };
     },
 
-    methods: {
-        get_lecture_index() {
-            return this.lecture_index;
-        }
-    },
+    // methods: {
+    //     get_lecture_index() {
+    //         return this.lecture_index;
+    //     }
+    // },
 
     created() {
         stat_instance({
@@ -142,15 +134,7 @@ export default defineComponent({
         })
             .then((response) => {
                 this.lecture_index.push.apply(this.lecture_index, response.data.detail);
-                // this.lecture_index = Array();
-                // for (var i = 0; i < response.data.detail.length; i++) {
-                //     var item_js = Array();
-                //     for (var j = 0; j < response.data.detail[i].length; j++) {
-                //         console.log("###: ", response.data.detail[i][j]);
-                //         item_js.push(response.data.detail[i][j]);
-                //     }
-                //     this.lecture_index.push(item_js);
-                // }
+
                 console.log("lecture_index: ", response);
                 console.log("lecture_index: ", this.lecture_index);
             })
