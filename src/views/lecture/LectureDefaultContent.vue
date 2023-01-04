@@ -1,52 +1,54 @@
 <template>
-  <a-layout style="padding: 0 24px 24px">
-    <a-breadcrumb style="margin: 16px 0">
-      <a-breadcrumb-item>
-        <router-link to="/">
-          <home-outlined />
-        </router-link>
-      </a-breadcrumb-item>
-      <a-breadcrumb-item>NLP 教程</a-breadcrumb-item>
-    </a-breadcrumb>
-    <a-layout-content :style="{
-        background: '#fff',
-        padding: '24px',
-        margin: 0,
-        minHeight: '280px',
-      }">
-      <div>
-        <p id="head_line">NLP教程</p>
-      </div>
-      <div id="key_point">
-        <a-row :gutter="16">
+  <div>
+    <a-layout style="padding: 0 24px 24px">
+      <a-breadcrumb style="margin: 16px 0">
+        <a-breadcrumb-item>
+          <router-link to="/">
+            <home-outlined />
+          </router-link>
+        </a-breadcrumb-item>
+        <a-breadcrumb-item>NLP 教程</a-breadcrumb-item>
+      </a-breadcrumb>
+      <a-layout-content :style="{
+          background: '#fff',
+          padding: '24px',
+          margin: 0,
+          minHeight: '280px',
+        }">
+        <div>
+          <p id="head_line">NLP教程</p>
+        </div>
+        <div id="key_point">
+          <a-row :gutter="16">
 
-          <a-card hoverable style="width: 100%; margin-bottom: 10px;" type="inner">
-            <template #cover>
-              <router-link id="crf" to="/lecture/sequence_labeling">
-                <img class="cover_image" alt="序列标注任务简介" src="@/assets/lecture/cover_image/sequence_labeling.jpg" />
-              </router-link>
-            </template>
-            <a-card-meta title="🐤 序列标注任务简介" style="{font-weight: bold; text-align: left; height: 20px}">
-            </a-card-meta>
-          </a-card>
-        </a-row>
-        <a-row :gutter="16">
-          <a-card hoverable style="width: 100%; margin-bottom: 10px;" type="inner">
-            <template #cover>
-              <router-link id="crf" to="/lecture/logistics_crf">
-                <img class="cover_image" alt="条件随机场（CRF）" src="@/assets/lecture/cover_image/logistics_crf.jpg" />
-              </router-link>
-            </template>
-            <a-card-meta title="🐤 条件随机场（CRF）" style="{font-weight: bold; text-align: left; height: 20px}">
-            </a-card-meta>
-          </a-card>
-        </a-row>
-      </div>
-      <div id="description">
-        <div v-html="markdownToHtml"></div>
-      </div>
-    </a-layout-content>
-  </a-layout>
+            <a-card hoverable style="width: 100%; margin-bottom: 10px;" type="inner">
+              <template #cover>
+                <router-link id="crf" to="/lecture/sequence_labeling">
+                  <img class="cover_image" alt="序列标注任务简介" src="@/assets/lecture/cover_image/sequence_labeling.jpg" />
+                </router-link>
+              </template>
+              <a-card-meta title="🐤 序列标注任务简介" style="{font-weight: bold; text-align: left; height: 20px}">
+              </a-card-meta>
+            </a-card>
+          </a-row>
+          <a-row :gutter="16">
+            <a-card hoverable style="width: 100%; margin-bottom: 10px;" type="inner">
+              <template #cover>
+                <router-link id="crf" to="/lecture/logistics_crf">
+                  <img class="cover_image" alt="条件随机场（CRF）" src="@/assets/lecture/cover_image/logistics_crf.jpg" />
+                </router-link>
+              </template>
+              <a-card-meta title="🐤 条件随机场（CRF）" style="{font-weight: bold; text-align: left; height: 20px}">
+              </a-card-meta>
+            </a-card>
+          </a-row>
+        </div>
+        <div id="description">
+          <div v-html="markdownToHtml"></div>
+        </div>
+      </a-layout-content>
+    </a-layout>
+  </div>
 </template>
 
 <script>

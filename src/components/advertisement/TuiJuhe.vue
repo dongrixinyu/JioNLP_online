@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import { RightSquareFilled, InfoCircleFilled } from "@ant-design/icons-vue";
+// import { RightSquareFilled, InfoCircleFilled } from "@ant-design/icons-vue";
 
 //**
 export default {
@@ -25,8 +25,8 @@ export default {
     props: {},
     components: {
         // HomeOutlined,
-        RightSquareFilled,
-        InfoCircleFilled,
+        // RightSquareFilled,
+        // InfoCircleFilled,
     },
 };
 </script>

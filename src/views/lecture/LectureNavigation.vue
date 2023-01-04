@@ -23,7 +23,8 @@
                             <router-link id="glove" to="/lecture/glove">GloVe</router-link>
                         </a-menu-item>
                     </a-sub-menu> -->
-                    <a-menu-item v-for="item in this.lecture_index" :key="item[0]">
+
+                    <a-menu-item v-for="(item,i) in this.lecture_index" :key="i">
                         <template #icon>
                             <MailOutlined />
                         </template>
@@ -128,7 +129,7 @@ export default defineComponent({
     //     }
     // },
 
-    created() {
+    mounted() {
         stat_instance({
             url: "/stat_api/get_lecture_index",
         })

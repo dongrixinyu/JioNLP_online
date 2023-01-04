@@ -1,41 +1,43 @@
 <template>
-    <a-layout class="variable_content" style="padding: 0 24px 24px">
-        <a-breadcrumb style="margin: 16px 0" :routes="router">
-            <a-breadcrumb-item>
-                <router-link to="/">
-                    <home-outlined />
-                </router-link>
-            </a-breadcrumb-item>
-            <a-breadcrumb-item>
-                <router-link to="/lecture/lecture_home_page">
-                    NLP 教程
-                </router-link>
-            </a-breadcrumb-item>
-            <!--a-breadcrumb-item> Home </a-breadcrumb-item-->
-            <a-breadcrumb-item>{{ this.title }}</a-breadcrumb-item>
-        </a-breadcrumb>
-        <a-layout-content :style="{
-          background: '#fff',
-          padding: '24px',
-          margin: 0,
-          width: '100%',
-          minHeight: '280px',
-        }">
-            <div>
-                <h1><b class="b_green">{{ this.title }}</b></h1>
-                <p class="description_text">
-                    发布日期：{{ this.established_time }}&emsp;阅读量：{{ this.frontend_page_count }}
-                </p>
+    <div>
+        <a-layout class="variable_content" style="padding: 0 24px 24px">
+            <a-breadcrumb style="margin: 16px 0" :routes="router">
+                <a-breadcrumb-item>
+                    <router-link to="/">
+                        <home-outlined />
+                    </router-link>
+                </a-breadcrumb-item>
+                <a-breadcrumb-item>
+                    <router-link to="/lecture/lecture_home_page">
+                        NLP 教程
+                    </router-link>
+                </a-breadcrumb-item>
+                <!--a-breadcrumb-item> Home </a-breadcrumb-item-->
+                <a-breadcrumb-item>{{ this.title }}</a-breadcrumb-item>
+            </a-breadcrumb>
+            <a-layout-content :style="{
+            background: '#fff',
+            padding: '24px',
+            margin: 0,
+            width: '100%',
+            minHeight: '280px',
+            }">
+                <div>
+                    <h1><b class="b_green">{{ this.title }}</b></h1>
+                    <p class="description_text">
+                        发布日期：{{ this.established_time }}&emsp;阅读量：{{ this.frontend_page_count }}
+                    </p>
 
-                <div v-html="markdownToHtml"></div>
-            </div>
-        </a-layout-content>
-    </a-layout>
+                    <div v-html="markdownToHtml"></div>
+                </div>
+            </a-layout-content>
+        </a-layout>
+    </div>
 </template>
 
 <script>
 
-import { useMeta } from 'vue-meta';
+// import { useMeta } from 'vue-meta';
 import router from "../../router/index";
 import { stat_instance } from "@/utils/request";
 import blog_asset from "@/utils/blog_request";

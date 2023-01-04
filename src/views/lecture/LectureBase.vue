@@ -58,12 +58,6 @@ export default {
         }
     },
 
-    // methods: {
-    //     refresh() {
-    //         d
-    //     }
-    // },
-
     created() {
         console.log("# url： " + this.$route.params.lecture_name);
     }

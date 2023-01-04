@@ -1,16 +1,18 @@
 <template>
-  <Notification />
-  <a-layout-footer style="text-align: center">
-    <p>
-      <b>JioNLP 源站</b> ©2021 Created by 冬日新雨
-    </p>
-    <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">
-      <b>备案号：蜀ICP备2022016557号&emsp;</b>
-    </a>
-    <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51011202000541" target="_blank" rel="noopener">
-      <b>公安备案号：51011202000541</b>
-    </a>
-  </a-layout-footer>
+  <div>
+    <Notification />
+    <a-layout-footer style="text-align: center">
+      <p>
+        <b>JioNLP 源站</b> ©2021 Created by 冬日新雨
+      </p>
+      <a href="https://beian.miit.gov.cn" target="_blank" rel="noopener">
+        <b>备案号：蜀ICP备2022016557号&emsp;</b>
+      </a>
+      <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51011202000541" target="_blank" rel="noopener">
+        <b>公安备案号：51011202000541</b>
+      </a>
+    </a-layout-footer>
+  </div>
 </template>
 
 <script>
