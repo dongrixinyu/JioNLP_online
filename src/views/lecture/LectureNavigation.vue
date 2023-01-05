@@ -10,21 +10,8 @@
         <div id="expand">
             <a-layout-sider width="220px" style="background: #fff">
                 <a-menu mode="inline" theme="dark" :inline-collapsed="collapsed" v-model:openKeys="openKeys">
-                    <!-- <a-sub-menu key="sub4">
-                        <template #icon>
-                            <DesktopOutlined />
-                        </template>
-                        <template #title>词向量</template>
-                        <a-menu-item key="4-0">
-                            <router-link id="word2vec" to="/lecture/word2vec">word2vec</router-link>
-                        </a-menu-item>
 
-                        <a-menu-item key="4-1">
-                            <router-link id="glove" to="/lecture/glove">GloVe</router-link>
-                        </a-menu-item>
-                    </a-sub-menu> -->
-
-                    <a-menu-item v-for="(item,i) in this.lecture_index" :key="i">
+                    <a-menu-item v-for="(item, i) in this.lecture_index" :key="i">
                         <template #icon>
                             <MailOutlined />
                         </template>
@@ -51,7 +38,6 @@ import {
     // AppstoreOutlined,
 } from "@ant-design/icons-vue";
 
-
 export default defineComponent({
 
     data() {
@@ -62,6 +48,7 @@ export default defineComponent({
     },
 
     setup() {
+
         const state = reactive({
             collapsed_b: true,
             collapsed: false,
@@ -81,7 +68,7 @@ export default defineComponent({
                 const userClick = document.getElementById('navigation-button');
                 // console.log("click button: ", userClick.contains(event.target));
                 const navigation_expand = document.getElementById('expand');
-
+                console.log("onMounted navigation_expand: ", navigation_expand);
                 const window_width = window.innerWidth;
                 // console.log("window_width: ", window_width);
                 if (window_width < 801) {
@@ -122,12 +109,6 @@ export default defineComponent({
 
         return { ...toRefs(state), toggleCollapsed };
     },
-
-    // methods: {
-    //     get_lecture_index() {
-    //         return this.lecture_index;
-    //     }
-    // },
 
     mounted() {
         stat_instance({
