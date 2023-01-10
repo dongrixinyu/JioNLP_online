@@ -7,22 +7,22 @@
         </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>
-        <router-link to="/jionlp_online">
-          NLP 在线解析
-        </router-link>
+        <router-link to="/jionlp_online"> NLP 在线解析 </router-link>
       </a-breadcrumb-item>
 
       <a-breadcrumb-item>时间实体抽取与解析</a-breadcrumb-item>
 
       <!--a-breadcrumb-item>App</a-breadcrumb-item-->
     </a-breadcrumb>
-    <a-layout-content :style="{
+    <a-layout-content
+      :style="{
         background: '#fff',
         padding: '24px',
         margin: 0,
         width: '100%',
         minHeight: '280px',
-      }">
+      }"
+    >
       <div>
         <h2><b>时间实体抽取与解析</b></h2>
         <p>给定一篇中文，解析其中的时间短语实体。</p>
@@ -39,19 +39,29 @@
             </p>
             <p>
               ● 参考文档：
-              <a href="https://github.com/dongrixinyu/JioNLP/wiki/时间语义解析-说明文档">时间语义解析说明文档</a>
+              <a
+                href="https://github.com/dongrixinyu/JioNLP/wiki/时间语义解析-说明文档"
+                >时间语义解析说明文档</a
+              >
             </p>
           </template>
           <a-button type="dashed">● 说明</a-button>
         </a-popover>
       </div>
-      <textarea v-model="text" style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;" />
-      <a-button style="
+      <textarea
+        v-model="text"
+        style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;"
+      />
+      <a-button
+        style="
           display: block;
           margin-bottom: 10px;
           margin-left: auto;
           margin-right: 30px;
-        " type="primary" @click="send">提交文本
+        "
+        type="primary"
+        @click="send"
+        >提交文本
         <CaretRightOutlined />
       </a-button>
 
@@ -87,15 +97,21 @@
             </p>
             <p>
               ●
-              <a href="https://github.com/dongrixinyu/JioNLP/issues">提交报错信息</a>
+              <a href="https://github.com/dongrixinyu/JioNLP/issues"
+                >提交报错信息</a
+              >
             </p>
           </a-card>
         </div>
         <div style="background: #fff; padding: 20px">
           <font id="insertion_html" size="3.5"> </font>
           <div v-if="response.is_ok == true && first_show == false">
-            <a-table style="margin-top: 20px; text-align: center; display: block" :columns="table_columns"
-              :data-source="response.detail" :footer="null">
+            <a-table
+              style="margin-top: 20px; text-align: center; display: block"
+              :columns="table_columns"
+              :data-source="response.detail"
+              :footer="null"
+            >
               <template #name="{ record }">
                 <span>
                   <b> {{ record.time_entity }} </b>
@@ -112,7 +128,7 @@
 <script lang="ts">
 import { Options, setup, Vue } from "vue-class-component";
 import { CaretRightOutlined, HomeOutlined } from "@ant-design/icons-vue";
-import { useMeta } from 'vue-meta';
+import { useMeta } from "vue-meta";
 import router from "@/router/index";
 import { jio_instance } from "@/utils/request";
 import authentication_hash_code from "@/utils/authentication";
@@ -191,7 +207,7 @@ class ExtractTime extends Vue {
   table_columns = table_columns;
   // entity_mapping = entity_mapping;
   $router = router;
-  meta = setup(() => useMeta({ title: '时间实体抽取与解析 | 在线测试' }));
+  meta = setup(() => useMeta({ title: "时间实体抽取与解析 | 在线测试" }));
 
   mounted() {
     //console.log("ParseLocation mounted!");
@@ -290,7 +306,7 @@ class ExtractTime extends Vue {
         }
         this.response.detail.reverse();
       })
-      .catch((error) => {
+      .catch(() => {
         this.first_show = false;
         this.response.is_ok = false;
       });

@@ -7,20 +7,20 @@
         </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>
-        <router-link to="/jionlp_online">
-          NLP 在线解析
-        </router-link>
+        <router-link to="/jionlp_online"> NLP 在线解析 </router-link>
       </a-breadcrumb-item>
       <!--a-breadcrumb-item> Home </a-breadcrumb-item-->
       <a-breadcrumb-item>回译数据增强</a-breadcrumb-item>
     </a-breadcrumb>
-    <a-layout-content :style="{
+    <a-layout-content
+      :style="{
         background: '#fff',
         padding: '24px',
         margin: 0,
         width: '100%',
         minHeight: '280px',
-      }">
+      }"
+    >
       <div>
         <h2><b>回译数据增强</b></h2>
         <p>
@@ -28,26 +28,38 @@
         </p>
         <a-popover title="" trigger="hover">
           <template #content>
-            <p>● 该方法调用时间略久，耗时大约30秒，点击提交文本后，请耐心等待。</p>
+            <p>
+              ● 该方法调用时间略久，耗时大约30秒，点击提交文本后，请耐心等待。
+            </p>
             <p>
               ●
               由于服务器资源有限，可能该接口很容易报错，如须进一步使用可参考相关文档。
             </p>
             <p>
               ● 参考文档：
-              <a href="https://github.com/dongrixinyu/JioNLP/wiki/数据增强-说明文档#user-content-回译数据增强">回译数据增强说明文档</a>
+              <a
+                href="https://github.com/dongrixinyu/JioNLP/wiki/数据增强-说明文档#user-content-回译数据增强"
+                >回译数据增强说明文档</a
+              >
             </p>
           </template>
           <a-button type="dashed">● 说明</a-button>
         </a-popover>
       </div>
-      <textarea v-model="text" style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;" />
-      <a-button style="
+      <textarea
+        v-model="text"
+        style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;"
+      />
+      <a-button
+        style="
           display: block;
           margin-bottom: 10px;
           margin-left: auto;
           margin-right: 30px;
-        " type="primary" @click="send">提交文本
+        "
+        type="primary"
+        @click="send"
+        >提交文本
         <CaretRightOutlined />
       </a-button>
 
@@ -72,12 +84,17 @@
             </p>
             <p>
               ● 如还想继续使用，可以参考
-              <a href="https://github.com/dongrixinyu/JioNLP/wiki/数据增强-说明文档#回译数据增强"><b> 回译工具使用说明 </b></a>
+              <a
+                href="https://github.com/dongrixinyu/JioNLP/wiki/数据增强-说明文档#回译数据增强"
+                ><b> 回译工具使用说明 </b></a
+              >
               申请自己的免费 API。
             </p>
             <p>
               ● 如使用报错，可在此
-              <a href="https://github.com/dongrixinyu/JioNLP/issues"><b>提交报错信息</b></a>
+              <a href="https://github.com/dongrixinyu/JioNLP/issues"
+                ><b>提交报错信息</b></a
+              >
             </p>
           </a-card>
         </div>

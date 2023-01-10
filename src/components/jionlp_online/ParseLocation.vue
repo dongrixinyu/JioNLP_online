@@ -7,19 +7,19 @@
         </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>
-        <router-link to="/jionlp_online">
-          NLP 在线解析
-        </router-link>
+        <router-link to="/jionlp_online"> NLP 在线解析 </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>地址解析</a-breadcrumb-item>
     </a-breadcrumb>
-    <a-layout-content :style="{
+    <a-layout-content
+      :style="{
         background: '#fff',
         padding: '24px',
         margin: 0,
         width: '100%',
         minHeight: '280px',
-      }">
+      }"
+    >
       <div>
         <h2><b>地址解析</b></h2>
         <p>● 给定一条地址文本，从中抽取出<b>省、市、县、乡、街道、村</b>等。</p>
@@ -34,28 +34,44 @@
             </p>
             <p>
               ● 参考文档：
-              <a href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-地址解析">地址解析说明文档</a>
+              <a
+                href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-地址解析"
+                >地址解析说明文档</a
+              >
             </p>
           </template>
           <a-button type="dashed">● 说明</a-button>
         </a-popover>
       </div>
-      <textarea v-model="text" style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;" />
-      <a-button style="
+      <textarea
+        v-model="text"
+        style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;"
+      />
+      <a-button
+        style="
           display: block;
           margin-bottom: 10px;
           margin-left: auto;
           margin-right: 30px;
-        " type="primary" @click="send">提交文本
+        "
+        type="primary"
+        @click="send"
+        >提交文本
         <CaretRightOutlined />
       </a-button>
 
       <a-layout style="display: block">
         <div v-if="response.is_ok == true && first_show == false">
           <a-descriptions bordered title="" :size="size" :column="{}">
-            <a-descriptions-item label="省" span="1" style="width: 105px"><b>{{ province }}</b></a-descriptions-item>
-            <a-descriptions-item label="市" span="1"><b>{{ city }}</b></a-descriptions-item>
-            <a-descriptions-item label="县" span="1"><b>{{ county }}</b></a-descriptions-item>
+            <a-descriptions-item label="省" span="1" style="width: 105px"
+              ><b>{{ province }}</b></a-descriptions-item
+            >
+            <a-descriptions-item label="市" span="1"
+              ><b>{{ city }}</b></a-descriptions-item
+            >
+            <a-descriptions-item label="县" span="1"
+              ><b>{{ county }}</b></a-descriptions-item
+            >
           </a-descriptions>
         </div>
         <div v-else-if="response.is_ok == false && first_show == false">
@@ -68,7 +84,9 @@
             </p>
             <p>
               ●
-              <a href="https://github.com/dongrixinyu/JioNLP/issues"><b>提交报错信息</b></a>
+              <a href="https://github.com/dongrixinyu/JioNLP/issues"
+                ><b>提交报错信息</b></a
+              >
             </p>
           </a-card>
         </div>

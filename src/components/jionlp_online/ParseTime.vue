@@ -7,19 +7,19 @@
         </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>
-        <router-link to="/jionlp_online">
-          NLP 在线解析
-        </router-link>
+        <router-link to="/jionlp_online"> NLP 在线解析 </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>时间语义解析</a-breadcrumb-item>
     </a-breadcrumb>
-    <a-layout-content :style="{
+    <a-layout-content
+      :style="{
         background: '#fff',
         padding: '24px',
         margin: 0,
         width: '100%',
         minHeight: '280px',
-      }">
+      }"
+    >
       <div>
         <h2><b>时间语义解析</b></h2>
         <p>给定时间短语，解析其表达的时间语义。</p>
@@ -27,7 +27,8 @@
           <template #content>
             <p>
               ● 该工具需要配合
-              <b>时间实体抽取</b>，从文本中抽取到时间实体，进而对每一个时间实体短语做语义解析。
+              <b>时间实体抽取</b
+              >，从文本中抽取到时间实体，进而对每一个时间实体短语做语义解析。
             </p>
             <p>
               ●
@@ -35,19 +36,29 @@
             </p>
             <p>
               ● 参考文档：
-              <a href="https://github.com/dongrixinyu/JioNLP/wiki/时间语义解析-说明文档">时间语义解析说明文档</a>
+              <a
+                href="https://github.com/dongrixinyu/JioNLP/wiki/时间语义解析-说明文档"
+                >时间语义解析说明文档</a
+              >
             </p>
           </template>
           <a-button type="dashed">● 说明</a-button>
         </a-popover>
       </div>
-      <textarea v-model="text" style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;" />
-      <a-button style="
+      <textarea
+        v-model="text"
+        style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;"
+      />
+      <a-button
+        style="
           display: block;
           margin-bottom: 10px;
           margin-left: auto;
           margin-right: 30px;
-        " type="primary" @click="send">提交文本
+        "
+        type="primary"
+        @click="send"
+        >提交文本
         <CaretRightOutlined />
       </a-button>
 
@@ -55,72 +66,174 @@
         <div v-if="response.is_ok == true && first_show == false">
           <div v-if="time_type == 'time_point' || time_type == 'time_span'">
             <a-descriptions bordered title="" :size="size" :column="{}">
-              <a-descriptions-item label="时间类型" span="3" style="width: 105px"><b>{{ time_type }}</b>
+              <a-descriptions-item
+                label="时间类型"
+                span="3"
+                style="width: 105px"
+                ><b>{{ time_type }}</b>
               </a-descriptions-item>
-              <a-descriptions-item label="时间精度" span="3"><b>{{ time_definition }}</b></a-descriptions-item>
+              <a-descriptions-item label="时间精度" span="3"
+                ><b>{{ time_definition }}</b></a-descriptions-item
+              >
 
-              <a-descriptions-item label="起始时间" span="3" style="width: 105px"><b>{{ response.detail.time[0] }}</b>
+              <a-descriptions-item
+                label="起始时间"
+                span="3"
+                style="width: 105px"
+                ><b>{{ response.detail.time[0] }}</b>
               </a-descriptions-item>
-              <a-descriptions-item label="终止时间" span="3"><b>{{ response.detail.time[1] }}</b></a-descriptions-item>
+              <a-descriptions-item label="终止时间" span="3"
+                ><b>{{ response.detail.time[1] }}</b></a-descriptions-item
+              >
             </a-descriptions>
           </div>
 
           <div v-else-if="time_type == 'time_delta'">
             <a-descriptions bordered title="" :size="size" :column="{}">
-              <a-descriptions-item label="时间类型" span="3" style="width: 105px"><b>{{ time_type }}</b>
+              <a-descriptions-item
+                label="时间类型"
+                span="3"
+                style="width: 105px"
+                ><b>{{ time_type }}</b>
               </a-descriptions-item>
-              <a-descriptions-item label="时间精度" span="3"><b>{{ time_definition }}</b></a-descriptions-item>
+              <a-descriptions-item label="时间精度" span="3"
+                ><b>{{ time_definition }}</b></a-descriptions-item
+              >
 
-              <a-descriptions-item v-if="response.detail.time.year" label="年数" span="1" style="width: 105px"><b>{{
-                  response.detail.time.year }}</b></a-descriptions-item>
-              <a-descriptions-item v-if="response.detail.time.month" label="月数" span="1" style="width: 105px"><b>{{
-                  response.detail.time.month }}</b></a-descriptions-item>
-              <a-descriptions-item v-if="response.detail.time.day" label="天数" span="1" style="width: 105px"><b>{{
-                  response.detail.time.day }}</b></a-descriptions-item>
-              <a-descriptions-item v-if="response.detail.time.hour" label="小时数" span="1" style="width: 105px"><b>{{
-                  response.detail.time.hour }}</b></a-descriptions-item>
-              <a-descriptions-item v-if="response.detail.time.minute" label="分钟数" span="1" style="width: 105px"><b>{{
-                  response.detail.time.minute }}</b></a-descriptions-item>
-              <a-descriptions-item v-if="response.detail.time.second" label="秒钟数" span="1" style="width: 105px"><b>{{
-                  response.detail.time.second }}</b></a-descriptions-item>
+              <a-descriptions-item
+                v-if="response.detail.time.year"
+                label="年数"
+                span="1"
+                style="width: 105px"
+                ><b>{{ response.detail.time.year }}</b></a-descriptions-item
+              >
+              <a-descriptions-item
+                v-if="response.detail.time.month"
+                label="月数"
+                span="1"
+                style="width: 105px"
+                ><b>{{ response.detail.time.month }}</b></a-descriptions-item
+              >
+              <a-descriptions-item
+                v-if="response.detail.time.day"
+                label="天数"
+                span="1"
+                style="width: 105px"
+                ><b>{{ response.detail.time.day }}</b></a-descriptions-item
+              >
+              <a-descriptions-item
+                v-if="response.detail.time.hour"
+                label="小时数"
+                span="1"
+                style="width: 105px"
+                ><b>{{ response.detail.time.hour }}</b></a-descriptions-item
+              >
+              <a-descriptions-item
+                v-if="response.detail.time.minute"
+                label="分钟数"
+                span="1"
+                style="width: 105px"
+                ><b>{{ response.detail.time.minute }}</b></a-descriptions-item
+              >
+              <a-descriptions-item
+                v-if="response.detail.time.second"
+                label="秒钟数"
+                span="1"
+                style="width: 105px"
+                ><b>{{ response.detail.time.second }}</b></a-descriptions-item
+              >
             </a-descriptions>
           </div>
           <div v-else-if="time_type == 'time_period'">
             <a-descriptions bordered title="" :size="size" :column="{}">
-              <a-descriptions-item label="时间类型" span="3" style="width: 105px"><b>{{ time_type }}</b>
+              <a-descriptions-item
+                label="时间类型"
+                span="3"
+                style="width: 105px"
+                ><b>{{ time_type }}</b>
               </a-descriptions-item>
-              <a-descriptions-item label="时间精度" span="3"><b>{{ time_definition }}</b></a-descriptions-item>
+              <a-descriptions-item label="时间精度" span="3"
+                ><b>{{ time_definition }}</b></a-descriptions-item
+              >
 
-              <a-descriptions-item label="时间周期" span="3"><b></b></a-descriptions-item>
+              <a-descriptions-item label="时间周期" span="3"
+                ><b></b
+              ></a-descriptions-item>
 
-              <a-descriptions-item v-if="response.detail.time.delta.year" label="年" span="3" style="width: 105px"><b>{{
+              <a-descriptions-item
+                v-if="response.detail.time.delta.year"
+                label="年"
+                span="3"
+                style="width: 105px"
+                ><b>{{
                   response.detail.time.delta.year
-                  }}</b></a-descriptions-item>
-              <a-descriptions-item v-if="response.detail.time.delta.month" label="月" span="3" style="width: 105px"><b>{{
+                }}</b></a-descriptions-item
+              >
+              <a-descriptions-item
+                v-if="response.detail.time.delta.month"
+                label="月"
+                span="3"
+                style="width: 105px"
+                ><b>{{
                   response.detail.time.delta.month
-                  }}</b></a-descriptions-item>
-              <a-descriptions-item v-if="response.detail.time.delta.day" label="天" span="3" style="width: 105px"><b>{{
+                }}</b></a-descriptions-item
+              >
+              <a-descriptions-item
+                v-if="response.detail.time.delta.day"
+                label="天"
+                span="3"
+                style="width: 105px"
+                ><b>{{
                   response.detail.time.delta.day
-                  }}</b></a-descriptions-item>
-              <a-descriptions-item v-if="response.detail.time.delta.hour" label="小时" span="3" style="width: 105px"><b>{{
+                }}</b></a-descriptions-item
+              >
+              <a-descriptions-item
+                v-if="response.detail.time.delta.hour"
+                label="小时"
+                span="3"
+                style="width: 105px"
+                ><b>{{
                   response.detail.time.delta.hour
-                  }}</b></a-descriptions-item>
-              <a-descriptions-item v-if="response.detail.time.delta.minute" label="分钟" span="3" style="width: 105px">
+                }}</b></a-descriptions-item
+              >
+              <a-descriptions-item
+                v-if="response.detail.time.delta.minute"
+                label="分钟"
+                span="3"
+                style="width: 105px"
+              >
                 <b>{{
                   response.detail.time.delta.minute
-                  }}</b></a-descriptions-item>
-              <a-descriptions-item v-if="response.detail.time.delta.second" label="秒钟" span="3" style="width: 105px">
+                }}</b></a-descriptions-item
+              >
+              <a-descriptions-item
+                v-if="response.detail.time.delta.second"
+                label="秒钟"
+                span="3"
+                style="width: 105px"
+              >
                 <b>{{
                   response.detail.time.delta.second
-                  }}</b></a-descriptions-item>
-              <a-descriptions-item v-if="response.detail.time.point != null" label="示例-起始时间" span="3"
-                style="width: 105px"><b>{{
+                }}</b></a-descriptions-item
+              >
+              <a-descriptions-item
+                v-if="response.detail.time.point != null"
+                label="示例-起始时间"
+                span="3"
+                style="width: 105px"
+                ><b>{{
                   response.detail.time.point.time[0]
-                  }}</b></a-descriptions-item>
-              <a-descriptions-item v-if="response.detail.time.point != null" label="示例-终止时间" span="3"
-                style="width: 105px"><b>{{
+                }}</b></a-descriptions-item
+              >
+              <a-descriptions-item
+                v-if="response.detail.time.point != null"
+                label="示例-终止时间"
+                span="3"
+                style="width: 105px"
+                ><b>{{
                   response.detail.time.point.time[1]
-                  }}</b></a-descriptions-item>
+                }}</b></a-descriptions-item
+              >
             </a-descriptions>
           </div>
           <!--div v-else-if=""></div>
@@ -136,7 +249,9 @@
             </p>
             <p>
               ●
-              <a href="https://github.com/dongrixinyu/JioNLP/issues">提交报错信息</a>
+              <a href="https://github.com/dongrixinyu/JioNLP/issues"
+                >提交报错信息</a
+              >
             </p>
           </a-card>
         </div>

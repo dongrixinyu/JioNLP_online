@@ -7,19 +7,19 @@
         </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>
-        <router-link to="/jionlp_online">
-          NLP 在线解析
-        </router-link>
+        <router-link to="/jionlp_online"> NLP 在线解析 </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>关键短语抽取</a-breadcrumb-item>
     </a-breadcrumb>
-    <a-layout-content :style="{
+    <a-layout-content
+      :style="{
         background: '#fff',
         padding: '24px',
         margin: 0,
         width: '100%',
         minHeight: '280px',
-      }">
+      }"
+    >
       <div>
         <h2><b>关键短语抽取</b></h2>
         <p>给定一篇文本，从中抽取出表达概括性、重要性的短语。</p>
@@ -28,21 +28,37 @@
             <p>
               ● 该方法提供全量可选参数供参考
               <a
-                href="https://github.com/dongrixinyu/JioNLP/blob/master/jionlp/algorithm/keyphrase/extract_keyphrase.py"><b>关键短语抽取参数说明</b></a>与
+                href="https://github.com/dongrixinyu/JioNLP/blob/master/jionlp/algorithm/keyphrase/extract_keyphrase.py"
+                ><b>关键短语抽取参数说明</b></a
+              >与
               <a
-                href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-关键短语抽取"><b>关键短语抽取说明文档</b></a>。
+                href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-关键短语抽取"
+                ><b>关键短语抽取说明文档</b></a
+              >。
             </p>
             <p>
               ● 该方法除单纯抽取文本关键短语外，还可以应用于
               <a
-                href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-扩展应用一扩展类型短语"><b>扩展类型短语</b></a>与<a
-                href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-扩展应用二扩充ner特定类型实体"><b>扩充NER特定类型实体</b></a>。
+                href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-扩展应用一扩展类型短语"
+                ><b>扩展类型短语</b></a
+              >与<a
+                href="https://github.com/dongrixinyu/JioNLP/wiki/Gadget-说明文档#user-content-扩展应用二扩充ner特定类型实体"
+                ><b>扩充NER特定类型实体</b></a
+              >。
             </p>
           </template>
           <a-button type="dashed">● 说明</a-button>
         </a-popover>
       </div>
-      <textarea v-model="text" style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;" />
+      <textarea
+        v-model="text"
+        style="
+          display: inline-block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;
+        "
+      />
       <HR SIZE="10" />
       <div>
         <h4><b>参数配置</b></h4>
@@ -50,13 +66,17 @@
       <a-input-group size="small">
         <a-row style="height: 30px">
           <a-col :span="80">
-            <a-input style="
+            <a-input
+              style="
                 width: 80px;
                 height: 24px;
                 margin: 3px;
                 padding: 0px 7px;
                 font-size: 14px;
-              " placeholder="5" v-model:value="top_k">
+              "
+              placeholder="5"
+              v-model:value="top_k"
+            >
             </a-input>
           </a-col>
           <a-col :span="80">
@@ -72,13 +92,17 @@
       <a-input-group size="small">
         <a-row style="height: 30px">
           <a-col :span="80">
-            <a-input style="
+            <a-input
+              style="
                 width: 80px;
                 height: 24px;
                 margin: 3px;
                 padding: 0px 7px;
                 font-size: 14px;
-              " placeholder="0.5" v-model:value="topic_theta">
+              "
+              placeholder="0.5"
+              v-model:value="topic_theta"
+            >
             </a-input>
           </a-col>
           <a-col :span="80">
@@ -94,50 +118,70 @@
       <a-checkbox-group v-model:value="param_values">
         <a-row>
           <a-col :span="80">
-            <a-checkbox value="strict_pos">是否<b>仅</b>获取<b>名词短语</b></a-checkbox>
+            <a-checkbox value="strict_pos"
+              >是否<b>仅</b>获取<b>名词短语</b></a-checkbox
+            >
           </a-col>
         </a-row>
         <a-row>
           <a-col :span="80">
-            <a-checkbox value="allow_pos_weight">是否添加短语<b>词性权重</b>，将某类词性短语（如动词短语、形容词短语）进行权重提升</a-checkbox>
+            <a-checkbox value="allow_pos_weight"
+              >是否添加短语<b>词性权重</b>，将某类词性短语（如动词短语、形容词短语）进行权重提升</a-checkbox
+            >
           </a-col>
         </a-row>
         <a-row>
           <a-col :span="80">
-            <a-checkbox value="allow_length_weight">是否添加短语<b>长度权重</b>，token 长度为 2~5
-              的短语更易被抽取。</a-checkbox>
+            <a-checkbox value="allow_length_weight"
+              >是否添加短语<b>长度权重</b>，token 长度为 2~5
+              的短语更易被抽取。</a-checkbox
+            >
           </a-col>
         </a-row>
         <a-row>
           <a-col :span="80">
-            <a-checkbox value="allow_topic_weight">是否添加<b>主题突出度</b>，可规避非主题短语被抽取（如：日期等）</a-checkbox>
+            <a-checkbox value="allow_topic_weight"
+              >是否添加<b>主题突出度</b>，可规避非主题短语被抽取（如：日期等）</a-checkbox
+            >
           </a-col>
         </a-row>
         <a-row>
           <a-col :span="80">
-            <a-checkbox value="without_person_name">是否<b>剔除</b>短语中出现<b>人名</b></a-checkbox>
+            <a-checkbox value="without_person_name"
+              >是否<b>剔除</b>短语中出现<b>人名</b></a-checkbox
+            >
           </a-col>
         </a-row>
         <a-row>
           <a-col :span="80">
-            <a-checkbox value="without_location_name">是否<b>剔除</b>短语中出现<b>地名</b></a-checkbox>
+            <a-checkbox value="without_location_name"
+              >是否<b>剔除</b>短语中出现<b>地名</b></a-checkbox
+            >
           </a-col>
         </a-row>
       </a-checkbox-group>
 
-      <a-button style="
+      <a-button
+        style="
           display: block;
           margin-bottom: 10px;
           margin-left: auto;
           margin-right: 30px;
-        " type="primary" @click="send">提交文本
+        "
+        type="primary"
+        @click="send"
+        >提交文本
         <CaretRightOutlined />
       </a-button>
 
       <a-layout style="display: block">
         <div v-if="response.detail.length > 0">
-          <a-table style="text-align: center; display: block" :columns="table_columns" :data-source="response.detail"
-            :footer="null">
+          <a-table
+            style="text-align: center; display: block"
+            :columns="table_columns"
+            :data-source="response.detail"
+            :footer="null"
+          >
           </a-table>
         </div>
         <div v-else></div>
@@ -149,7 +193,7 @@
 <script lang="ts">
 import { Options, setup, Vue } from "vue-class-component";
 import { CaretRightOutlined, HomeOutlined } from "@ant-design/icons-vue";
-import { useMeta } from 'vue-meta';
+import { useMeta } from "vue-meta";
 import router from "@/router/index";
 import { jio_instance_with_jiojio } from "@/utils/request";
 import { ref } from "vue";
@@ -202,7 +246,7 @@ class ExtractKeyphrase extends Vue {
   response = { is_ok: false, detail: Array<Keyphrase>() };
   table_columns = table_columns;
   $router = router;
-  meta = setup(() => useMeta({ title: '关键短语抽取 | 在线测试' }));
+  meta = setup(() => useMeta({ title: "关键短语抽取 | 在线测试" }));
 
   param_values = ref([
     "strict_pos",
@@ -268,7 +312,7 @@ class ExtractKeyphrase extends Vue {
         top_k: parseInt(this.top_k.toString()),
         topic_theta: parseFloat(this.topic_theta.toString()),
         random_num: random_int,
-        hash_code: hash_code
+        hash_code: hash_code,
       },
     })
       .then((response) => {
@@ -286,7 +330,7 @@ class ExtractKeyphrase extends Vue {
         //console.log(this.response);
       })
       .catch((error) => {
-        //console.log(error);
+        console.log(error);
       });
   }
 }
