@@ -9,3 +9,4 @@ declare module 'vue-fab';
 // declare module 'vue-mathjax-next';
 declare module 'marked';
 declare module 'katex';
+declare module 'ts-md5/dist/md5'

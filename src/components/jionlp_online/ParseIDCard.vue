@@ -7,20 +7,20 @@
         </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>
-        <router-link to="/jionlp_online">
-          NLP 在线解析
-        </router-link>
+        <router-link to="/jionlp_online"> NLP 在线解析 </router-link>
       </a-breadcrumb-item>
 
       <a-breadcrumb-item>解析身份证号</a-breadcrumb-item>
     </a-breadcrumb>
-    <a-layout-content :style="{
+    <a-layout-content
+      :style="{
         background: '#fff',
         padding: '24px',
         margin: 0,
         width: '100%',
         minHeight: '280px',
-      }">
+      }"
+    >
       <div>
         <h2><b>解析身份证号</b></h2>
         <p>
@@ -28,20 +28,31 @@
         </p>
         <!--VueMathjax :formula="formula" /-->
       </div>
-      <textarea v-model="text" style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;" />
-      <a-button style="
+      <textarea
+        v-model="text"
+        style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;"
+      />
+      <a-button
+        style="
           display: block;
           margin-bottom: 10px;
           margin-left: auto;
           margin-right: 30px;
-        " type="primary" @click="send">提交文本
+        "
+        type="primary"
+        @click="send"
+        >提交文本
         <CaretRightOutlined />
       </a-button>
 
       <a-layout style="display: block">
         <div v-if="response.is_ok == true && first_show == false">
-          <a-table style="text-align: center; display: block" :columns="table_columns" :data-source="response.detail"
-            :footer="null">
+          <a-table
+            style="text-align: center; display: block"
+            :columns="table_columns"
+            :data-source="response.detail"
+            :footer="null"
+          >
           </a-table>
         </div>
         <div v-else-if="response.is_ok == false && first_show == false">
@@ -54,7 +65,9 @@
             </p>
             <p>
               ●
-              <a href="https://github.com/dongrixinyu/JioNLP/issues"><b>提交报错信息</b></a>
+              <a href="https://github.com/dongrixinyu/JioNLP/issues"
+                ><b>提交报错信息</b></a
+              >
             </p>
           </a-card>
         </div>

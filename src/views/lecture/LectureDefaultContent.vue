@@ -9,36 +9,71 @@
         </a-breadcrumb-item>
         <a-breadcrumb-item>NLP 教程</a-breadcrumb-item>
       </a-breadcrumb>
-      <a-layout-content :style="{
+      <a-layout-content
+        :style="{
           background: '#fff',
           padding: '24px',
           margin: 0,
           minHeight: '280px',
-        }">
+        }"
+      >
         <div>
           <p id="head_line">NLP教程</p>
         </div>
         <div id="key_point">
           <a-row :gutter="16">
-
-            <a-card hoverable style="width: 100%; margin-bottom: 10px;" type="inner">
+            <a-card
+              hoverable
+              style="width: 100%; margin-bottom: 10px"
+              type="inner"
+            >
               <template #cover>
                 <router-link id="crf" to="/lecture/sequence_labeling">
-                  <img class="cover_image" alt="序列标注任务简介" src="@/assets/lecture/cover_image/sequence_labeling.jpg" />
+                  <img
+                    class="cover_image"
+                    alt="序列标注任务简介"
+                    src="@/assets/lecture/cover_image/sequence_labeling.jpg"
+                  />
                 </router-link>
               </template>
-              <a-card-meta title="🐤 序列标注任务简介" style="{font-weight: bold; text-align: left; height: 20px}">
+              <a-card-meta
+                title="🐤 序列标注任务简介"
+                style="
+                   {
+                    font-weight: bold;
+                    text-align: left;
+                    height: 20px;
+                  }
+                "
+              >
               </a-card-meta>
             </a-card>
           </a-row>
           <a-row :gutter="16">
-            <a-card hoverable style="width: 100%; margin-bottom: 10px;" type="inner">
+            <a-card
+              hoverable
+              style="width: 100%; margin-bottom: 10px"
+              type="inner"
+            >
               <template #cover>
                 <router-link id="crf" to="/lecture/logistics_crf">
-                  <img class="cover_image" alt="条件随机场（CRF）" src="@/assets/lecture/cover_image/logistics_crf.jpg" />
+                  <img
+                    class="cover_image"
+                    alt="条件随机场（CRF）"
+                    src="@/assets/lecture/cover_image/logistics_crf.jpg"
+                  />
                 </router-link>
               </template>
-              <a-card-meta title="🐤 条件随机场（CRF）" style="{font-weight: bold; text-align: left; height: 20px}">
+              <a-card-meta
+                title="🐤 条件随机场（CRF）"
+                style="
+                   {
+                    font-weight: bold;
+                    text-align: left;
+                    height: 20px;
+                  }
+                "
+              >
               </a-card-meta>
             </a-card>
           </a-row>
@@ -52,8 +87,8 @@
 </template>
 
 <script>
-import { defineComponent } from "@vue/composition-api";
-import { useMeta } from 'vue-meta';
+import { defineComponent } from "vue";
+import { useMeta } from "vue-meta";
 import blog_asset from "@/utils/blog_request";
 import router from "@/router/index";
 import {
@@ -63,7 +98,7 @@ import {
 } from "@ant-design/icons-vue";
 
 export default defineComponent({
-  name: 'LectureDefaultContent',
+  name: "LectureDefaultContent",
 
   components: {
     HomeOutlined,
@@ -74,26 +109,25 @@ export default defineComponent({
   data() {
     return {
       router: router,
-      markdown: "### loading ..."
-    }
+      markdown: "### loading ...",
+    };
   },
 
   setup() {
     useMeta({
-      title: 'NLP 教程',
-      htmlAttrs: { lang: 'en', amp: true }
-    })
+      title: "NLP 教程",
+      htmlAttrs: { lang: "en", amp: true },
+    });
   },
 
   computed: {
     markdownToHtml() {
       var markdown_content = this.md(this.markdown);
       return markdown_content;
-    }
+    },
   },
 
   created() {
-
     blog_asset({
       url: "/lecture/lecture_home_page/README.md",
     })
@@ -102,15 +136,14 @@ export default defineComponent({
         this.markdown = response.data;
       })
       .catch(() => {
-        this.markdown = "### Failed to request markdown file. \n### Please refresh the webpage.";
+        this.markdown =
+          "### Failed to request markdown file. \n### Please refresh the webpage.";
       });
-
-  }
+  },
 });
 </script>
 
 <style scoped>
-
 #head_line {
   font-weight: bold;
   font-size: 26px;
@@ -120,5 +153,4 @@ export default defineComponent({
   width: 100%;
   height: 170px;
 }
-
 </style>

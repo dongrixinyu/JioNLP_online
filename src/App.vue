@@ -2,7 +2,9 @@
   <div>
     <a-layout>
       <metainfo>
-        <template v-slot:title="{ content }">{{ content ? `${content} | JioNLP源站` : `SITE_NAME` }}</template>
+        <template v-slot:title="{ content }">{{
+          content ? `${content} | JioNLP源站` : `SITE_NAME`
+        }}</template>
       </metainfo>
       <PageHeader />
       <a-layout id="page-content">
@@ -37,10 +39,10 @@ export default {
   },
   setup() {
     useMeta({
-      title: '',
-      htmlAttrs: {lang: 'cn', amp: true}
-    })
-  }
+      title: "",
+      htmlAttrs: { lang: "cn", amp: true },
+    });
+  },
 };
 </script>
 

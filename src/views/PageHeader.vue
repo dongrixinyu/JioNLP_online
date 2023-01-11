@@ -1,5 +1,4 @@
 <template>
-
   <div id="page_header">
     <div class="logo">
       <a-popover placement="bottomLeft" title="" trigger="hover">
@@ -8,12 +7,20 @@
             ● 您是本站的第<b> {{ guest_count }} </b>位访客。
           </p>
         </template>
-        <router-link id="default_content" to="/"><img id="jionlp_logo" alt="jionlp_logo"
-            src="@/assets/others/jionlp_logo.png" /></router-link>
+        <router-link id="default_content" to="/"
+          ><img
+            id="jionlp_logo"
+            alt="jionlp_logo"
+            src="@/assets/others/jionlp_logo.png"
+        /></router-link>
       </a-popover>
     </div>
     <div id="horizontal_navigator">
-      <a-menu theme="dark" mode="horizontal" :style="{ lineHeight: '44px', backgroundColor: 'black'}">
+      <a-menu
+        theme="dark"
+        mode="horizontal"
+        :style="{ lineHeight: '44px', backgroundColor: 'black' }"
+      >
         <a-menu-item key="nlp_online">
           <router-link id="nlp_online" to="/jionlp_online">NLP在线</router-link>
         </a-menu-item>
@@ -21,7 +28,9 @@
           <router-link id="nlp_product" to="/product">NLP产品</router-link>
         </a-menu-item>
         <a-menu-item key="nlp_lectrue">
-          <router-link id="nlp_lecture" to="/lecture/lecture_home_page">NLP教程</router-link>
+          <router-link id="nlp_lecture" to="/lecture/lecture_home_page"
+            >NLP教程</router-link
+          >
         </a-menu-item>
         <a-menu-item key="contact_us">
           <router-link id="contact_us" to="/contact_us">联系我们</router-link>
@@ -32,17 +41,24 @@
     <div class="links" style="flex: 1; display: inline-block">
       <!--GithubOutlined style="{width: 40px, height: 40px}" /-->
       <a href="https://github.com/dongrixinyu/JioNLP" target="_blank">
-        <img class="link-icon-1" src="@/assets/others/github_logo.jpg" alt="Github" />
+        <img
+          class="link-icon-1"
+          src="@/assets/others/github_logo.jpg"
+          alt="Github"
+        />
       </a>
       <a href="https://pypi.org/project/jionlp/" target="_blank">
-        <img class="link-icon-2" src="https://pypi.org/static/images/logo-small.95de8436.svg" alt="Pypi" />
+        <img
+          class="link-icon-2"
+          src="https://pypi.org/static/images/logo-small.95de8436.svg"
+          alt="Pypi"
+        />
       </a>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-
 import { Options, Vue } from "vue-class-component";
 // import { MenuOutlined } from "@ant-design/icons-vue";
 import { stat_instance } from "@/utils/request";
@@ -54,14 +70,19 @@ import { stat_instance } from "@/utils/request";
 })
 class PageHeader extends Vue {
   guest_count = 0;
-  opened_horizontal_keys = ["nlp_online", "nlp_product", "nlp_lecture", "contact_us"];
+  opened_horizontal_keys = [
+    "nlp_online",
+    "nlp_product",
+    "nlp_lecture",
+    "contact_us",
+  ];
 
   created() {
     stat_instance({
       url: "/stat_api/frontend_page_statistics",
       data: {
         page_name: "home_page",
-      }
+      },
     })
       .then((response) => {
         this.guest_count = response.data.detail;
@@ -76,7 +97,6 @@ export default PageHeader;
 </script>
 
 <style lang="less">
-
 #page_header {
   position: fixed;
   // display: block;
@@ -88,7 +108,6 @@ export default PageHeader;
   // text-align: left;
   min-width: 100%;
   min-height: 60px;
-
 }
 
 #jionlp_logo {
@@ -158,12 +177,11 @@ export default PageHeader;
   .links {
     display: none;
   }
-  .link-icon-1{
+  .link-icon-1 {
     display: none;
   }
   .link-icon-2 {
     display: none;
   }
 }
-
 </style>

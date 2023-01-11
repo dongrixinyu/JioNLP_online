@@ -7,20 +7,20 @@
         </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>
-        <router-link to="/jionlp_online">
-          NLP 在线解析
-        </router-link>
+        <router-link to="/jionlp_online"> NLP 在线解析 </router-link>
       </a-breadcrumb-item>
 
       <a-breadcrumb-item>同音词替换</a-breadcrumb-item>
     </a-breadcrumb>
-    <a-layout-content :style="{
+    <a-layout-content
+      :style="{
         background: '#fff',
         padding: '24px',
         margin: 0,
         width: '100%',
         minHeight: '280px',
-      }">
+      }"
+    >
       <div>
         <h2><b>同音词替换</b></h2>
         <p>
@@ -28,13 +28,20 @@
           给定一段文本，对其做同音词替换数据增强，扩展文本表达，一般用于训练模型。
         </p>
       </div>
-      <textarea v-model="text" style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;" />
-      <a-button style="
+      <textarea
+        v-model="text"
+        style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;"
+      />
+      <a-button
+        style="
           display: block;
           margin-bottom: 10px;
           margin-left: auto;
           margin-right: 30px;
-        " type="primary" @click="send">提交文本
+        "
+        type="primary"
+        @click="send"
+        >提交文本
         <CaretRightOutlined />
       </a-button>
 
@@ -58,12 +65,17 @@
             </p>
             <p>
               ● 如还想继续使用，可以参考
-              <a href="https://github.com/dongrixinyu/JioNLP/wiki/数据增强-说明文档#同音词替换"><b> 同音词替换数据增强-使用说明 </b></a>
+              <a
+                href="https://github.com/dongrixinyu/JioNLP/wiki/数据增强-说明文档#同音词替换"
+                ><b> 同音词替换数据增强-使用说明 </b></a
+              >
               。
             </p>
             <p>
               ● 如使用报错，可在此
-              <a href="https://github.com/dongrixinyu/JioNLP/issues"><b>提交报错信息</b></a>
+              <a href="https://github.com/dongrixinyu/JioNLP/issues"
+                ><b>提交报错信息</b></a
+              >
             </p>
           </a-card>
         </div>

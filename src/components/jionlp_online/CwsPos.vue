@@ -7,21 +7,21 @@
         </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>
-        <router-link to="/jionlp_online">
-          NLP 在线解析
-        </router-link>
+        <router-link to="/jionlp_online"> NLP 在线解析 </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>分词与词性标注</a-breadcrumb-item>
 
       <!--a-breadcrumb-item>App</a-breadcrumb-item-->
     </a-breadcrumb>
-    <a-layout-content :style="{
+    <a-layout-content
+      :style="{
         background: '#fff',
         padding: '24px',
         margin: 0,
         width: '100%',
         minHeight: '280px',
-      }">
+      }"
+    >
       <div>
         <h2><b>分词与词性标注</b></h2>
         <p>
@@ -36,21 +36,25 @@
               ●
               该工具提供<b>持续优化</b>的功能，定期更新默认的分词和词性标注模型，以达到更佳的效果和处理性能。
             </p>
-            <p>
-              ●
-              您测试提交的每一条文本，都将为<b>jiojio</b>的优化提供助力。
-            </p>
+            <p>● 您测试提交的每一条文本，都将为<b>jiojio</b>的优化提供助力。</p>
           </template>
           <a-button type="dashed">● 说明</a-button>
         </a-popover>
       </div>
-      <textarea v-model="text" style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;" />
-      <a-button style="
+      <textarea
+        v-model="text"
+        style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;"
+      />
+      <a-button
+        style="
           display: block;
           margin-bottom: 10px;
           margin-left: auto;
           margin-right: 30px;
-        " type="primary" @click="send">提交文本
+        "
+        type="primary"
+        @click="send"
+        >提交文本
         <CaretRightOutlined />
       </a-button>
 
@@ -179,7 +183,9 @@
             </p>
             <p>
               ●
-              <a href="https://github.com/dongrixinyu/jiojio/issues">提交报错信息</a>
+              <a href="https://github.com/dongrixinyu/jiojio/issues"
+                >提交报错信息</a
+              >
             </p>
           </a-card>
         </div>
@@ -194,7 +200,7 @@
 <script lang="ts">
 import { Options, setup, Vue } from "vue-class-component";
 import { CaretRightOutlined, HomeOutlined } from "@ant-design/icons-vue";
-import { useMeta } from 'vue-meta';
+import { useMeta } from "vue-meta";
 import router from "@/router/index";
 import { jio_instance_with_jiojio } from "@/utils/request";
 import authentication_hash_code from "@/utils/authentication";
@@ -249,7 +255,8 @@ const entity_mapping = {
 class CwsPos extends Vue {
   // text =
   //  "据央视新闻消息，10月12日，福建省莆田市政府召开疫情防控情况新闻发布会，介绍最新情况。据通报，从本月10日至12日16时，大约两天时间内，累计报告新冠病毒核酸阳性64例，平均每日新增病例30例，其中确诊病例32例、无症状感染者32例。";
-  text = "在自然语言处理领域，jiojio是一款基于C语言的中文领域的分词和词性标注工具。 http://www.jionlp.com";
+  text =
+    "在自然语言处理领域，jiojio是一款基于C语言的中文领域的分词和词性标注工具。 http://www.jionlp.com";
   rendered_text = "";
   new_string_end = entity_mapping["end_map"];
 
@@ -293,7 +300,7 @@ class CwsPos extends Vue {
     url_is_ok: false,
   };
   $router = router;
-  meta = setup(() => useMeta({ title: '分词与词性标注 | 在线测试' }));
+  meta = setup(() => useMeta({ title: "分词与词性标注 | 在线测试" }));
 
   mounted() {
     //console.log("ParseLocation mounted!");
@@ -304,8 +311,8 @@ class CwsPos extends Vue {
       url: "/jio_api/jiojio_cws_pos",
       data: {
         text: this.text,
-        random_num: random_int,  // 30000
-        hash_code: hash_code,  // "464131b24e843ecd8d463e3accbe88e6"
+        random_num: random_int, // 30000
+        hash_code: hash_code, // "464131b24e843ecd8d463e3accbe88e6"
         // whole_text: whole_text,
       },
     })
@@ -322,7 +329,7 @@ class CwsPos extends Vue {
           let word: string;
           let pos_type: string;
           word = response.data.detail[i][0];
-          word = word.replace(' ', '　');
+          word = word.replace(" ", "　");
           pos_type = response.data.detail[i][1];
           // console.log(this.new_string_end);
           if (pos_type == "ad") this.response.ad_is_ok = true;
@@ -396,7 +403,6 @@ export default CwsPos;
 </script>
 
 <style lang="less">
-
 //scoped
 textarea {
   width: 100%;
@@ -571,5 +577,4 @@ textarea {
 .entity_tag.url {
   background-color: rgb(130, 43, 58);
 }
-
 </style>

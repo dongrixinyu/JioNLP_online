@@ -7,19 +7,19 @@
         </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>
-        <router-link to="/jionlp_online">
-          NLP 在线解析
-        </router-link>
+        <router-link to="/jionlp_online"> NLP 在线解析 </router-link>
       </a-breadcrumb-item>
       <a-breadcrumb-item>货币金额抽取</a-breadcrumb-item>
     </a-breadcrumb>
-    <a-layout-content :style="{
+    <a-layout-content
+      :style="{
         background: '#fff',
         padding: '24px',
         margin: 0,
         width: '100%',
         minHeight: '280px',
-      }">
+      }"
+    >
       <div>
         <h2><b>货币金额抽取</b></h2>
         <p>给定一篇中文文本，抽取出其中的货币金额，并将其标准化。</p>
@@ -31,20 +31,32 @@
             </p>
             <p>
               ● 若想要货币金额更详细信息，以及代码使用，请参考
-              <a href="https://github.com/dongrixinyu/JioNLP/wiki/正则抽取与解析-说明文档#user-content-货币金额解析"><b>货币金额解析</b></a>与<a
-                href="https://github.com/dongrixinyu/JioNLP/wiki/NER-说明文档#user-content-货币金额实体抽取"><b>货币金额实体抽取</b></a>。
+              <a
+                href="https://github.com/dongrixinyu/JioNLP/wiki/正则抽取与解析-说明文档#user-content-货币金额解析"
+                ><b>货币金额解析</b></a
+              >与<a
+                href="https://github.com/dongrixinyu/JioNLP/wiki/NER-说明文档#user-content-货币金额实体抽取"
+                ><b>货币金额实体抽取</b></a
+              >。
             </p>
           </template>
           <a-button type="dashed">● 说明</a-button>
         </a-popover>
       </div>
-      <textarea v-model="text" style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;" />
-      <a-button style="
+      <textarea
+        v-model="text"
+        style="display: inline-block; margin-left: auto; margin-right: auto, width: 50%;"
+      />
+      <a-button
+        style="
           display: block;
           margin-bottom: 10px;
           margin-left: auto;
           margin-right: 30px;
-        " type="primary" @click="send">提交文本
+        "
+        type="primary"
+        @click="send"
+        >提交文本
         <CaretRightOutlined />
       </a-button>
 
@@ -56,15 +68,21 @@
             <p>● 如解析错误，可通过以下 Github 链接提交报错信息</p>
             <p>
               ●
-              <a href="https://github.com/dongrixinyu/JioNLP/issues"><b>提交报错文本信息</b></a>
+              <a href="https://github.com/dongrixinyu/JioNLP/issues"
+                ><b>提交报错文本信息</b></a
+              >
             </p>
           </a-card>
         </div>
         <div style="background: #fff; padding: 20px">
           <font id="insertion_html" size="3.5"> </font>
           <div v-if="response.is_ok == true && first_show == false">
-            <a-table style="margin-top: 20px; text-align: center; display: block" :columns="table_columns"
-              :data-source="response.detail" :footer="null">
+            <a-table
+              style="margin-top: 20px; text-align: center; display: block"
+              :columns="table_columns"
+              :data-source="response.detail"
+              :footer="null"
+            >
               <template #name="{ record }">
                 <span>
                   <b> {{ record.orig_money }} </b>
@@ -81,7 +99,7 @@
 <script lang="ts">
 import { Options, setup, Vue } from "vue-class-component";
 import { CaretRightOutlined, HomeOutlined } from "@ant-design/icons-vue";
-import { useMeta } from 'vue-meta';
+import { useMeta } from "vue-meta";
 import router from "@/router/index";
 import { jio_instance } from "@/utils/request";
 import authentication_hash_code from "@/utils/authentication";
@@ -161,7 +179,7 @@ class ParseMoney extends Vue {
   };
   $router = router;
   table_columns = table_columns;
-  meta = setup(() => useMeta({ title: '货币金额抽取 | 在线测试' }));
+  meta = setup(() => useMeta({ title: "货币金额抽取 | 在线测试" }));
 
   mounted() {
     //console.log("ParseMoney mounted!");
@@ -198,7 +216,6 @@ class ParseMoney extends Vue {
             end_idx,
             this.new_string_end
           );
-
 
           // new_string_start = "23";
           this.rendered_text = insertString(
@@ -254,7 +271,7 @@ class ParseMoney extends Vue {
           this.response.is_ok = false;
         }
       })
-      .catch((error) => {
+      .catch(() => {
         this.first_show = false;
         this.response.is_ok = false;
       });
