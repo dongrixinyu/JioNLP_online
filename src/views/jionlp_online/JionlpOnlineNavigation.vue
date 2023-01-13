@@ -104,9 +104,6 @@
               >
             </a-menu-item>
             <!--a-menu-item key="2-3">More...</a-menu-item-->
-            <!--a-sub-menu key="sub3" title="Submenu">
-              <a-menu-item key="11">Option 11</a-menu-item>
-            </a-sub-menu-->
           </a-sub-menu>
         </a-menu>
       </a-layout-sider>
@@ -199,7 +196,7 @@ export default defineComponent({
 });
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 #navigation-button {
   z-index: 20;
   display: block;

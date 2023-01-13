@@ -56,17 +56,6 @@ export default {
   color: #2c3e50;
   margin-top: 0px;
 }
-#show_function {
-  margin-left: 256px;
-  margin-top: 0px;
-  padding: 30px;
-}
-
-#variable-content {
-  width: 100%;
-  margin-left: 0px;
-  margin-right: 0px;
-}
 
 #page-content {
   margin-top: 60px;

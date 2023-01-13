@@ -177,11 +177,6 @@ export default defineComponent({
   display: flex;
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
 a {
   color: #00b441;
 }

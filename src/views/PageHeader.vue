@@ -96,7 +96,7 @@ class PageHeader extends Vue {
 export default PageHeader;
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 #page_header {
   position: fixed;
   // display: block;
