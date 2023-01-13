@@ -3,9 +3,7 @@
     <a-layout>
       <LectureNavigation />
       <LectureTemplate :page_name="this.page_name" />
-      <!-- <router-view>
-            </router-view> -->
-      <tui-juhe />
+      <benice-sleeping-beverage />
     </a-layout>
   </div>
 </template>
@@ -16,13 +14,13 @@ import router from "@/router/index";
 
 import LectureNavigation from "@/views/lecture/LectureNavigation.vue";
 import LectureTemplate from "@/views/lecture/LectureTemplate.vue";
-import TuiJuhe from "@/components/advertisement/TuiJuhe.vue";
+import BeniceSleepingBeverage from "@/components/advertisement/BeniceSleepingBeverage.vue";
 
 export default {
   name: "LectureBase",
   components: {
     LectureNavigation,
-    TuiJuhe,
+    BeniceSleepingBeverage,
     LectureTemplate,
   },
 
