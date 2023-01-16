@@ -56,7 +56,7 @@
           display: inline-block;
           margin-left: auto;
           margin-right: auto;
-          width: 50%;
+          width: 100%;
         "
       />
       <HR SIZE="10" />
