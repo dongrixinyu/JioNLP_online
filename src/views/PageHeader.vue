@@ -59,9 +59,9 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from "vue-class-component";
+import { Options, Vue } from 'vue-class-component';
 // import { MenuOutlined } from "@ant-design/icons-vue";
-import { stat_instance } from "@/utils/request";
+import { stat_instance } from '@/utils/request';
 
 @Options({
   components: {
@@ -71,17 +71,17 @@ import { stat_instance } from "@/utils/request";
 class PageHeader extends Vue {
   guest_count = 0;
   opened_horizontal_keys = [
-    "nlp_online",
-    "nlp_product",
-    "nlp_lecture",
-    "contact_us",
+    'nlp_online',
+    'nlp_product',
+    'nlp_lecture',
+    'contact_us',
   ];
 
   created() {
     stat_instance({
-      url: "/stat_api/frontend_page_statistics",
+      url: '/stat_api/frontend_page_statistics',
       data: {
-        page_name: "home_page",
+        page_name: 'home_page',
       },
     })
       .then((response) => {

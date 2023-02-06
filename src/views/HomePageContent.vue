@@ -73,10 +73,10 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import { useMeta } from "vue-meta";
-import blog_asset from "@/utils/blog_request";
-import HorizontalNavigation from "./HorizontalNavigation.vue";
+import { defineComponent } from 'vue';
+import { useMeta } from 'vue-meta';
+import blog_asset from '@/utils/blog_request';
+import HorizontalNavigation from './HorizontalNavigation.vue';
 import {
   BugOutlined,
   // HomeOutlined,
@@ -84,7 +84,7 @@ import {
   // InfoCircleFilled,
   EnvironmentOutlined,
   // EyeOutlined,
-} from "@ant-design/icons-vue";
+} from '@ant-design/icons-vue';
 
 export default defineComponent({
   components: {
@@ -99,7 +99,7 @@ export default defineComponent({
   },
   data() {
     return {
-      markdown: "### loading ...",
+      markdown: '### loading ...',
     };
   },
   computed: {
@@ -110,13 +110,13 @@ export default defineComponent({
   },
   setup() {
     useMeta({
-      title: "首页",
-      htmlAttrs: { lang: "en", amp: true },
+      title: '首页',
+      htmlAttrs: { lang: 'en', amp: true },
     });
   },
   created() {
     blog_asset({
-      url: "/lecture/home_page/README.md",
+      url: '/lecture/home_page/README.md',
     })
       .then((response) => {
         // console.log(response.data);
@@ -124,7 +124,7 @@ export default defineComponent({
       })
       .catch(() => {
         this.markdown =
-          "### Failed to request markdown file.\nPlease refresh the web page.";
+          '### Failed to request markdown file.\nPlease refresh the web page.';
       });
   },
 });

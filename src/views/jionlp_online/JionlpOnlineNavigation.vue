@@ -112,7 +112,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs, watch, onMounted } from "vue";
+import { defineComponent, reactive, toRefs, watch, onMounted } from 'vue';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -121,15 +121,15 @@ import {
   DesktopOutlined,
   InboxOutlined,
   AppstoreOutlined,
-} from "@ant-design/icons-vue";
+} from '@ant-design/icons-vue';
 
 export default defineComponent({
   setup() {
     const state = reactive({
       collapsed_b: true,
       collapsed: false,
-      selectedKeys: ["1"],
-      openKeys: ["sub1", "sub2"],
+      selectedKeys: ['1'],
+      openKeys: ['sub1', 'sub2'],
       preOpenKeys: [],
     });
     watch(
@@ -139,28 +139,28 @@ export default defineComponent({
       }
     );
     onMounted(() => {
-      document.addEventListener("click", (event) => {
-        const userClick = document.getElementById("navigation-button");
-        console.log("click menu: ", userClick.contains(event.target));
-        const navigation_expand = document.getElementById("expand");
+      document.addEventListener('click', (event) => {
+        const userClick = document.getElementById('navigation-button');
+        console.log('click menu: ', userClick.contains(event.target));
+        const navigation_expand = document.getElementById('expand');
 
         const window_width = window.innerWidth;
-        console.log("window_width: ", window_width);
+        console.log('window_width: ', window_width);
         if (window_width < 801) {
           if (userClick && userClick.contains(event.target)) {
-            navigation_expand.style.display = "block";
+            navigation_expand.style.display = 'block';
           } else {
-            navigation_expand.style.display = "none";
+            navigation_expand.style.display = 'none';
           }
         }
       });
 
-      window.addEventListener("resize", function () {
-        const navigation_expand = document.getElementById("expand");
+      window.addEventListener('resize', function () {
+        const navigation_expand = document.getElementById('expand');
         if (window.innerWidth > 800) {
-          navigation_expand.style.display = "block";
+          navigation_expand.style.display = 'block';
         } else {
-          navigation_expand.style.display = "none";
+          navigation_expand.style.display = 'none';
         }
       });
     });
@@ -168,15 +168,15 @@ export default defineComponent({
     const toggleCollapsed = () => {
       // state.collapsed_b = !state.collapsed_b;
       // if (toggleCount)
-      let collapsed_div = document.getElementById("expand");
-      if (collapsed_div.style.display == "") {
+      let collapsed_div = document.getElementById('expand');
+      if (collapsed_div.style.display == '') {
         // 该匹配必然在初次加载时进行匹配，后续则不需要
-        collapsed_div.style.display = "block";
+        collapsed_div.style.display = 'block';
       } else {
-        if (collapsed_div.style.display == "none") {
-          collapsed_div.style.display = "block";
+        if (collapsed_div.style.display == 'none') {
+          collapsed_div.style.display = 'block';
         } else {
-          collapsed_div.style.display = "none";
+          collapsed_div.style.display = 'none';
         }
       }
     };

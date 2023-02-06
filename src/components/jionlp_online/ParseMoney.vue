@@ -97,38 +97,38 @@
 </template>
 
 <script lang="ts">
-import { Options, setup, Vue } from "vue-class-component";
-import { CaretRightOutlined, HomeOutlined } from "@ant-design/icons-vue";
-import { useMeta } from "vue-meta";
-import router from "@/router/index";
-import { jio_instance } from "@/utils/request";
-import authentication_hash_code from "@/utils/authentication";
+import { Options, setup, Vue } from 'vue-class-component';
+import { CaretRightOutlined, HomeOutlined } from '@ant-design/icons-vue';
+import { useMeta } from 'vue-meta';
+import router from '@/router/index';
+import { jio_instance } from '@/utils/request';
+import authentication_hash_code from '@/utils/authentication';
 
 const table_columns = [
   {
-    title: "货币金额",
-    dataIndex: "orig_money",
+    title: '货币金额',
+    dataIndex: 'orig_money',
     sorter: false,
-    width: "25%",
-    slots: { title: "customTitle", customRender: "name" },
+    width: '25%',
+    slots: { title: 'customTitle', customRender: 'name' },
   },
   {
-    title: "标准额度",
-    dataIndex: "std_money",
-    width: "25%",
-    key: "std_money",
+    title: '标准额度',
+    dataIndex: 'std_money',
+    width: '25%',
+    key: 'std_money',
   },
   {
-    title: "货币单位",
-    dataIndex: "case",
-    width: "15%",
-    key: "case",
+    title: '货币单位',
+    dataIndex: 'case',
+    width: '15%',
+    key: 'case',
   },
   {
-    title: "精确度",
-    dataIndex: "definition",
-    width: "15%",
-    key: "definition",
+    title: '精确度',
+    dataIndex: 'definition',
+    width: '15%',
+    key: 'definition',
   },
 ];
 
@@ -144,9 +144,9 @@ type MoneyObj = {
 
 const entity_mapping = {
   money: '<span class="entity_tag money"><b>',
-  end_map: "</b></span>",
-  front_p: "<p>",
-  end_p: "</p>",
+  end_map: '</b></span>',
+  front_p: '<p>',
+  end_p: '</p>',
 };
 
 function insertString(
@@ -167,10 +167,10 @@ function insertString(
 })
 class ParseMoney extends Vue {
   text =
-    "张三赔偿李小华人民币车费601,293.11元，工厂费约一万二千三百四十五元,利息9佰多日元，打印费十块钱人民币。";
-  rendered_text = "";
-  new_string_start = entity_mapping["money"];
-  new_string_end = entity_mapping["end_map"];
+    '张三赔偿李小华人民币车费601,293.11元，工厂费约一万二千三百四十五元,利息9佰多日元，打印费十块钱人民币。';
+  rendered_text = '';
+  new_string_start = entity_mapping['money'];
+  new_string_end = entity_mapping['end_map'];
 
   first_show = true;
   response = {
@@ -179,7 +179,7 @@ class ParseMoney extends Vue {
   };
   $router = router;
   table_columns = table_columns;
-  meta = setup(() => useMeta({ title: "货币金额抽取 | 在线测试" }));
+  meta = setup(() => useMeta({ title: '货币金额抽取 | 在线测试' }));
 
   mounted() {
     //console.log("ParseMoney mounted!");
@@ -187,7 +187,7 @@ class ParseMoney extends Vue {
   send() {
     let { random_int, hash_code } = authentication_hash_code(this.text);
     jio_instance({
-      url: "/jio_api/parse_money",
+      url: '/jio_api/parse_money',
       data: {
         text: this.text,
         reverse_ret: true,
@@ -208,8 +208,8 @@ class ParseMoney extends Vue {
           let start_idx: number;
           let end_idx: number;
 
-          start_idx = response.data.detail[i]["offset"][0];
-          end_idx = response.data.detail[i]["offset"][1];
+          start_idx = response.data.detail[i]['offset'][0];
+          end_idx = response.data.detail[i]['offset'][1];
 
           this.rendered_text = insertString(
             this.rendered_text,
@@ -226,43 +226,43 @@ class ParseMoney extends Vue {
         }
 
         // 后处理换行号，加线号等
-        this.rendered_text = this.rendered_text.replace(/\n/g, "</p><p>");
+        this.rendered_text = this.rendered_text.replace(/\n/g, '</p><p>');
 
         // 开头、末尾添加标签
         this.rendered_text =
-          "<HR SIZE=10><p>" + this.rendered_text + "</p><HR SIZE=10>";
+          '<HR SIZE=10><p>' + this.rendered_text + '</p><HR SIZE=10>';
         // console.log(this.rendered_text);
 
         let insertion_html: HTMLElement;
-        const temp = document.getElementById("insertion_html");
+        const temp = document.getElementById('insertion_html');
 
         if (temp) {
           insertion_html = temp;
         } else {
-          throw new TypeError("the insertion_html element does not exist.");
+          throw new TypeError('the insertion_html element does not exist.');
         }
 
         insertion_html.innerHTML = this.rendered_text;
 
         for (i in response.data.detail) {
           let std_money_num: string;
-          if (typeof response.data.detail[i]["detail"]["num"] == "string") {
-            std_money_num = response.data.detail[i]["detail"]["num"];
+          if (typeof response.data.detail[i]['detail']['num'] == 'string') {
+            std_money_num = response.data.detail[i]['detail']['num'];
           } else {
             std_money_num =
-              response.data.detail[i]["detail"]["num"][0] +
-              "~" +
-              response.data.detail[i]["detail"]["num"][1];
+              response.data.detail[i]['detail']['num'][0] +
+              '~' +
+              response.data.detail[i]['detail']['num'][1];
           }
 
           this.response.detail.push({
             key: i.toString(),
-            orig_money: response.data.detail[i]["text"],
+            orig_money: response.data.detail[i]['text'],
             std_money: std_money_num,
-            case: response.data.detail[i]["detail"]["case"],
-            definition: response.data.detail[i]["detail"]["definition"],
-            offset_start: response.data.detail[i]["offset"][0],
-            offset_end: response.data.detail[i]["offset"][1],
+            case: response.data.detail[i]['detail']['case'],
+            definition: response.data.detail[i]['detail']['definition'],
+            offset_start: response.data.detail[i]['offset'][0],
+            offset_end: response.data.detail[i]['offset'][1],
           });
         }
         this.response.detail.reverse();
@@ -297,7 +297,7 @@ textarea {
   font-variant: tabular-nums;
   line-height: 1.5715;
   list-style: none;
-  font-feature-settings: "tnum";
+  font-feature-settings: 'tnum';
   display: inline-block;
   height: auto;
   margin-left: 8px;

@@ -48,7 +48,7 @@
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs, watch, onMounted } from "vue";
+import { defineComponent, reactive, toRefs, watch, onMounted } from 'vue';
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
@@ -57,14 +57,14 @@ import {
   // DesktopOutlined,
   // InboxOutlined,
   // AppstoreOutlined,
-} from "@ant-design/icons-vue";
+} from '@ant-design/icons-vue';
 
 export default defineComponent({
   setup() {
     const state = reactive({
       collapsed_b: true,
       collapsed: false,
-      selectedKeys: ["1"],
+      selectedKeys: ['1'],
       preOpenKeys: [],
     });
     watch(
@@ -75,41 +75,41 @@ export default defineComponent({
     );
 
     onMounted(() => {
-      document.addEventListener("click", (event) => {
+      document.addEventListener('click', (event) => {
         const userClick = document.getElementById(
-          "horizontal-navigation-button"
+          'horizontal-navigation-button'
         );
         // console.log("click button: ", userClick.contains(event.target));
-        const navigation_expand = document.getElementById("horizontal-expand");
+        const navigation_expand = document.getElementById('horizontal-expand');
 
         const window_width = window.innerWidth;
         // console.log("window_width: ", window_width);
         if (window_width < 801) {
           if (userClick && userClick.contains(event.target)) {
             // 点击了 navigation-button 按钮，则开启导航页
-            navigation_expand.style.display = "block";
+            navigation_expand.style.display = 'block';
           } else {
-            navigation_expand.style.display = "none";
+            navigation_expand.style.display = 'none';
           }
         }
       });
 
-      window.addEventListener("resize", function () {
-        const navigation_expand = document.getElementById("horizontal-expand");
-        navigation_expand.style.display = "none";
+      window.addEventListener('resize', function () {
+        const navigation_expand = document.getElementById('horizontal-expand');
+        navigation_expand.style.display = 'none';
       });
     });
 
     const toggleCollapsed = () => {
-      let collapsed_div = document.getElementById("horizontal-expand");
-      if (collapsed_div.style.display == "") {
+      let collapsed_div = document.getElementById('horizontal-expand');
+      if (collapsed_div.style.display == '') {
         // 该匹配必然在初次加载时进行匹配，后续则不需要
-        collapsed_div.style.display = "block";
+        collapsed_div.style.display = 'block';
       } else {
-        if (collapsed_div.style.display == "none") {
-          collapsed_div.style.display = "block";
+        if (collapsed_div.style.display == 'none') {
+          collapsed_div.style.display = 'block';
         } else {
-          collapsed_div.style.display = "none";
+          collapsed_div.style.display = 'none';
         }
       }
 

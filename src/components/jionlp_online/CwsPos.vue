@@ -198,12 +198,12 @@
 </template>
 
 <script lang="ts">
-import { Options, setup, Vue } from "vue-class-component";
-import { CaretRightOutlined, HomeOutlined } from "@ant-design/icons-vue";
-import { useMeta } from "vue-meta";
-import router from "@/router/index";
-import { jio_instance_with_jiojio } from "@/utils/request";
-import authentication_hash_code from "@/utils/authentication";
+import { Options, setup, Vue } from 'vue-class-component';
+import { CaretRightOutlined, HomeOutlined } from '@ant-design/icons-vue';
+import { useMeta } from 'vue-meta';
+import router from '@/router/index';
+import { jio_instance_with_jiojio } from '@/utils/request';
+import authentication_hash_code from '@/utils/authentication';
 
 const entity_mapping = {
   ad: '<span class="entity_tag ad"><b>',
@@ -241,9 +241,9 @@ const entity_mapping = {
   v: '<span class="entity_tag v"><b>',
   a: '<span class="entity_tag a"><b>',
   d: '<span class="entity_tag d"><b>',
-  end_map: "</b></span>",
-  front_p: "<p>",
-  end_p: "</p>",
+  end_map: '</b></span>',
+  front_p: '<p>',
+  end_p: '</p>',
 };
 
 @Options({
@@ -256,9 +256,9 @@ class CwsPos extends Vue {
   // text =
   //  "据央视新闻消息，10月12日，福建省莆田市政府召开疫情防控情况新闻发布会，介绍最新情况。据通报，从本月10日至12日16时，大约两天时间内，累计报告新冠病毒核酸阳性64例，平均每日新增病例30例，其中确诊病例32例、无症状感染者32例。";
   text =
-    "在自然语言处理领域，jiojio是一款基于C语言的中文领域的分词和词性标注工具。 http://www.jionlp.com";
-  rendered_text = "";
-  new_string_end = entity_mapping["end_map"];
+    '在自然语言处理领域，jiojio是一款基于C语言的中文领域的分词和词性标注工具。 http://www.jionlp.com';
+  rendered_text = '';
+  new_string_end = entity_mapping['end_map'];
 
   first_show = true;
   response = {
@@ -300,7 +300,7 @@ class CwsPos extends Vue {
     url_is_ok: false,
   };
   $router = router;
-  meta = setup(() => useMeta({ title: "分词与词性标注 | 在线测试" }));
+  meta = setup(() => useMeta({ title: '分词与词性标注 | 在线测试' }));
 
   mounted() {
     //console.log("ParseLocation mounted!");
@@ -308,7 +308,7 @@ class CwsPos extends Vue {
   send() {
     let { random_int, hash_code } = authentication_hash_code(this.text);
     jio_instance_with_jiojio({
-      url: "/jio_api/jiojio_cws_pos",
+      url: '/jio_api/jiojio_cws_pos',
       data: {
         text: this.text,
         random_num: random_int, // 30000
@@ -322,46 +322,46 @@ class CwsPos extends Vue {
         this.response.is_ok = response.data.is_ok;
 
         // add entity to rendered_text
-        this.rendered_text = "";
+        this.rendered_text = '';
 
         let i;
         for (i in response.data.detail) {
           let word: string;
           let pos_type: string;
           word = response.data.detail[i][0];
-          word = word.replace(" ", "　");
+          word = word.replace(' ', '　');
           pos_type = response.data.detail[i][1];
           // console.log(this.new_string_end);
-          if (pos_type == "ad") this.response.ad_is_ok = true;
-          if (pos_type == "an") this.response.an_is_ok = true;
-          if (pos_type == "c") this.response.c_is_ok = true;
-          if (pos_type == "f") this.response.f_is_ok = true;
-          if (pos_type == "m") this.response.m_is_ok = true;
-          if (pos_type == "nr") this.response.nr_is_ok = true;
-          if (pos_type == "nr1") this.response.nr1_is_ok = true;
-          if (pos_type == "nrf") this.response.nrf_is_ok = true;
-          if (pos_type == "ns") this.response.ns_is_ok = true;
-          if (pos_type == "nt") this.response.nt_is_ok = true;
-          if (pos_type == "nz") this.response.nz_is_ok = true;
-          if (pos_type == "o") this.response.o_is_ok = true;
-          if (pos_type == "p") this.response.p_is_ok = true;
-          if (pos_type == "q") this.response.q_is_ok = true;
-          if (pos_type == "r") this.response.r_is_ok = true;
-          if (pos_type == "s") this.response.s_is_ok = true;
-          if (pos_type == "t") this.response.t_is_ok = true;
-          if (pos_type == "u") this.response.u_is_ok = true;
-          if (pos_type == "vd") this.response.vd_is_ok = true;
-          if (pos_type == "vi") this.response.vi_is_ok = true;
-          if (pos_type == "wx") this.response.wx_is_ok = true;
-          if (pos_type == "x") this.response.x_is_ok = true;
-          if (pos_type == "email") this.response.email_is_ok = true;
-          if (pos_type == "id") this.response.id_is_ok = true;
-          if (pos_type == "ip") this.response.ip_is_ok = true;
-          if (pos_type == "jp") this.response.jp_is_ok = true;
-          if (pos_type == "ru") this.response.ru_is_ok = true;
-          if (pos_type == "ko") this.response.ko_is_ok = true;
-          if (pos_type == "tel") this.response.tel_is_ok = true;
-          if (pos_type == "url") this.response.url_is_ok = true;
+          if (pos_type == 'ad') this.response.ad_is_ok = true;
+          if (pos_type == 'an') this.response.an_is_ok = true;
+          if (pos_type == 'c') this.response.c_is_ok = true;
+          if (pos_type == 'f') this.response.f_is_ok = true;
+          if (pos_type == 'm') this.response.m_is_ok = true;
+          if (pos_type == 'nr') this.response.nr_is_ok = true;
+          if (pos_type == 'nr1') this.response.nr1_is_ok = true;
+          if (pos_type == 'nrf') this.response.nrf_is_ok = true;
+          if (pos_type == 'ns') this.response.ns_is_ok = true;
+          if (pos_type == 'nt') this.response.nt_is_ok = true;
+          if (pos_type == 'nz') this.response.nz_is_ok = true;
+          if (pos_type == 'o') this.response.o_is_ok = true;
+          if (pos_type == 'p') this.response.p_is_ok = true;
+          if (pos_type == 'q') this.response.q_is_ok = true;
+          if (pos_type == 'r') this.response.r_is_ok = true;
+          if (pos_type == 's') this.response.s_is_ok = true;
+          if (pos_type == 't') this.response.t_is_ok = true;
+          if (pos_type == 'u') this.response.u_is_ok = true;
+          if (pos_type == 'vd') this.response.vd_is_ok = true;
+          if (pos_type == 'vi') this.response.vi_is_ok = true;
+          if (pos_type == 'wx') this.response.wx_is_ok = true;
+          if (pos_type == 'x') this.response.x_is_ok = true;
+          if (pos_type == 'email') this.response.email_is_ok = true;
+          if (pos_type == 'id') this.response.id_is_ok = true;
+          if (pos_type == 'ip') this.response.ip_is_ok = true;
+          if (pos_type == 'jp') this.response.jp_is_ok = true;
+          if (pos_type == 'ru') this.response.ru_is_ok = true;
+          if (pos_type == 'ko') this.response.ko_is_ok = true;
+          if (pos_type == 'tel') this.response.tel_is_ok = true;
+          if (pos_type == 'url') this.response.url_is_ok = true;
 
           /* eslint-disable-next-line */
           this.rendered_text =
@@ -374,20 +374,20 @@ class CwsPos extends Vue {
         // console.log(this.rendered_text);
 
         // 后处理换行号，加线号等
-        this.rendered_text = this.rendered_text.replace(/\n/g, "</p><p>");
+        this.rendered_text = this.rendered_text.replace(/\n/g, '</p><p>');
 
         // 开头、末尾添加标签
         this.rendered_text =
-          "<HR SIZE=10><p>" + this.rendered_text + "</p><HR SIZE=10>";
+          '<HR SIZE=10><p>' + this.rendered_text + '</p><HR SIZE=10>';
 
         // console.log(this.rendered_text);
         let insertion_html: HTMLElement;
-        const temp = document.getElementById("insertion_html");
+        const temp = document.getElementById('insertion_html');
         // console.log(temp);
         if (temp) {
           insertion_html = temp;
         } else {
-          throw new TypeError("the insertion_html element does not exist.");
+          throw new TypeError('the insertion_html element does not exist.');
         }
 
         insertion_html.innerHTML = this.rendered_text;
@@ -419,7 +419,7 @@ textarea {
   font-variant: tabular-nums;
   line-height: 1.5715;
   list-style: none;
-  font-feature-settings: "tnum";
+  font-feature-settings: 'tnum';
   display: inline-block;
   height: auto;
   margin-left: 3px;

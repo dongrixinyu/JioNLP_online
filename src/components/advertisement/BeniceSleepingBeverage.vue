@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: "BeniceSleepingBeverage",
+  name: 'BeniceSleepingBeverage',
   props: {},
   components: {},
 };

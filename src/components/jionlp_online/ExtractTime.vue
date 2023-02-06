@@ -126,38 +126,38 @@
 </template>
 
 <script lang="ts">
-import { Options, setup, Vue } from "vue-class-component";
-import { CaretRightOutlined, HomeOutlined } from "@ant-design/icons-vue";
-import { useMeta } from "vue-meta";
-import router from "@/router/index";
-import { jio_instance } from "@/utils/request";
-import authentication_hash_code from "@/utils/authentication";
+import { Options, setup, Vue } from 'vue-class-component';
+import { CaretRightOutlined, HomeOutlined } from '@ant-design/icons-vue';
+import { useMeta } from 'vue-meta';
+import router from '@/router/index';
+import { jio_instance } from '@/utils/request';
+import authentication_hash_code from '@/utils/authentication';
 
 const table_columns = [
   {
-    title: "时间实体",
-    dataIndex: "time_entity",
+    title: '时间实体',
+    dataIndex: 'time_entity',
     sorter: false,
-    width: "25%",
-    slots: { customRender: "name" },
+    width: '25%',
+    slots: { customRender: 'name' },
   },
   {
-    title: "起始时间",
-    dataIndex: "offset_start",
-    width: "17%",
-    key: "offset_start",
+    title: '起始时间',
+    dataIndex: 'offset_start',
+    width: '17%',
+    key: 'offset_start',
   },
   {
-    title: "终止时间",
-    dataIndex: "offset_end",
-    width: "17%",
-    key: "offset_end",
+    title: '终止时间',
+    dataIndex: 'offset_end',
+    width: '17%',
+    key: 'offset_end',
   },
   {
-    title: "类型",
-    dataIndex: "time_type",
-    width: "20%",
-    key: "time_type",
+    title: '类型',
+    dataIndex: 'time_type',
+    width: '20%',
+    key: 'time_type',
   },
 ];
 
@@ -174,9 +174,9 @@ const entity_mapping = {
   time_span: '<span class="entity_tag time_span"><b>',
   time_delta: '<span class="entity_tag time_delta"><b>',
   time_period: '<span class="entity_tag time_period"><b>',
-  end_map: "</b></span>",
-  front_p: "<p>",
-  end_p: "</p>",
+  end_map: '</b></span>',
+  front_p: '<p>',
+  end_p: '</p>',
 };
 
 function insertString(
@@ -197,17 +197,17 @@ function insertString(
 })
 class ExtractTime extends Vue {
   text =
-    "据央视新闻消息，10月12日，福建省莆田市政府召开疫情防控情况新闻发布会，介绍最新情况。据通报，从本月10日至12日16时，大约两天时间内，累计报告新冠病毒核酸阳性64例，平均每日新增病例30例，其中确诊病例32例、无症状感染者32例。";
+    '据央视新闻消息，10月12日，福建省莆田市政府召开疫情防控情况新闻发布会，介绍最新情况。据通报，从本月10日至12日16时，大约两天时间内，累计报告新冠病毒核酸阳性64例，平均每日新增病例30例，其中确诊病例32例、无症状感染者32例。';
 
-  rendered_text = "";
-  new_string_end = entity_mapping["end_map"];
+  rendered_text = '';
+  new_string_end = entity_mapping['end_map'];
 
   first_show = true;
   response = { is_ok: false, detail: Array<TimeEntity>() };
   table_columns = table_columns;
   // entity_mapping = entity_mapping;
   $router = router;
-  meta = setup(() => useMeta({ title: "时间实体抽取与解析 | 在线测试" }));
+  meta = setup(() => useMeta({ title: '时间实体抽取与解析 | 在线测试' }));
 
   mounted() {
     //console.log("ParseLocation mounted!");
@@ -215,7 +215,7 @@ class ExtractTime extends Vue {
   send() {
     let { random_int, hash_code } = authentication_hash_code(this.text);
     jio_instance({
-      url: "/jio_api/extract_time",
+      url: '/jio_api/extract_time',
       data: {
         text: this.text,
         reverse_ret: true,
@@ -240,8 +240,8 @@ class ExtractTime extends Vue {
           let start_idx: number;
           let end_idx: number;
           let new_string_start: string;
-          start_idx = response.data.detail[i]["offset"][0];
-          end_idx = response.data.detail[i]["offset"][1];
+          start_idx = response.data.detail[i]['offset'][0];
+          end_idx = response.data.detail[i]['offset'][1];
 
           // console.log(this.new_string_end);
 
@@ -252,7 +252,7 @@ class ExtractTime extends Vue {
           );
 
           // time_type = JSON.stringify(response.data.detail[i]["type"]);
-          time_type = response.data.detail[i]["type"];
+          time_type = response.data.detail[i]['type'];
           new_string_start = (entity_mapping as any)[time_type];
           // new_string_start = "23";
           this.rendered_text = insertString(
@@ -265,42 +265,42 @@ class ExtractTime extends Vue {
         console.log(this.rendered_text);
 
         // 后处理换行号，加线号等
-        this.rendered_text = this.rendered_text.replace(/\n/g, "</p><p>");
+        this.rendered_text = this.rendered_text.replace(/\n/g, '</p><p>');
 
         // 开头、末尾添加标签
         this.rendered_text =
-          "<HR SIZE=10><p>" + this.rendered_text + "</p><HR SIZE=10>";
+          '<HR SIZE=10><p>' + this.rendered_text + '</p><HR SIZE=10>';
 
         console.log(this.rendered_text);
         let insertion_html: HTMLElement;
-        const temp = document.getElementById("insertion_html");
+        const temp = document.getElementById('insertion_html');
         // console.log(temp);
         if (temp) {
           insertion_html = temp;
         } else {
-          throw new TypeError("the insertion_html element does not exist.");
+          throw new TypeError('the insertion_html element does not exist.');
         }
 
         insertion_html.innerHTML = this.rendered_text;
 
         for (i in response.data.detail) {
           let time_type: string;
-          if (response.data.detail[i]["type"] == "time_point") {
-            time_type = "时间点(time_point)";
-          } else if (response.data.detail[i]["type"] == "time_span") {
-            time_type = "时间范围(time_span)";
-          } else if (response.data.detail[i]["type"] == "time_delta") {
-            time_type = "时间段(长度)(time_delta)";
-          } else if (response.data.detail[i]["type"] == "time_period") {
-            time_type = "时间周期(time_period)";
+          if (response.data.detail[i]['type'] == 'time_point') {
+            time_type = '时间点(time_point)';
+          } else if (response.data.detail[i]['type'] == 'time_span') {
+            time_type = '时间范围(time_span)';
+          } else if (response.data.detail[i]['type'] == 'time_delta') {
+            time_type = '时间段(长度)(time_delta)';
+          } else if (response.data.detail[i]['type'] == 'time_period') {
+            time_type = '时间周期(time_period)';
           } else {
-            time_type = response.data.detail[i]["type"];
+            time_type = response.data.detail[i]['type'];
           }
           this.response.detail.push({
             key: i.toString(),
-            time_entity: response.data.detail[i]["text"],
-            offset_start: response.data.detail[i]["detail"]["time"][0],
-            offset_end: response.data.detail[i]["detail"]["time"][1],
+            time_entity: response.data.detail[i]['text'],
+            offset_start: response.data.detail[i]['detail']['time'][0],
+            offset_end: response.data.detail[i]['detail']['time'][1],
             time_type: time_type,
           });
         }
@@ -333,7 +333,7 @@ textarea {
   font-variant: tabular-nums;
   line-height: 1.5715;
   list-style: none;
-  font-feature-settings: "tnum";
+  font-feature-settings: 'tnum';
   display: inline-block;
   height: auto;
   margin-left: 8px;

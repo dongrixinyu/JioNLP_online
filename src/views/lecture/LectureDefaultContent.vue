@@ -87,18 +87,18 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import { useMeta } from "vue-meta";
-import blog_asset from "@/utils/blog_request";
-import router from "@/router/index";
+import { defineComponent } from 'vue';
+import { useMeta } from 'vue-meta';
+import blog_asset from '@/utils/blog_request';
+import router from '@/router/index';
 import {
   HomeOutlined,
   // RightSquareFilled,
   // InfoCircleFilled,
-} from "@ant-design/icons-vue";
+} from '@ant-design/icons-vue';
 
 export default defineComponent({
-  name: "LectureDefaultContent",
+  name: 'LectureDefaultContent',
 
   components: {
     HomeOutlined,
@@ -109,14 +109,14 @@ export default defineComponent({
   data() {
     return {
       router: router,
-      markdown: "### loading ...",
+      markdown: '### loading ...',
     };
   },
 
   setup() {
     useMeta({
-      title: "NLP 教程",
-      htmlAttrs: { lang: "en", amp: true },
+      title: 'NLP 教程',
+      htmlAttrs: { lang: 'en', amp: true },
     });
   },
 
@@ -129,7 +129,7 @@ export default defineComponent({
 
   created() {
     blog_asset({
-      url: "/lecture/lecture_home_page/README.md",
+      url: '/lecture/lecture_home_page/README.md',
     })
       .then((response) => {
         // console.log(response.data);
@@ -137,7 +137,7 @@ export default defineComponent({
       })
       .catch(() => {
         this.markdown =
-          "### Failed to request markdown file. \n### Please refresh the webpage.";
+          '### Failed to request markdown file. \n### Please refresh the webpage.';
       });
   },
 });

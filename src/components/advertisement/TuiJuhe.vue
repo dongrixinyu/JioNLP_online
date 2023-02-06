@@ -26,7 +26,7 @@
 
 //**
 export default {
-  name: "TuiJuhe",
+  name: 'TuiJuhe',
   props: {},
   components: {
     // HomeOutlined,

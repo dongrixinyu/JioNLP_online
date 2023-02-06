@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import { defineComponent } from "vue";
-import Notification from "@/views/Notification.vue";
+import { defineComponent } from 'vue';
+import Notification from '@/views/Notification.vue';
 
 export default defineComponent({
   components: { Notification },

@@ -68,7 +68,7 @@
 
 <script>
 export default {
-  name: "TuiJuheFront",
+  name: 'TuiJuheFront',
   props: {},
 };
 </script>
