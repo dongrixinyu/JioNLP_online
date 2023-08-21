@@ -191,27 +191,27 @@
 </template>
 
 <script lang="ts">
-import { Options, setup, Vue } from 'vue-class-component';
-import { CaretRightOutlined, HomeOutlined } from '@ant-design/icons-vue';
-import { useMeta } from 'vue-meta';
-import router from '@/router/index';
-import { jio_instance_with_jiojio } from '@/utils/request';
-import { ref } from 'vue';
-import authentication_hash_code from '@/utils/authentication';
+import { Options, setup, Vue } from "vue-class-component";
+import { CaretRightOutlined, HomeOutlined } from "@ant-design/icons-vue";
+import { useMeta } from "vue-meta";
+import router from "@/router/index";
+import { jio_instance_with_jiojio } from "@/utils/request";
+import { ref } from "vue";
+import authentication_hash_code from "@/utils/authentication";
 
 const table_columns = [
   {
-    title: '关键短语',
-    dataIndex: 'keyphrase',
+    title: "关键短语",
+    dataIndex: "keyphrase",
     sorter: false,
-    width: '40%',
-    slots: { title: 'customTitle', customRender: 'name' },
+    width: "40%",
+    slots: { title: "customTitle", customRender: "name" },
   },
   {
-    title: '权重',
-    dataIndex: 'weight',
-    width: '25%',
-    key: 'weight',
+    title: "权重",
+    dataIndex: "weight",
+    width: "25%",
+    key: "weight",
   },
 ];
 
@@ -246,16 +246,16 @@ class ExtractKeyphrase extends Vue {
   response = { is_ok: false, detail: Array<Keyphrase>() };
   table_columns = table_columns;
   $router = router;
-  meta = setup(() => useMeta({ title: '关键短语抽取 | 在线测试' }));
+  meta = setup(() => useMeta({ title: "关键短语抽取 | 在线测试" }));
 
   param_values = ref([
-    'strict_pos',
-    'allow_pos_weight',
-    'allow_length_weight',
-    'allow_topic_weight',
+    "strict_pos",
+    "allow_pos_weight",
+    "allow_length_weight",
+    "allow_topic_weight",
   ]);
-  top_k = ref<string>('5');
-  topic_theta = ref<string>('0.5');
+  top_k = ref<string>("5");
+  topic_theta = ref<string>("0.5");
   strict_pos = true;
   allow_pos_weight = true;
   allow_length_weight = true;
@@ -268,39 +268,39 @@ class ExtractKeyphrase extends Vue {
   }
   send() {
     // 处理参数
-    if (this.param_values.toString().includes('strict_pos')) {
+    if (this.param_values.toString().includes("strict_pos")) {
       this.strict_pos = true;
     } else {
       this.strict_pos = false;
     }
-    if (this.param_values.toString().includes('allow_pos_weight')) {
+    if (this.param_values.toString().includes("allow_pos_weight")) {
       this.allow_pos_weight = true;
     } else {
       this.allow_pos_weight = false;
     }
-    if (this.param_values.toString().includes('allow_length_weight')) {
+    if (this.param_values.toString().includes("allow_length_weight")) {
       this.allow_length_weight = true;
     } else {
       this.allow_length_weight = false;
     }
-    if (this.param_values.toString().includes('allow_topic_weight')) {
+    if (this.param_values.toString().includes("allow_topic_weight")) {
       this.allow_topic_weight = true;
     } else {
       this.allow_topic_weight = false;
     }
-    if (this.param_values.toString().includes('without_person_name')) {
+    if (this.param_values.toString().includes("without_person_name")) {
       this.without_person_name = true;
     } else {
       this.without_person_name = false;
     }
-    if (this.param_values.toString().includes('without_location_name')) {
+    if (this.param_values.toString().includes("without_location_name")) {
       this.without_location_name = true;
     } else {
       this.without_location_name = false;
     }
     let { random_int, hash_code } = authentication_hash_code(this.text);
     jio_instance_with_jiojio({
-      url: '/jio_api/extract_keyphrase',
+      url: "/jio_api/extract_keyphrase",
       data: {
         text: this.text,
         strict_pos: this.strict_pos,

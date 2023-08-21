@@ -116,12 +116,12 @@ import {
   RightSquareFilled,
   InfoCircleFilled,
   HomeOutlined,
-} from '@ant-design/icons-vue';
-import { useMeta } from 'vue-meta';
+} from "@ant-design/icons-vue";
+import { useMeta } from "vue-meta";
 
 //**
 export default {
-  name: 'TuiJuhe',
+  name: "TuiJuhe",
   props: {},
   components: {
     // HomeOutlined,
@@ -131,8 +131,8 @@ export default {
   },
   setup() {
     useMeta({
-      title: 'NLP 产品',
-      htmlAttrs: { lang: 'en', amp: true },
+      title: "NLP 产品",
+      htmlAttrs: { lang: "en", amp: true },
     });
   },
 };

@@ -26,10 +26,10 @@
 </template>
 
 <script lang="ts">
-import { Options, Vue } from 'vue-class-component';
+import { Options, Vue } from "vue-class-component";
 // import { notification } from 'ant-design-vue';
 
-import { InfoCircleOutlined, CloseCircleOutlined } from '@ant-design/icons-vue';
+import { InfoCircleOutlined, CloseCircleOutlined } from "@ant-design/icons-vue";
 
 @Options({
   components: {

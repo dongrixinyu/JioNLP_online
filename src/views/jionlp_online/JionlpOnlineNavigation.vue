@@ -19,17 +19,17 @@
           :inline-collapsed="collapsed"
           v-model:openKeys="openKeys"
         >
-          <a-menu-item key="1">
+          <!-- <a-menu-item key="1">
             <template #icon>
               <PieChartOutlined />
             </template>
-            <!--span> 关键短语抽取 </span-->
+
             <router-link
               id="extract_keyphrase"
               to="/jionlp_online/extract_keyphrase"
               >关键短语抽取</router-link
             >
-          </a-menu-item>
+          </a-menu-item> -->
           <a-menu-item key="2">
             <template #icon>
               <DesktopOutlined />
@@ -54,14 +54,14 @@
               >地址解析</router-link
             >
           </a-menu-item>
-          <a-menu-item key="5">
+          <!-- <a-menu-item key="5">
             <template #icon>
               <InboxOutlined />
             </template>
             <router-link id="cws_pos" to="/jionlp_online/cws_pos"
               >分词-词性标注</router-link
             >
-          </a-menu-item>
+          </a-menu-item> -->
           <a-sub-menu key="sub1">
             <template #icon>
               <MailOutlined />
@@ -84,7 +84,7 @@
             </a-menu-item>
             <!--a-menu-item key="1-4">More...</a-menu-item-->
           </a-sub-menu>
-          <a-sub-menu key="sub2">
+          <!-- <a-sub-menu key="sub2">
             <template #icon>
               <AppstoreOutlined />
             </template>
@@ -103,8 +103,7 @@
                 >同音词替换</router-link
               >
             </a-menu-item>
-            <!--a-menu-item key="2-3">More...</a-menu-item-->
-          </a-sub-menu>
+          </a-sub-menu> -->
         </a-menu>
       </a-layout-sider>
     </div>
@@ -112,24 +111,23 @@
 </template>
 
 <script>
-import { defineComponent, reactive, toRefs, watch, onMounted } from 'vue';
+import { defineComponent, reactive, toRefs, watch, onMounted } from "vue";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  PieChartOutlined,
+  // PieChartOutlined,
   MailOutlined,
   DesktopOutlined,
   InboxOutlined,
-  AppstoreOutlined,
-} from '@ant-design/icons-vue';
+  // AppstoreOutlined,
+} from "@ant-design/icons-vue";
 
 export default defineComponent({
   setup() {
     const state = reactive({
-      collapsed_b: true,
       collapsed: false,
-      selectedKeys: ['1'],
-      openKeys: ['sub1', 'sub2'],
+      selectedKeys: ["1"],
+      openKeys: ["sub1", "sub2"],
       preOpenKeys: [],
     });
     watch(
@@ -139,28 +137,28 @@ export default defineComponent({
       }
     );
     onMounted(() => {
-      document.addEventListener('click', (event) => {
-        const userClick = document.getElementById('navigation-button');
-        console.log('click menu: ', userClick.contains(event.target));
-        const navigation_expand = document.getElementById('expand');
+      document.addEventListener("click", (event) => {
+        const userClick = document.getElementById("navigation-button");
+        console.log("click menu: ", userClick.contains(event.target));
+        const navigation_expand = document.getElementById("expand");
 
         const window_width = window.innerWidth;
-        console.log('window_width: ', window_width);
+        console.log("window_width: ", window_width);
         if (window_width < 801) {
           if (userClick && userClick.contains(event.target)) {
-            navigation_expand.style.display = 'block';
+            navigation_expand.style.display = "block";
           } else {
-            navigation_expand.style.display = 'none';
+            navigation_expand.style.display = "none";
           }
         }
       });
 
-      window.addEventListener('resize', function () {
-        const navigation_expand = document.getElementById('expand');
+      window.addEventListener("resize", function () {
+        const navigation_expand = document.getElementById("expand");
         if (window.innerWidth > 800) {
-          navigation_expand.style.display = 'block';
+          navigation_expand.style.display = "block";
         } else {
-          navigation_expand.style.display = 'none';
+          navigation_expand.style.display = "none";
         }
       });
     });
@@ -168,15 +166,15 @@ export default defineComponent({
     const toggleCollapsed = () => {
       // state.collapsed_b = !state.collapsed_b;
       // if (toggleCount)
-      let collapsed_div = document.getElementById('expand');
-      if (collapsed_div.style.display == '') {
+      let collapsed_div = document.getElementById("expand");
+      if (collapsed_div.style.display == "") {
         // 该匹配必然在初次加载时进行匹配，后续则不需要
-        collapsed_div.style.display = 'block';
+        collapsed_div.style.display = "block";
       } else {
-        if (collapsed_div.style.display == 'none') {
-          collapsed_div.style.display = 'block';
+        if (collapsed_div.style.display == "none") {
+          collapsed_div.style.display = "block";
         } else {
-          collapsed_div.style.display = 'none';
+          collapsed_div.style.display = "none";
         }
       }
     };
@@ -187,11 +185,11 @@ export default defineComponent({
   components: {
     MenuFoldOutlined,
     MenuUnfoldOutlined,
-    PieChartOutlined,
+    // PieChartOutlined,
     MailOutlined,
     DesktopOutlined,
     InboxOutlined,
-    AppstoreOutlined,
+    // AppstoreOutlined,
   },
 });
 </script>

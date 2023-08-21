@@ -9,15 +9,15 @@
 </template>
 
 <script>
-import { ref } from 'vue';
-import router from '@/router/index';
+import { ref } from "vue";
+import router from "@/router/index";
 
-import LectureNavigation from '@/views/lecture/LectureNavigation.vue';
-import LectureTemplate from '@/views/lecture/LectureTemplate.vue';
-import BeniceSleepingBeverage from '@/components/advertisement/BeniceSleepingBeverage.vue';
+import LectureNavigation from "@/views/lecture/LectureNavigation.vue";
+import LectureTemplate from "@/views/lecture/LectureTemplate.vue";
+import BeniceSleepingBeverage from "@/components/advertisement/BeniceSleepingBeverage.vue";
 
 export default {
-  name: 'LectureBase',
+  name: "LectureBase",
   components: {
     LectureNavigation,
     BeniceSleepingBeverage,
@@ -36,17 +36,17 @@ export default {
   },
   watch: {
     $route(to) {
-      console.log('# to url: ' + to.path);
-      console.log('# to url: ' + this.$route.params.lecture_name);
+      console.log("# to url: " + to.path);
+      console.log("# to url: " + this.$route.params.lecture_name);
 
       this.page_name = this.$route.params.lecture_name;
-      console.log('# to url: ' + this.page_name);
+      console.log("# to url: " + this.page_name);
       this.$forceUpdate();
     },
   },
 
   created() {
-    console.log('# url： ' + this.$route.params.lecture_name);
+    console.log("# url： " + this.$route.params.lecture_name);
   },
 };
 </script>

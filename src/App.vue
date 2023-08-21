@@ -23,14 +23,14 @@
 
 <script>
 // import Navigation from "@/components/Navigation.vue";
-import PageHeader from '@/views/PageHeader.vue';
+import PageHeader from "@/views/PageHeader.vue";
 // import Shampoo from "@/advertisements/Shampoo.vue";
 // import TuiJuheFront from "@/advertisements/TuiJuheFront.vue";
-import PageFooter from '@/views/PageFooter.vue';
-import { useMeta } from 'vue-meta';
+import PageFooter from "@/views/PageFooter.vue";
+import { useMeta } from "vue-meta";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     PageHeader,
     // Shampoo,
@@ -39,8 +39,8 @@ export default {
   },
   setup() {
     useMeta({
-      title: '',
-      htmlAttrs: { lang: 'cn', amp: true },
+      title: "",
+      htmlAttrs: { lang: "cn", amp: true },
     });
   },
 };
@@ -48,7 +48,7 @@ export default {
 
 <style>
 #app {
-  display: 'inline-block';
+  display: "inline-block";
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

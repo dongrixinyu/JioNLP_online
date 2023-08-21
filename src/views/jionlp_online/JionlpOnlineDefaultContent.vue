@@ -81,13 +81,13 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
-import { useMeta } from 'vue-meta';
+import { defineComponent } from "vue";
+import { useMeta } from "vue-meta";
 import {
   HomeOutlined,
   RightSquareFilled,
   InfoCircleFilled,
-} from '@ant-design/icons-vue';
+} from "@ant-design/icons-vue";
 
 export default defineComponent({
   components: {
@@ -99,8 +99,8 @@ export default defineComponent({
 
   setup() {
     useMeta({
-      title: 'NLP 在线解析',
-      htmlAttrs: { lang: 'en', amp: true },
+      title: "NLP 在线解析",
+      htmlAttrs: { lang: "en", amp: true },
     });
   },
 });
@@ -111,7 +111,7 @@ export default defineComponent({
   text-align: left;
   font-size: 22px;
   margin-bottom: 8px;
-  font-family: 'Times New Roman';
+  font-family: "Times New Roman";
   font-weight: bold;
   font-style: normal;
 }

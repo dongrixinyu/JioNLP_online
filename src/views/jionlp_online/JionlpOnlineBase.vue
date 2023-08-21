@@ -9,12 +9,12 @@
 </template>
 
 <script>
-import JionlpOnlineNavigation from '@/views/jionlp_online/JionlpOnlineNavigation.vue';
+import JionlpOnlineNavigation from "@/views/jionlp_online/JionlpOnlineNavigation.vue";
 // import { useMeta } from "vue-meta";
-import BeniceSleepingBeverage from '@/components/advertisement/BeniceSleepingBeverage.vue';
+import BeniceSleepingBeverage from "@/components/advertisement/BeniceSleepingBeverage.vue";
 
 export default {
-  name: 'JionlpOnlineBase',
+  name: "JionlpOnlineBase",
   components: {
     JionlpOnlineNavigation,
     BeniceSleepingBeverage,

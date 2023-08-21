@@ -26,46 +26,6 @@
             &ensp;微信公众号：JioNLP
           </p>
         </div>
-        <div style="background-color: #ececec; padding: 20px">
-          <a-row :gutter="16">
-            <a-col :span="12">
-              <router-link id="jionlp_online" to="/jionlp_online">
-                <a-card
-                  :hoverable="true"
-                  style="background-color: hsla(142, 100%, 35%, 0.25)"
-                  title="NLP在线试用平台"
-                  :bordered="false"
-                >
-                  <p style="color: black">
-                    ○ 提供常用 NLP 的<b>在线解析能力</b>，基于JioNLP
-                  </p>
-                  <p style="color: black">
-                    ○
-                    例如<b>关键短语抽取</b>、<b>时间语义解析</b>、<b>货币金额解析</b>、<b>文本清洗</b>、<b>数据增强</b>等
-                  </p>
-                </a-card>
-              </router-link>
-            </a-col>
-            <a-col :span="12">
-              <router-link id="lecture" to="/lecture/lecture_home_page">
-                <a-card
-                  :hoverable="true"
-                  style="background-color: hsla(197, 100%, 48%, 0.25)"
-                  title="NLP教程"
-                  :bordered="true"
-                >
-                  <p style="color: black">○ 提供高质量的 <b>NLP 系列教程</b></p>
-                  <p style="color: black">
-                    ○ NLP
-                    教程的每一篇都是我深入理解之后，尽量以白话语言编写，旨在<b
-                      >让非专业同学也能掌握 NLP</b
-                    >
-                  </p>
-                </a-card>
-              </router-link>
-            </a-col>
-          </a-row>
-        </div>
         <div id="home_page_content" v-html="markdownToHtml"></div>
       </a-layout-content>
     </a-layout>
@@ -73,10 +33,10 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue';
-import { useMeta } from 'vue-meta';
-import blog_asset from '@/utils/blog_request';
-import HorizontalNavigation from './HorizontalNavigation.vue';
+import { defineComponent } from "vue";
+import { useMeta } from "vue-meta";
+import blog_asset from "@/utils/blog_request";
+import HorizontalNavigation from "./HorizontalNavigation.vue";
 import {
   BugOutlined,
   // HomeOutlined,
@@ -84,7 +44,7 @@ import {
   // InfoCircleFilled,
   EnvironmentOutlined,
   // EyeOutlined,
-} from '@ant-design/icons-vue';
+} from "@ant-design/icons-vue";
 
 export default defineComponent({
   components: {
@@ -99,7 +59,7 @@ export default defineComponent({
   },
   data() {
     return {
-      markdown: '### loading ...',
+      markdown: "### loading ...",
     };
   },
   computed: {
@@ -110,13 +70,13 @@ export default defineComponent({
   },
   setup() {
     useMeta({
-      title: '首页',
-      htmlAttrs: { lang: 'en', amp: true },
+      title: "首页",
+      htmlAttrs: { lang: "en", amp: true },
     });
   },
   created() {
     blog_asset({
-      url: '/lecture/home_page/README.md',
+      url: "/lecture/home_page/README.md",
     })
       .then((response) => {
         // console.log(response.data);
@@ -124,7 +84,7 @@ export default defineComponent({
       })
       .catch(() => {
         this.markdown =
-          '### Failed to request markdown file.\nPlease refresh the web page.';
+          "### Failed to request markdown file.\nPlease refresh the web page.";
       });
   },
 });

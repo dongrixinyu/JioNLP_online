@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="lecture-template">
     <a-layout class="variable_content" style="padding: 0 24px 24px">
       <a-breadcrumb style="margin: 16px 0" :routes="router">
         <a-breadcrumb-item>
@@ -41,13 +41,13 @@
 
 <script>
 // import { useMeta } from 'vue-meta';
-import router from '../../router/index';
-import { stat_instance } from '@/utils/request';
-import blog_asset from '@/utils/blog_request';
-import { HomeOutlined } from '@ant-design/icons-vue';
+import router from "../../router/index";
+import { stat_instance } from "@/utils/request";
+import blog_asset from "@/utils/blog_request";
+import { HomeOutlined } from "@ant-design/icons-vue";
 
 export default {
-  name: 'LectureTemplate',
+  name: "LectureTemplate",
 
   components: {
     HomeOutlined,
@@ -63,10 +63,10 @@ export default {
   data() {
     return {
       router: router,
-      title: '',
-      established_time: '',
+      title: "",
+      established_time: "",
       frontend_page_count: 0,
-      markdown: '### loading ...',
+      markdown: "### loading ...",
     };
   },
 
@@ -78,10 +78,10 @@ export default {
   },
 
   created() {
-    console.log('## temp url: ' + this.page_name);
+    console.log("## temp url: " + this.page_name);
 
     stat_instance({
-      url: '/stat_api/frontend_page_statistics',
+      url: "/stat_api/frontend_page_statistics",
       data: {
         page_name: this.page_name,
       },
@@ -89,30 +89,30 @@ export default {
       .then((response) => {
         this.frontend_page_count = response.data.frontend_page_count;
         this.title = response.data.title;
-        document.title = this.title + ' | JioNLP 源站';
+        document.title = this.title + " | JioNLP 源站";
         this.established_time = response.data.established_time;
       })
       .catch(() => {
         this.frontend_page_count = 0;
-        document.title = this.page_name + ' | JioNLP 源站';
+        document.title = this.page_name + " | JioNLP 源站";
       });
 
     blog_asset({
-      url: '/lecture/' + this.page_name + '/README.md',
+      url: "/lecture/" + this.page_name + "/README.md",
     })
       .then((response) => {
         this.markdown = response.data;
       })
       .catch(() => {
-        this.markdown = '### Failed to request markdown file.';
+        this.markdown = "### Failed to request markdown file.";
       });
   },
 
   updated() {
-    console.log('## temp url: ' + this.page_name);
+    console.log("## temp url: " + this.page_name);
 
     stat_instance({
-      url: '/stat_api/frontend_page_statistics',
+      url: "/stat_api/frontend_page_statistics",
       data: {
         page_name: this.page_name,
       },
@@ -120,28 +120,38 @@ export default {
       .then((response) => {
         this.frontend_page_count = response.data.frontend_page_count;
         this.title = response.data.title;
-        document.title = this.title + ' | JioNLP 源站';
+        document.title = this.title + " | JioNLP 源站";
         this.established_time = response.data.established_time;
       })
       .catch(() => {
         this.frontend_page_count = 0;
-        document.title = this.page_name + ' | JioNLP 源站';
+        document.title = this.page_name + " | JioNLP 源站";
       });
 
     blog_asset({
-      url: '/lecture/' + this.page_name + '/README.md',
+      url: "/lecture/" + this.page_name + "/README.md",
     })
       .then((response) => {
         this.markdown = response.data;
       })
       .catch(() => {
-        this.markdown = '### Failed to request markdown file.';
+        this.markdown = "### Failed to request markdown file.";
       });
   },
 };
 </script>
 
 <style lang="less" scoped>
+#lecture-template {
+  margin-left: 236px;
+}
+
+@media screen and (max-width: 800px) {
+  #lecture-template {
+    margin-left: 0px;
+  }
+}
+
 h1 {
   width: 100%;
   // height: 80px;

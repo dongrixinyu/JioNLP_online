@@ -79,7 +79,7 @@
 
 <script>
 export default {
-  name: 'Shampoo',
+  name: "Shampoo",
   props: {},
 };
 </script>

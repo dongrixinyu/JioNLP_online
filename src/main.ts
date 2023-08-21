@@ -1,15 +1,15 @@
-import { createApp } from 'vue';
-import App from './App.vue';
-import router from './router';
+import { createApp } from "vue";
+import App from "./App.vue";
+import router from "./router";
 // import VueMathjax from 'vue-mathjax-next'
-import { createMetaManager } from 'vue-meta';
-import { marked } from 'marked';
+import { createMetaManager } from "vue-meta";
+import { marked } from "marked";
 // import { katex } from 'katex';
-import Antd from 'ant-design-vue';
-import 'ant-design-vue/dist/antd.css';
+import Antd from "ant-design-vue";
+import "ant-design-vue/dist/antd.css";
 
-const katex = require('katex');
-const config = require('@/global_config');
+const katex = require("katex");
+const config = require("@/global_config");
 
 const backend_ip = config.backend_ip;
 const backend_port = config.backend_port;
@@ -21,7 +21,7 @@ const baseUrl = blog_asset_host;
 
 renderer.image = (href: string) => {
   let full_url: string;
-  if (href.search('http') != -1) {
+  if (href.search("http") != -1) {
     full_url = href;
   } else {
     full_url = baseUrl + href;
@@ -37,8 +37,8 @@ renderer.image = (href: string) => {
 
 renderer.paragraph = (text: string) => {
   let space_text: string;
-  if (text[0] != '　') {
-    space_text = '　　' + text;
+  if (text[0] != "　") {
+    space_text = "　　" + text;
   } else {
     space_text = text;
   }
@@ -48,7 +48,7 @@ renderer.paragraph = (text: string) => {
 };
 
 renderer.code = (text: string) => {
-  const text_list = text.split('\n');
+  const text_list = text.split("\n");
   return `
         <p><code style="
                 display: block;
@@ -58,7 +58,7 @@ renderer.code = (text: string) => {
                 border-radius: 6px;
                 width: 100%;
                 padding: 15px 20px 15px 20px;">
-            ${text_list.filter(Boolean).join('<br>')}
+            ${text_list.filter(Boolean).join("<br>")}
         </code></p>`;
 };
 
@@ -74,7 +74,7 @@ renderer.codespan = (text: string) => {
 };
 
 renderer.blockquote = (text: string) => {
-  const text_list = text.split('\n');
+  const text_list = text.split("\n");
 
   return `
         <blockquote style="
@@ -84,7 +84,7 @@ renderer.blockquote = (text: string) => {
                 border-left: 3px solid #6499e3;
                 background-color: #e3f2fd">${text_list
                   .filter(Boolean)
-                  .join('<br>')}</blockquote>`;
+                  .join("<br>")}</blockquote>`;
 };
 
 renderer.heading = (text: string, level: number) => {
@@ -138,10 +138,10 @@ renderer.strong = (text: string) => {
 marked.use({ renderer });
 
 const TableRender = {
-  name: 'TableRender',
-  level: 'block',
+  name: "TableRender",
+  level: "block",
   start(src: string) {
-    return src.indexOf('|');
+    return src.indexOf("|");
   },
 
   tokenizer(src: string, tokens: any) {
@@ -151,7 +151,7 @@ const TableRender = {
       const trimText = match[1].trim();
 
       return {
-        type: 'inlineKatex',
+        type: "inlineKatex",
         raw: match[0],
         text: trimText,
       };
@@ -167,10 +167,10 @@ const TableRender = {
 };
 
 const inlineKatex = {
-  name: 'inlineKatex',
-  level: 'inline',
+  name: "inlineKatex",
+  level: "inline",
   start(src: string) {
-    return src.indexOf('$');
+    return src.indexOf("$");
   },
   tokenizer(src: string, tokens: any) {
     const match = src.match(/^\$([^$\n]+?)\$/);
@@ -179,7 +179,7 @@ const inlineKatex = {
       const trimText = match[1].trim();
 
       return {
-        type: 'inlineKatex',
+        type: "inlineKatex",
         raw: match[0],
         text: trimText,
       };
@@ -195,10 +195,10 @@ const inlineKatex = {
 };
 
 const inlineKatexDisplay = {
-  name: 'inlineKatexDisplay',
-  level: 'inline',
+  name: "inlineKatexDisplay",
+  level: "inline",
   start(src: string) {
-    return src.indexOf('$');
+    return src.indexOf("$");
   },
   tokenizer(src: string, tokens: any) {
     const match = src.match(/^\$\$([^$]+?)\$\$/); // 去除换行符与否是个问题
@@ -207,7 +207,7 @@ const inlineKatexDisplay = {
       const trimText = match[1].trim();
 
       return {
-        type: 'inlineKatexDisplay',
+        type: "inlineKatexDisplay",
         raw: match[0],
         text: trimText,
       };
@@ -240,4 +240,4 @@ const app = createApp(App)
   .use(Antd)
   .use(createMetaManager());
 
-app.mount('#app');
+app.mount("#app");

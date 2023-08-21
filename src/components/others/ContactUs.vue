@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import { useMeta } from 'vue-meta';
+import { useMeta } from "vue-meta";
 /* eslint-disable */
 import router from "../../router/index";
 import blog_asset from "@/utils/blog_request";
