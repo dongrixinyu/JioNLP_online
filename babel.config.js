@@ -1,12 +1,12 @@
 module.exports = {
-  presets: ['@vue/cli-plugin-babel/preset'],
+  presets: ["@vue/cli-plugin-babel/preset"],
   plugins: [
     [
-      'import',
+      "import",
       {
-        libraryName: 'antd',
-        libraryDirectory: 'lib',
-        style: 'css',
+        libraryName: "antd",
+        libraryDirectory: "lib",
+        style: "css",
       },
     ],
   ],
